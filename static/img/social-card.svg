@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="windowsweep - safe, developer-aware Windows cleanup CLI">
+  <title>windowsweep</title>
+  <defs>
+    <linearGradient id="scMark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#38bdf8" />
+      <stop offset="1" stop-color="#1e3a8a" />
+    </linearGradient>
+    <linearGradient id="scWipe" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.55" />
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.98" />
+    </linearGradient>
+    <clipPath id="scPane">
+      <rect x="118" y="214" width="168" height="136" rx="20" />
+    </clipPath>
+  </defs>
+
+  <rect width="1200" height="630" fill="#0b0f0a" />
+  <rect x="0" y="0" width="1200" height="6" fill="#a3e635" />
+
+  <!-- the product mark, drawn at 2x from assets/logo/windowsweep-mark.svg -->
+  <rect x="90" y="182" width="256" height="256" rx="56" fill="url(#scMark)" />
+  <rect x="118" y="214" width="168" height="136" rx="20" fill="#ffffff" opacity="0.14" />
+  <g clip-path="url(#scPane)">
+    <path d="M100 438 L196 194 L284 194 L188 438 Z" fill="url(#scWipe)" />
+  </g>
+  <rect x="118" y="214" width="168" height="136" rx="20" fill="none" stroke="#ffffff" stroke-width="8" opacity="0.92" />
+  <g transform="rotate(-62 258 238)">
+    <rect x="222" y="230" width="72" height="16" rx="8" fill="#ffffff" />
+    <rect x="250" y="246" width="16" height="36" rx="6" fill="#dbeafe" />
+  </g>
+  <g fill="#ffffff">
+    <circle cx="298" cy="206" r="9" opacity="0.9" />
+    <circle cx="318" cy="186" r="6" opacity="0.7" />
+    <circle cx="288" cy="178" r="4.4" opacity="0.5" />
+  </g>
+
+  <text x="410" y="286" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="86" font-weight="700" fill="#a3e635">windowsweep</text>
+  <text x="410" y="348" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="34" fill="#e7f3d4">Safe, developer-aware Windows cleanup CLI</text>
+  <text x="410" y="404" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="27" fill="#9aa88a">One deletion chokepoint. A real dry-run. No network calls.</text>
+  <text x="410" y="470" font-family="Consolas, Menlo, monospace" font-size="30" fill="#a3e635">npx windowsweep --scan</text>
+
+  <text x="90" y="560" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="24" fill="#7d8a6f">windowsweep-docs.aoneahsan.com</text>
+  <text x="1110" y="560" text-anchor="end" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="24" fill="#7d8a6f">MIT - Ahsan Mahmood</text>
+</svg>

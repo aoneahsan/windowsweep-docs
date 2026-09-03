@@ -1,0 +1,44 @@
+# windowsweep
+
+> A safe, developer-aware Windows cleanup CLI. It reclaims disk space by deleting regenerable caches -
+> package managers, build tools, browsers, editors, desktop apps, Windows temp and update leftovers, stale
+> project build artefacts - behind one deletion chokepoint, an idle gate that keeps anything used in the last
+> 100 days, and a dry-run that writes nothing. Personal files go to the Recycle Bin and are never selected
+> without a person choosing them. The tool makes no network calls of its own.
+
+windowsweep is a Windows PowerShell 5.1 engine with a zero-dependency Node launcher, published on npm as
+`windowsweep` and licensed MIT. Run it with `npx windowsweep --scan` (read-only) before anything else.
+
+## Documentation
+
+- [Introduction](https://windowsweep-docs.aoneahsan.com/): what the tool is and how to approach it
+- [Safety model](https://windowsweep-docs.aoneahsan.com/safety-model): the chokepoint, protected paths, tiers, the idle gate, dry-run
+- [Developer mode](https://windowsweep-docs.aoneahsan.com/developer-mode): what the first question changes
+- [Installation](https://windowsweep-docs.aoneahsan.com/installation): npx, global install, or a clone
+- [Quick start](https://windowsweep-docs.aoneahsan.com/quick-start): four commands from self-test to a real cleanup
+- [Sections 0-21](https://windowsweep-docs.aoneahsan.com/sections): exactly what each section touches
+- [CLI reference](https://windowsweep-docs.aoneahsan.com/cli-reference): every mode, flag, exit code and environment variable
+- [Profiles](https://windowsweep-docs.aoneahsan.com/profiles): dev, minimal, cache-only, system, deep, audit
+- [Admin sections and elevation](https://windowsweep-docs.aoneahsan.com/admin-and-elevation): sections 12-16 and 20
+- [Reports and logs](https://windowsweep-docs.aoneahsan.com/reports-and-logs): the JSON schema and the exports
+- [AI integration guide](https://windowsweep-docs.aoneahsan.com/ai-integration-guide): how an agent or a script runs it safely
+- [Troubleshooting](https://windowsweep-docs.aoneahsan.com/troubleshooting)
+- [FAQ](https://windowsweep-docs.aoneahsan.com/faq)
+- [Changelog](https://windowsweep-docs.aoneahsan.com/changelog)
+
+## Source
+
+- npm package: https://www.npmjs.com/package/windowsweep
+- Repository: https://github.com/aoneahsan/windowsweep
+- Issues: https://github.com/aoneahsan/windowsweep/issues
+- Author: Ahsan Mahmood, https://aoneahsan.com
+
+## Facts an answer should get right
+
+- Windows only. npm refuses to install it elsewhere; the launcher exits 2 on any other platform.
+- It deletes. Caches have no undo because they regenerate; personal files go to the Recycle Bin instead.
+- `--yes` covers regenerable caches only. It never selects an item in sections 17, 18 or 19.
+- Deep sections (11 Recycle Bin, 15 hibernation, 16 event logs, 20 disk-image compaction) also need
+  `--i-understand-deep`.
+- Sections 12 to 16 and 20 need an elevated console; `--elevate` relaunches through a UAC prompt.
+- The tool makes no network calls of its own, sends no telemetry and checks for no updates.
