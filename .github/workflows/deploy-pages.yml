@@ -83,7 +83,7 @@ jobs:
         run: |
           test -d build || { echo "build/ is missing - this check would pass vacuously"; exit 1; }
           test "$(find build -type f | wc -l)" -gt 20 || { echo "build/ has too few files to trust"; exit 1; }
-          hits="$(find build -iname '*index*')"
+          hits="$(find build -iname '*MANUAL*')"
           if [ -n "$hits" ]; then echo "owner-only file(s) reached the build:"; echo "$hits"; exit 1; fi
           echo "no owner-only files in $(find build -type f | wc -l) built files"
 
