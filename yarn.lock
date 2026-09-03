@@ -8958,29 +8958,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"windowsweep-docs@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "windowsweep-docs@workspace:."
-  dependencies:
-    "@docusaurus/core": "npm:^3.10.1"
-    "@docusaurus/module-type-aliases": "npm:^3.10.1"
-    "@docusaurus/plugin-content-docs": "npm:^3.10.1"
-    "@docusaurus/preset-classic": "npm:^3.10.1"
-    "@docusaurus/theme-common": "npm:^3.10.1"
-    "@docusaurus/theme-mermaid": "npm:^3.10.1"
-    "@docusaurus/tsconfig": "npm:^3.10.1"
-    "@docusaurus/types": "npm:^3.10.1"
-    "@easyops-cn/docusaurus-search-local": "npm:^0.55.2"
-    "@mdx-js/react": "npm:^3.1.1"
-    "@types/react": "npm:^19.2.7"
-    clsx: "npm:^2.1.1"
-    prism-react-renderer: "npm:^2.4.1"
-    react: "npm:^19.2.7"
-    react-dom: "npm:^19.2.7"
-    typescript: "npm:~6.0.3"
-  languageName: unknown
-  linkType: soft
-
 "loader-utils@npm:^2.0.0":
   version: 2.0.4
   resolution: "loader-utils@npm:2.0.4"
@@ -13856,6 +13833,29 @@ __metadata:
   checksum: 10c0/08f70cd97dd9a20aea280847a1fe8148e17cae7d231640e41eb26d2388697cbe65b67fd9e68715251c39b080c5ae4f76d71a9a69fa101d897273efdfb1b58bf7
   languageName: node
   linkType: hard
+
+"windowsweep-docs@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "windowsweep-docs@workspace:."
+  dependencies:
+    "@docusaurus/core": "npm:^3.10.1"
+    "@docusaurus/module-type-aliases": "npm:^3.10.1"
+    "@docusaurus/plugin-content-docs": "npm:^3.10.1"
+    "@docusaurus/preset-classic": "npm:^3.10.1"
+    "@docusaurus/theme-common": "npm:^3.10.1"
+    "@docusaurus/theme-mermaid": "npm:^3.10.1"
+    "@docusaurus/tsconfig": "npm:^3.10.1"
+    "@docusaurus/types": "npm:^3.10.1"
+    "@easyops-cn/docusaurus-search-local": "npm:^0.55.2"
+    "@mdx-js/react": "npm:^3.1.1"
+    "@types/react": "npm:^19.2.7"
+    clsx: "npm:^2.1.1"
+    prism-react-renderer: "npm:^2.4.1"
+    react: "npm:^19.2.7"
+    react-dom: "npm:^19.2.7"
+    typescript: "npm:~6.0.3"
+  languageName: unknown
+  linkType: soft
 
 "wrap-ansi@npm:^8.0.1, wrap-ansi@npm:^8.1.0":
   version: 8.1.0

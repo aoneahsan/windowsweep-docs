@@ -64,12 +64,7 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Install dependencies
-        # NOT --immutable, deliberately and temporarily. This repo's yarn.lock was inherited from
-        # linux-cleanup-docs with only its workspace identity renamed, because the owner asked for no large
-        # downloads on the build machine (2026-09-03), so `yarn install` has never run locally. Yarn rewrites
-        # the workspace resolution block on the first real install, which --immutable forbids (YN0028).
-        # windowsweep PENDING-TASKS.md TASK-001 regenerates the lockfile properly and restores --immutable.
-        run: yarn install
+        run: yarn install --immutable
 
       - name: Build
         run: yarn build
