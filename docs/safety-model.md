@@ -1,6 +1,6 @@
 ---
-title: Safety model
-description: The deletion chokepoint, the protected lists, the tiers, the idle gate and the dry-run guarantee.
+title: 'Safety model'
+description: 'The deletion chokepoint, the protected lists, the tiers, the idle gate and the dry-run guarantee.'
 tags: [safety, protected-paths, dry-run]
 ---
 # Safety model

@@ -1,6 +1,6 @@
 ---
-title: Developer mode
-description: What the first question changes for package, build and test-runner caches.
+title: 'Developer mode'
+description: 'What the first question changes for package, build and test-runner caches.'
 tags: [developer-mode, caches, idle-gate]
 ---
 # Developer mode

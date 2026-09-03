@@ -1,6 +1,6 @@
 ---
-title: Sections 0-21
-description: Every section: what it touches, and how it behaves in dry-run and in batch mode.
+title: 'Sections 0-21'
+description: 'Every section: what it touches, and how it behaves in dry-run and in batch mode.'
 tags: [sections, reference]
 ---
 # Sections 0-21

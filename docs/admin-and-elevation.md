@@ -1,6 +1,6 @@
 ---
-title: Admin sections and elevation
-description: Sections 12-16 and 20, how --elevate works, and the hibernation decision.
+title: 'Admin sections and elevation'
+description: 'Sections 12-16 and 20, how --elevate works, and the hibernation decision.'
 tags: [admin, elevation, uac]
 ---
 # Admin sections and elevation

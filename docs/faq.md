@@ -1,6 +1,6 @@
 ---
-title: FAQ
-description: The questions people ask first about a tool that deletes files.
+title: 'FAQ'
+description: 'The questions people ask first about a tool that deletes files.'
 tags: [faq]
 ---
 # FAQ

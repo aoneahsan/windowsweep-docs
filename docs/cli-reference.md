@@ -1,6 +1,6 @@
 ---
-title: CLI reference
-description: Every mode, option, exit code, environment variable and config key.
+title: 'CLI reference'
+description: 'Every mode, option, exit code, environment variable and config key.'
 tags: [cli, reference, flags]
 ---
 # CLI reference

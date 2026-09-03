@@ -1,6 +1,6 @@
 ---
-title: About the author
-description: Who built windowsweep, the sibling tools, and how to support the work.
+title: 'About the author'
+description: 'Who built windowsweep, the sibling tools, and how to support the work.'
 tags: [about, author]
 ---
 # Author

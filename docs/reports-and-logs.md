@@ -1,6 +1,6 @@
 ---
-title: Reports and logs
-description: What a run writes under the data directory, the JSON report schema, and the exports.
+title: 'Reports and logs'
+description: 'What a run writes under the data directory, the JSON report schema, and the exports.'
 tags: [reports, logs, json]
 ---
 # Reports and logs

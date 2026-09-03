@@ -1,8 +1,8 @@
 ---
 id: intro
 slug: /
-title: windowsweep documentation
-description: Safe, developer-aware Windows cleanup CLI: what it deletes, how to preview it, and how to run it.
+title: 'windowsweep documentation'
+description: 'Safe, developer-aware Windows cleanup CLI: what it deletes, how to preview it, and how to run it.'
 tags: [windows, cleanup, cli, overview]
 ---
 # windowsweep - Documentation
