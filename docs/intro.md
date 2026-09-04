@@ -26,7 +26,7 @@ The [README](https://github.com/aoneahsan/windowsweep#readme) is the elevator pi
 
 | Page | What it covers |
 |---|---|
-| [Sections 0-21](./sections.md) | Every section: what it touches, which flags tune it, how it behaves in dry-run and batch mode |
+| [Sections 0-25](./sections.md) | Every section: what it touches, which flags tune it, how it behaves in dry-run and batch mode |
 | [CLI reference](./cli-reference.md) | Every mode, option, exit code, environment variable and config key |
 | [Profiles](./profiles.md) | The named bundles: `dev`, `minimal`, `cache-only`, `system`, `deep`, `audit` |
 | [Admin sections and elevation](./admin-and-elevation.md) | What needs Administrator rights, how `--elevate` works, the hibernation decision |
