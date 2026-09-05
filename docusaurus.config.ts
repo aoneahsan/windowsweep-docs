@@ -221,7 +221,9 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/social-card.svg',
+    // Most social scrapers ignore SVG, so the card was effectively missing. The SVG stays the
+    // master and this PNG is a re-runnable 1200x630 export of it - re-export whenever the master changes.
+    image: 'img/social-card.png',
     metadata: [
       {
         name: 'description',
