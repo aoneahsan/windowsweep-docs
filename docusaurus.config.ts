@@ -116,7 +116,11 @@ const config: Config = {
         name: 'windowsweep',
         applicationCategory: 'DeveloperApplication',
         operatingSystem: 'Windows 10, Windows 11',
-        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        // 🔴 No `offers` block, deliberately. A price of '0' is a machine-readable
+        // pricing claim on the one surface answer engines parse structurally, and the
+        // owner's 2026-09-05 decision is that this product makes no pricing claim on
+        // any surface. `isAccessibleForFree` is the same claim in another field and is
+        // equally out. See docs/story/decision-log.md.
         url: 'https://www.npmjs.com/package/windowsweep',
         author: {
           '@type': 'Person',
@@ -245,7 +249,7 @@ const config: Config = {
       { name: 'twitter:site', content: '@aoneahsan' },
       { property: 'og:type', content: 'website' },
       { property: 'og:site_name', content: 'windowsweep Docs' },
-      { property: 'og:locale', content: 'en_US' },
+      { property: 'og:locale', content: 'en_GB' },
       { property: 'og:image:width', content: '1200' },
       { property: 'og:image:height', content: '630' },
       { property: 'article:author', content: 'Ahsan Mahmood' },
