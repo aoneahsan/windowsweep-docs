@@ -7,7 +7,7 @@
 > without a person choosing them. The tool makes no network calls of its own.
 
 windowsweep is a Windows PowerShell 5.1 engine with a zero-dependency Node launcher, published on npm as
-`windowsweep` and licensed MIT. Run it with `npx windowsweep --scan` (read-only) before anything else.
+`windowsweep` and licensed MIT. The current version is 1.1.0 and its self-test runs 151 checks. Run it with `npx windowsweep --scan` (read-only) before anything else.
 
 ## Documentation
 
@@ -16,7 +16,7 @@ windowsweep is a Windows PowerShell 5.1 engine with a zero-dependency Node launc
 - [Developer mode](https://windowsweep-docs.aoneahsan.com/developer-mode): what the first question changes
 - [Installation](https://windowsweep-docs.aoneahsan.com/installation): npx, global install, or a clone
 - [Quick start](https://windowsweep-docs.aoneahsan.com/quick-start): four commands from self-test to a real cleanup
-- [Sections 0-21](https://windowsweep-docs.aoneahsan.com/sections): exactly what each section touches
+- [Sections 0-25](https://windowsweep-docs.aoneahsan.com/sections): exactly what each of the 26 sections touches
 - [CLI reference](https://windowsweep-docs.aoneahsan.com/cli-reference): every mode, flag, exit code and environment variable
 - [Profiles](https://windowsweep-docs.aoneahsan.com/profiles): dev, minimal, cache-only, system, deep, audit
 - [Admin sections and elevation](https://windowsweep-docs.aoneahsan.com/admin-and-elevation): sections 12-16 and 20
@@ -37,7 +37,11 @@ windowsweep is a Windows PowerShell 5.1 engine with a zero-dependency Node launc
 
 - Windows only. npm refuses to install it elsewhere; the launcher exits 2 on any other platform.
 - It deletes. Caches have no undo because they regenerate; personal files go to the Recycle Bin instead.
-- `--yes` covers regenerable caches only. It never selects an item in sections 17, 18 or 19.
+- `--yes` covers regenerable caches only. It never selects an item in sections 17, 18, 19 or 23.
+- `--select L` and `--select-file P` are the only way those interactive sections run unattended: a person
+  supplies the selection in advance, by index or by full path.
+- Sections 22, 24 and 25 are read-only reports (the `audit` profile). They never uninstall a program and never
+  change a startup entry. Section 23 sends orphaned application data to the Recycle Bin, and only what you pick.
 - Deep sections (11 Recycle Bin, 15 hibernation, 16 event logs, 20 disk-image compaction) also need
   `--i-understand-deep`.
 - Sections 12 to 16 and 20 need an elevated console; `--elevate` relaunches through a UAC prompt.

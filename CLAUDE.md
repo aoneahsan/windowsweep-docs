@@ -2,7 +2,7 @@
 
 **Mirror of `AGENTS.md`** - byte-identical except the header names. Change one, change both.
 
-**Last Updated:** 2026-09-03
+**Last Updated:** 2026-09-05
 
 ## What this is
 
@@ -16,7 +16,7 @@ PowerShell CLI that deletes files to reclaim disk space.
 | **Deploy** | GitHub Pages via Actions on push to `main`. **No Firebase** |
 | **Repo visibility** | 🔴 **PUBLIC** |
 | **Dev ports** | 5972 (start) · 5973 (serve) |
-| **Source package** | `../windows-cleanup` - **read-only from here** |
+| **Source package** | `../windows-cleanup` (both repos sit under `D:\work\windows-cleanup-root\`) - **read-only from here** |
 | **Palette** | windowsweep's registered hue 128 (lime): `#4d7c0f` light, `#a3e635` dark |
 
 ## 🔴 The rules that matter most here
@@ -45,11 +45,17 @@ patch a page here and leave the source wrong. Every CLI release re-mirrors, and 
 **5. Never imply a deletion is reversible.** This documents a destructive tool with no undo for caches. Say
 what is permanent, plainly, every time it is relevant.
 
-**6. 🔴 No local install until the owner's go-ahead.** He asked for no large downloads on the current network
-(2026-09-03), so `yarn install` has not been run here and `node_modules/` does not exist locally. **CI builds
-the site.** The lockfile was inherited from `linux-cleanup-docs` with only its workspace identity renamed,
-which is valid exactly while the dependency set is identical - so **do not add or bump a dependency** until
-the real install happens. Tracked as `PENDING-TASKS.md` TASK-001 in the CLI repo.
+**6. A local install is allowed since 2026-09-05** - the owner lifted the download gate (*"Lift it fully"*),
+closing `TASK-001`. It has not been run yet, so `node_modules/` still does not exist here and **CI builds the
+site**. 🔴 Until it is run and the lockfile regenerated, the lockfile is the one inherited from
+`linux-cleanup-docs` with only its workspace identity renamed - valid exactly while the dependency set is
+identical, so **do not add or bump a dependency** before then. Tracked as RW-045 in the CLI repo's
+`remaining-work.md`.
+
+**7. 🔴 `docs/story/` never ships.** Phase P7 (the storytelling retrofit) puts a Story Bible, a voice
+fingerprint, a content map, a decision log and drafts under `docs/story/`, which is also the published content
+directory. It is excluded in `docusaurus.config.ts` and swept for in the deploy workflow - the same two lines
+of defence `MANUAL-TASKS.md` has. Neither may be removed.
 
 ## Verifying a change
 

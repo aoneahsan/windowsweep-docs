@@ -78,12 +78,15 @@ jobs:
       - name: No owner-only files in the build
         # docs/MANUAL-TASKS.md lives inside the published content directory, so the docusaurus `exclude`
         # is the only thing keeping it off a PUBLIC site. This is the second line of defence.
+        # docs/story/** (the Story Bible, voice fingerprint, content map, decision log and drafts)
+        # is excluded the same way and swept for here too - proved on 2026-09-05 by planting a
+        # story-bible.html in a fake build: the old expression missed it, this one catches it.
         # The non-empty check matters: `find` over a missing directory prints nothing, so a bare
         # `test -z` would pass on a build that never happened.
         run: |
           test -d build || { echo "build/ is missing - this check would pass vacuously"; exit 1; }
           test "$(find build -type f | wc -l)" -gt 20 || { echo "build/ has too few files to trust"; exit 1; }
-          hits="$(find build -iname '*MANUAL*')"
+          hits="$(find build -iname '*MANUAL*' -o -iname '*story-bible*' -o -iname '*decision-log*' -o -iname '*run-state*' -o -iname '*voice-fingerprint*' -o -iname '*content-map*')"
           if [ -n "$hits" ]; then echo "owner-only file(s) reached the build:"; echo "$hits"; exit 1; fi
           echo "no owner-only files in $(find build -type f | wc -l) built files"
 

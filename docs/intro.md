@@ -31,6 +31,7 @@ The [README](https://github.com/aoneahsan/windowsweep#readme) is the elevator pi
 | [Profiles](./profiles.md) | The named bundles: `dev`, `minimal`, `cache-only`, `system`, `deep`, `audit` |
 | [Admin sections and elevation](./admin-and-elevation.md) | What needs Administrator rights, how `--elevate` works, the hibernation decision |
 | [Reports and logs](./reports-and-logs.md) | What a run writes under `~\.windowsweep`, the JSON schema, exports |
+| [AI integration guide](./ai-integration-guide.md) | The contract for an agent or a script: `--json`, exit codes, guarantees |
 
 ## When something is off
 
@@ -45,7 +46,7 @@ The [README](https://github.com/aoneahsan/windowsweep#readme) is the elevator pi
 |---|---|
 | [Author](./about.md) | Who built this, the sibling tools, how to support the work |
 | [Packages](https://github.com/aoneahsan/windowsweep/blob/main/docs/PACKAGES.md) | The dependency and manifest record (there are no dependencies) |
-| [What the project consists of](https://github.com/aoneahsan/windowsweep/blob/main/what-this-project-consists-of.md) | Every part of the project with its evidence, as audited on 2026-09-03 |
+| [What the project consists of](https://github.com/aoneahsan/windowsweep/blob/main/what-this-project-consists-of.md) | Every part of the project with its evidence, as audited on 2026-09-05 |
 | [Remaining work](https://github.com/aoneahsan/windowsweep/blob/main/remaining-work.md) | The specification of every open item: evidence, success criteria, acceptance points |
 | [Remaining work, one page](https://github.com/aoneahsan/windowsweep/blob/main/remaining-work-summary.md) | Percentages, the next ten actions, the owner-only rows |
 
@@ -57,4 +58,4 @@ The [README](https://github.com/aoneahsan/windowsweep#readme) is the elevator pi
 | **Author** | [Ahsan Mahmood](https://aoneahsan.com) - [aoneahsan@gmail.com](mailto:aoneahsan@gmail.com) |
 | **Support the work** | https://aoneahsan.com/payment?project-id=windowsweep&project-identifier=windowsweep |
 
-Last Updated: 2026-09-03 - tool version 1.0.1
+Last Updated: 2026-09-05 - tool version 1.1.0

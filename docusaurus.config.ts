@@ -195,6 +195,11 @@ const config: Config = {
             '**/*.test.{js,jsx,ts,tsx}',
             '**/__tests__/**',
             'MANUAL-TASKS.md',
+            // docs/story/ (the Story Bible, voice fingerprint, content map, decision log and
+            // drafts) is internal working material for the storytelling system. It sits under
+            // docs/ like MANUAL-TASKS.md does, so without this entry it would ship as public
+            // pages. See ~/.claude/rules/storytelling-content.md.
+            'story/**',
           ],
           routeBasePath: '/',
           editUrl: 'https://github.com/aoneahsan/windowsweep-docs/edit/main/',
@@ -297,7 +302,7 @@ const config: Config = {
           title: 'Reference',
           items: [
             { label: 'CLI reference', to: '/cli-reference' },
-            { label: 'Sections 0-21', to: '/sections' },
+            { label: 'Sections 0-25', to: '/sections' },
             { label: 'Reports and logs', to: '/reports-and-logs' },
             { label: 'Changelog', to: '/changelog' },
           ],
