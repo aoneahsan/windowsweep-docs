@@ -45,12 +45,11 @@ patch a page here and leave the source wrong. Every CLI release re-mirrors, and 
 **5. Never imply a deletion is reversible.** This documents a destructive tool with no undo for caches. Say
 what is permanent, plainly, every time it is relevant.
 
-**6. A local install is allowed since 2026-09-05** - the owner lifted the download gate (*"Lift it fully"*),
-closing `TASK-001`. It has not been run yet, so `node_modules/` still does not exist here and **CI builds the
-site**. 🔴 Until it is run and the lockfile regenerated, the lockfile is the one inherited from
-`linux-cleanup-docs` with only its workspace identity renamed - valid exactly while the dependency set is
-identical, so **do not add or bump a dependency** before then. Tracked as RW-045 in the CLI repo's
-`remaining-work.md`.
+**6. The local install is done (2026-09-05).** `yarn install` ran here for the first time - 40 minutes on a
+cold global cache, 846 packages - and **the lockfile did not change by a single line**, which retires the
+standing caution: the lockfile inherited from `linux-cleanup-docs` was genuinely valid, because the
+dependency set really is identical. `yarn build` and `yarn typecheck` are green locally, so the gates no
+longer depend on pushing and reading the Pages run. A dependency may now be added or bumped normally.
 
 **7. 🔴 `docs/story/` never ships.** Phase P7 (the storytelling retrofit) puts a Story Bible, a voice
 fingerprint, a content map, a decision log and drafts under `docs/story/`, which is also the published content
