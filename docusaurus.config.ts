@@ -43,11 +43,14 @@ const config: Config = {
   // SEO + AI-citability head tags. The JSON-LD payloads let Google Rich
   // Results, Perplexity, ChatGPT and Claude extract structured entity data
   // when citing this documentation.
+  // 🔴 NOTHING PAGE-SPECIFIC GOES IN HERE. Every entry is emitted on EVERY page.
+  // A hardcoded `rel="canonical"` pointing at `${SITE_URL}/` used to sit at the top of
+  // this array. Docusaurus already emits a correct PER-PAGE canonical (react-helmet,
+  // `data-rh="true"`) from `url` + `baseUrl`, so the hardcoded one was a second, wrong
+  // canonical on all 50 non-home pages - each of them declaring the front page as its
+  // canonical version, i.e. telling search engines the whole site is duplicates of `/`.
+  // Measured 2026-09-07: 51 of 51 pages carried both tags. Do not re-add it.
   headTags: [
-    {
-      tagName: 'link',
-      attributes: { rel: 'canonical', href: `${SITE_URL}/` },
-    },
     {
       tagName: 'meta',
       attributes: { name: 'application-name', content: 'windowsweep Docs' },
