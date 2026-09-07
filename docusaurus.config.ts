@@ -202,6 +202,10 @@ const config: Config = {
             '**/*.test.{js,jsx,ts,tsx}',
             '**/__tests__/**',
             'MANUAL-TASKS.md',
+            // docs/PENDING-MIRROR-<version>.md holds replacement lines staged for a release that has
+            // not shipped yet. Same problem as MANUAL-TASKS.md: it sits under docs/, so without this
+            // entry it would publish as a page announcing a version that does not exist.
+            'PENDING-MIRROR-*.md',
             // docs/story/ (the Story Bible, voice fingerprint, content map, decision log and
             // drafts) is internal working material for the storytelling system. It sits under
             // docs/ like MANUAL-TASKS.md does, so without this entry it would ship as public
