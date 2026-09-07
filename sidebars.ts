@@ -23,6 +23,9 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: ['installation', 'quick-start'],
     },
+    // A second way to run the same engine, not a step in the command-line walkthrough - so it sits
+    // on its own between getting started and the catalogue both surfaces share.
+    'desktop',
     'sections',
     {
       type: 'category',
