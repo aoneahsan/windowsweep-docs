@@ -2,7 +2,7 @@
 
 **Mirror of `AGENTS.md`** - byte-identical except the header names. Change one, change both.
 
-**Last Updated:** 2026-09-05
+**Last Updated:** 2026-09-07
 
 ## What this is
 
@@ -16,7 +16,7 @@ PowerShell CLI that deletes files to reclaim disk space.
 | **Deploy** | GitHub Pages via Actions on push to `main`. **No Firebase** |
 | **Repo visibility** | 🔴 **PUBLIC** |
 | **Dev ports** | 5972 (start) · 5973 (serve) |
-| **Source package** | `../windows-cleanup` (both repos sit under `D:\work\windows-cleanup-root\`) - **read-only from here** |
+| **Source package** | `../windowsweep` (both repos sit under `D:\work\windows-cleanup-root\`) - **read-only from here** |
 | **Palette** | windowsweep's registered hue 128 (lime): `#4d7c0f` light, `#a3e635` dark |
 
 ## 🔴 The rules that matter most here
@@ -37,10 +37,15 @@ The deploy workflow also fails when any `*MANUAL*` file reaches `build/`.
 **3. Never add Firebase.** No `firebase.json`, no `.firebaserc`, no `firebase:deploy` script. A docs site is
 not a Firebase app. GitHub Pages is the only deploy path (`~/.claude/rules/docs-sites.md`).
 
-**4. The content is a MIRROR of `windows-cleanup/docs/`.** One page per source page, flat, same file names,
+**4. The content is a MIRROR of `windowsweep/docs/`.** One page per source page, flat, same file names,
 plus `ai-integration-guide.md` from the CLI repo root. **Fix the CLI repo first, then re-mirror** - never
 patch a page here and leave the source wrong. Every CLI release re-mirrors, and the front matter
 (`title`, `description`, `tags`) is added on top of the mirrored body.
+
+`faq` is the one page whose mirror is not a plain copy: it is mirrored into `faq.mdx`, and the page-scoped
+`<Head>` FAQPage JSON-LD block is re-applied on top of the mirrored body. Google requires every question and
+answer in that block to be visible on the page, so its strings are re-checked against the rendered text on
+every re-mirror - an answer that changes in the source changes the block in the same edit.
 
 **5. Never imply a deletion is reversible.** This documents a destructive tool with no undo for caches. Say
 what is permanent, plainly, every time it is relevant.

@@ -38,7 +38,7 @@ The [README](https://github.com/aoneahsan/windowsweep#readme) is the elevator pi
 | Page | What it covers |
 |---|---|
 | [Troubleshooting](./troubleshooting.md) | Symptom, cause, fix |
-| [FAQ](./faq.md) | The questions people ask first |
+| [FAQ](./faq.mdx) | The questions people ask first |
 
 ## Meta
 
@@ -46,9 +46,7 @@ The [README](https://github.com/aoneahsan/windowsweep#readme) is the elevator pi
 |---|---|
 | [Author](./about.md) | Who built this, the sibling tools, how to support the work |
 | [Packages](https://github.com/aoneahsan/windowsweep/blob/main/docs/PACKAGES.md) | The dependency and manifest record (there are no dependencies) |
-| [What the project consists of](https://github.com/aoneahsan/windowsweep/blob/main/what-this-project-consists-of.md) | Every part of the project with its evidence, as audited on 2026-09-05 |
-| [Remaining work](https://github.com/aoneahsan/windowsweep/blob/main/remaining-work.md) | The specification of every open item: evidence, success criteria, acceptance points |
-| [Remaining work, one page](https://github.com/aoneahsan/windowsweep/blob/main/remaining-work-summary.md) | Percentages, the next ten actions, the owner-only rows |
+| [Project status](https://github.com/aoneahsan/windowsweep/blob/main/docs/features/windowsweep-completion/00-tracker.json) | The live status record: every phase and sub-task with its state, the evidence behind it, and the rows only the author can close |
 
 ## Quick contact
 
@@ -58,4 +56,4 @@ The [README](https://github.com/aoneahsan/windowsweep#readme) is the elevator pi
 | **Author** | [Ahsan Mahmood](https://aoneahsan.com) - [aoneahsan@gmail.com](mailto:aoneahsan@gmail.com) |
 | **Support the work** | https://aoneahsan.com/payment?project-id=windowsweep&project-identifier=windowsweep |
 
-Last Updated: 2026-09-05 - tool version 1.1.0
+Last Updated: 2026-09-07 - tool version 1.1.0

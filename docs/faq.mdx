@@ -3,6 +3,59 @@ title: 'FAQ'
 description: 'The questions people ask first about a tool that deletes files.'
 tags: [faq]
 ---
+import Head from '@docusaurus/Head';
+
+{/* Page-scoped FAQPage JSON-LD. It lives here and NOT in the `headTags` array in
+    docusaurus.config.ts, because everything in `headTags` is emitted on every page - a
+    FAQPage block there would claim the CLI reference is an FAQ too. Google requires every
+    question and answer in this block to be visible on the rendered page, so each string
+    below is this page's own text with its markdown removed. Re-check it on every re-mirror:
+    if an answer changes below, this block changes in the same edit. */}
+<Head>
+  <script type="application/ld+json">
+    {JSON.stringify(
+      {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Will it delete my code, documents or photos?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Documents, Pictures, Desktop, Music, Videos and cloud-sync folders are protected roots the chokepoint refuses outright. The only project-adjacent target is section 17, which lists build artefacts (node_modules, dist, ...) in idle projects and removes nothing you did not select."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does it phone home?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. The source contains no HTTP or socket call; the self-test greps for them. --report-issue opens your browser at a pre-filled GitHub page after you confirm, and you submit it yourself."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why is there no undo?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Caches regenerate; an undo copy would consume the disk you are trying to free. Personal files - sections 18, 19 and 23 - go to the Recycle Bin instead, which is Windows' undo. Every deletion is recorded in the session log."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is a weekly Scheduled Task safe?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "--install-task schedules --all --yes --quiet --no-color --notify: the safe batch only, under your account, no admin sections, no personal files, no deep sections. Review the first run's report before scheduling. Install globally first (npm install -g windowsweep); from npx the installer refuses because that cache is evicted."
+              }
+            }
+          ]
+        }
+    )}
+  </script>
+</Head>
+
 # FAQ
 
 **Will it delete my code, documents or photos?**
