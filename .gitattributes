@@ -1,0 +1,23 @@
+# Line endings are pinned so this tree can be compared byte-for-byte with the CLI repo.
+#
+# The docs pages here are MIRRORS: docs/desktop.md is byte-identical to
+# windowsweep/docs/desktop.md and is verified with `cmp`. Without this file every
+# text type falls to core.autocrlf, which is true on the machines this is edited
+# on - so the mirror would become CRLF while its source stayed LF, `cmp` would
+# report a difference that is not a difference, and the check the mirror rule
+# depends on would quietly stop meaning anything.
+
+* text=auto
+*.md text eol=lf
+*.mdx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.cjs text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.svg text eol=lf
