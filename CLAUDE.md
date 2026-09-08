@@ -18,6 +18,7 @@ PowerShell CLI that deletes files to reclaim disk space.
 | **Dev ports** | 5972 (start) · 5973 (serve) |
 | **Source package** | `../windowsweep` (both repos sit under `D:\work\windows-cleanup-root\`) - **read-only from here** |
 | **Palette** | windowsweep's registered hue 128 (lime): `#4d7c0f` light, `#a3e635` dark |
+| Context Budget Last Verified | 2026-09-08 — CLAUDE.md 5,044 B / no PENDING-TASKS.md; re-check due 2026-09-18 |
 
 ## 🔴 The rules that matter most here
 
