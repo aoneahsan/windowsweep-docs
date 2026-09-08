@@ -37,6 +37,38 @@ nothing lifts guards 1 to 4 ever. The engine says the same in its own header - *
 cache folder names on an allowlist. A browser profile is therefore refused twice: once because its path is
 protected, and once because its folder name is not one this tool knows how to clear.
 
+## Your own exclusions, and the machine-readable list
+
+`--exclude-path P` (repeatable, or `excludePaths` in the config file) names a tree you want left alone. It is
+enforced at the same chokepoint as everything else rather than inside one section, so it holds for **every**
+section: an excluded path is refused, logged as `excluded: <path>`, and reported once in the
+`excluded[]` array of the `--json` summary. A dry-run applies the same filter before it counts anything, so
+the rehearsal and the run report the same files and the same bytes.
+
+A path that is both protected and excluded reports the **protected** reason, not the exclusion. That is
+deliberate: the protected list is the promise no flag can lift, and it is the stronger thing to tell you.
+
+The protected lists are machine-readable. `--list --json` carries a `protected` object with `subtrees` (every
+protected folder, resolved for this machine) and `categories` (the same sentences `--list-targets` prints).
+Both readers take that list from one place, so a front end cannot show you a narrower promise than the
+console does.
+
+## What the tools it runs do on their own
+
+windowsweep makes no network call. Self-test check [9] greps the whole source for HTTP and socket calls and
+fails the build if one appears, and there is no update check anywhere in it.
+
+The tools it runs for you keep their own habits: `winget` and `npm` may check their own sources and
+send their own telemetry; the engine itself never does.
+
+Concretely: section 24 runs `winget list` to read what is installed, and winget refreshes its own package
+sources when they are more than a few minutes old and reports its own usage to Microsoft by default.
+Sections 1 and 22 run `npm` commands, and npm checks the registry for a newer npm unless you have set
+`update-notifier=false`. Section 1 also runs `pnpm store prune` inside the default batch.
+
+None of that is windowsweep talking. It is the difference between a program that phones home and a program
+that runs one which does, and it is worth knowing before you read a firewall log and blame the wrong tool.
+
 ## Never touched
 
 | Category | Examples |
@@ -133,4 +165,4 @@ windowsweep --scan            # sizes, read-only
 windowsweep --dry-run --all --yes
 ```
 
-Last Updated: 2026-09-03
+Last Updated: 2026-09-08
