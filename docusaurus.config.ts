@@ -26,7 +26,7 @@ const gaMeasurementId = process.env.GA_MEASUREMENT_ID?.trim();
 const config: Config = {
   title: 'windowsweep',
   tagline:
-    'Safe, developer-aware Windows cleanup CLI — one deletion chokepoint, a real dry-run, and it never phones home.',
+    'Developer-aware Windows cleanup CLI: dry-run first, personal folders refused, zero install via npx.',
   favicon: 'img/favicon.svg',
 
   url: SITE_URL,
