@@ -7,7 +7,7 @@
 > without a person choosing them. The tool makes no network calls of its own.
 
 windowsweep is a Windows PowerShell 5.1 engine with a zero-dependency Node launcher, published on npm as
-`windowsweep` and licensed MIT. The current version is 1.1.0 and its self-test runs 151 checks. Run it with `npx windowsweep --scan` (read-only) before anything else.
+`windowsweep` and licensed MIT. The current version is 1.2.0 and its self-test runs 156 checks. Run it with `npx windowsweep --scan` (read-only) before anything else.
 
 ## Documentation
 

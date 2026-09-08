@@ -14,6 +14,62 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-09-08
+
+### Added
+
+- **`targets[].newest_write_utc` in `--scan --json`.** ISO 8601 UTC, the newest of write, access and creation
+  time found anywhere under the target - the same rule the idle gate uses - or `null` when the target is
+  absent or holds no files. It costs no extra walk: under `--json` the size pass already enumerates every
+  file, so the timestamp comes out of that same enumeration. A human `--scan` keeps the faster path.
+- **`protected` in `--list --json`.** `subtrees` (every protected folder, resolved for this machine) and
+  `categories` (the same four sentences `--list-targets` prints). Both readers now take the category list
+  from one constant, so the machine-readable copy cannot quietly promise less than the console does.
+- **`excluded[]` in the `--json` summary**, naming every path an exclusion actually kept, once each.
+
+### Changed
+
+- **`--exclude-path` is honoured in every section, not only section 17.** It was parsed globally and read by
+  exactly one consumer, so someone who excluded a folder was protected in one section and silently not in the
+  other twenty-five. It is now enforced at the deletion chokepoint itself - the one place every section
+  already passes through - and an excluded path is refused, logged as `excluded: <path>` and reported in
+  `excluded[]`. The same reach applies to `excludePaths` in the config file. **No deletion behaviour widens:
+  `--exclude-path` only ever refuses more.** A path that is both protected and excluded still reports the
+  protected reason, because that is the promise no flag can lift.
+
+### Fixed
+
+- 🔴 **`--exclude-path` only ever refused the path you named, never anything inside it.** The normalised
+  prefix was built with a PowerShell literal `'\'`, which is **two** characters, so the prefix ended in a
+  doubled backslash and no child path could ever match it. Excluding a folder protected the folder and
+  nothing in it - which is the opposite of what anyone excluding a folder means. The self-test check that
+  was supposed to cover this asserted only on the excluded path itself, so it passed throughout; it now
+  asserts on a child, and the fix was watched failing on the original bug reintroduced.
+- 🔴 **A dry-run counted files a real run would skip.** `Remove-StaleFiles` applied the protection guard
+  only in its real-run loop, so the rehearsal's estimate included protected and excluded files that the run
+  then refused - for exactly the files a person most wants the two numbers to agree about. One filter now
+  decides both, and a check proves a dry-run and a real prune report the same count and the same bytes.
+- **`--help` said `--permanent` covers "Sections 18/19".** It reaches **18, 19 and 23**: `Send-ToRecycleBin`
+  is called from `modules/personal.ps1` (18, 19) and from `modules/orphaned_appdata.ps1` (23). Someone who
+  passed `--permanent` believing it applied to two sections would have had section 23's orphaned
+  application data deleted outright instead of recycled. The reference docs already said 18, 19 and 23;
+  only the engine's own help text - the one place a person actually reads it from - was wrong.
+- **Section 22 declared `Dev = $true` with no behavioural branch**, so `--list --json` advertised a developer
+  flag that changed nothing. It now reads `false`, and the Dev column in `docs/sections.md` agrees.
+- 🔴 **`--scan` parsed `--developer` and `--not-developer` and then never read them.**
+  `Resolve-DeveloperMode` ran only for the walkthrough, the menu, `--all` and `--only`, so in scan mode the
+  flag reached `DeveloperFlag` and nothing looked at it: section 0 printed `Developer mode: not decided yet`
+  whatever you passed, and `--json` returned `developer: null`. The desktop window sends those flags to
+  `--scan` and could not read back the setting it had just sent. A scan now resolves it from the flag or the
+  saved answer and stops there - it may not ask the question, may not write `config.json`, and may not invent
+  a decision you never made, so with neither a flag nor a saved answer it still reports "not decided yet",
+  which is the truth. **No scan result changes:** the scan reports what is on disk, not what a run would
+  remove, and `Show-ScanTable` never read the developer answer in the first place.
+- **The hibernation target's one-line note contradicted the section's own explanation two lines below.** It
+  said `reduced` keeps Fast Startup "at roughly 40% of RAM", which is the size of the **whole** file; the
+  section intro says `reduced` is about half of that. The note now states the figure once, on the thing it
+  belongs to: the full file is about 40% of RAM and `reduced` keeps roughly half that.
+
 ## [1.1.0] - 2026-09-04
 
 ### Added
