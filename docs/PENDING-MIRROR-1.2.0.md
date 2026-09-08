@@ -91,7 +91,11 @@ strings on this site. Applying only changes 1 and 2 ships a site whose config sa
 | `docs/intro.md:59` | `Last Updated: 2026-09-07 - tool version 1.1.0` | `Last Updated: <release date> - tool version 1.2.0` |
 | `static/llms.txt:10` | `The current version is 1.1.0 and its self-test runs 151 checks.` | `The current version is 1.2.0 and its self-test runs <N> checks.` |
 
-🔴 **`<N>` is not known yet.** The self-test count was 151 at 1.1.0 and changes whenever checks are added.
+🔴 **`<N>` is 155 as of 2026-09-08** - measured by running `node bin\windowsweep.js --self-test 
+--no-color`, not carried from a record. It was 151 at 1.1.0 and moves whenever checks are added, so
+re-run it at the cascade rather than trusting this line. **Do not change one half of that sentence**: a
+file saying "the current version is 1.2.0 and its self-test runs 151 checks" is worse than the stale
+pair, because half of it is then verifiable and wrong.
 Read it from the 1.2.0 release (`npx windowsweep@1.2.0 --self-test`) - do not carry 151 forward on the
 assumption it is unchanged, and do not guess the release date.
 
