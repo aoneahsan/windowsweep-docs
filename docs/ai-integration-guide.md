@@ -3,7 +3,6 @@ title: 'AI integration guide'
 description: 'How an agent or a script runs windowsweep safely - the --json contract, exit codes, what --yes never covers, and the guarantees.'
 tags: [automation, json, agents, reference]
 ---
-
 # AI integration guide
 
 This is the contract an automated caller can rely on: what windowsweep promises, what it refuses, what it
@@ -81,7 +80,7 @@ choice, and says so.
  "freed_bytes":0,"estimated_bytes":0,
  "sections":[{"section":1,"status":"ran","freed_bytes":0}],
  "candidates":[],"targets":[],
- "refusals":[],"log_file":"...","report_file":"..."}
+ "refusals":[],"excluded":[],"log_file":"...","report_file":"..."}
 ```
 
 | Key | Meaning |
@@ -94,11 +93,17 @@ choice, and says so.
 | `estimated_bytes` | What a dry-run says a real run would remove. `0` in a real run |
 | `sections[]` | One entry per section attempted: `section`, `status`, `freed_bytes` |
 | `candidates[]` | What an interactive section offered: `section`, `index`, `path`, `bytes`, `idle_days`, `project`. Always present, empty when none were collected |
-| `targets[]` | Scan mode only: `section`, `label`, `path`, `bytes`. Always present, empty otherwise |
-| `refusals[]` | Human-readable reasons a section was refused in batch mode |
+| `targets[]` | Scan mode only: `section`, `label`, `path`, `bytes`, `newest_write_utc`. Always present, empty otherwise |
+| `refusals[]` | Human-readable reasons a section was refused in batch mode, plus one `excluded: <path>` line per honoured `--exclude-path` |
+| `excluded[]` | Every path an exclusion actually kept, listed once each. Empty means "nothing was excluded", never "not reported" |
 | `log_file`, `report_file` | Absolute paths, or `null` under `--no-report` |
 
 `status` is one of `ran`, `dry-run`, `skipped`, `refused`, `failed`.
+
+`newest_write_utc` is ISO 8601 UTC (`2026-09-08T13:14:15Z`) - the newest of write, access and creation time
+found anywhere under that target, which is the same rule the idle gate uses. It is **`null`** when the
+target is absent or holds no files, rather than a zero date a caller would sort as if it were real. It is
+emitted only under `--json`, because computing it needs the file walk that `--json` already performs.
 
 ## Where output lands
 
@@ -128,11 +133,9 @@ answered by a script, so `--elevate` does not belong in an unattended context.
 
 ## Guarantees
 
-- **No network calls of its own.** The self-test greps the source for HTTP and socket calls and fails the run
-  if it finds one. There is no telemetry and no update check.
-- **Every deletion passes one chokepoint** with a declared root, and is refused if it falls outside it.
-- **Protected paths are refused regardless of flags**: drive roots, Windows, Program Files, the profile root,
-  personal folders, credentials, toolchains, browser and editor state. No flag bypasses this.
+- - **No network calls of its own**. Self-test check [9] greps every source file for `Invoke-WebRequest`, `Invoke-RestMethod`, `Net.WebClient`, `HttpClient`, `Sockets.TcpClient`, `curl.exe` and `wget`, and fails the run if it finds one. There is no telemetry and no update check. `--report-issue` and `--feedback` hand a URL to the user's browser after they confirm, and neither belongs in an unattended run.
+- - **Every deletion of anything on the user's machine passes one chokepoint** with a declared root, and is refused if it falls outside it. windowsweep's own logs, reports and fixtures are the exception, reachable only through `--cleanup-logs`, `--prune-history` and `--uninstall-data`.
+- - **Protected paths are refused regardless of flags**: every drive root, fifteen declared roots (Windows, System32, SysWOW64, both Program Files folders, ProgramData, `C:\Users` with Default and Public, the profile root, and the AppData Roaming, Local and LocalLow folders), 66 protected subtrees, 50 path patterns and 13 file names. Two paths are declared exceptions - `%LOCALAPPDATA%\Android\Sdk\.temp` and `.downloadIntermediates` - and there are no others. No flag bypasses any of it.
 - **Junctions and symlinks are removed as links, never followed.**
 - **`--dry-run` and `--scan` write nothing** but the log and the report.
 - **Section numbers are a public contract.** 0-25 today; a section may be retired as a no-op, and a number is
@@ -194,8 +197,8 @@ In `--json` mode every section brackets itself on **stderr**:
 ```
 
 `status` is one of `ran`, `dry-run`, `skipped`, `refused`, `failed`. Scan mode also fills `targets[]`
-(`section`, `label`, `path`, `bytes`) in the final JSON line. `candidates` and `targets` are always present,
-empty when nothing was collected.
+(`section`, `label`, `path`, `bytes`, `newest_write_utc`) in the final JSON line. `candidates` and `targets`
+are always present, empty when nothing was collected.
 
 ## The read-only audits
 

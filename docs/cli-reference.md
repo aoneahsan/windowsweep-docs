@@ -53,7 +53,7 @@ delete files (subject to every guard in the [safety model](./safety-model.md)).
 | `--developer` / `--not-developer` | saved answer | Override developer mode for this run only |
 | `--forget-developer` | - | Ask the developer question again |
 | `--scan-roots "P1;P2"` | auto-detected | Project roots for section 17 (semicolon-separated) |
-| `--exclude-path P` | - | Never scan or touch this tree in section 17 (repeatable) |
+| `--exclude-path P` | - | Never scan or touch this tree, in **any** section (repeatable). Since 1.2.0 the deletion chokepoint itself refuses an excluded path, so it holds everywhere rather than only in section 17 |
 | `--exclude L` | - | Drop sections from `--all` or a profile |
 | `--large-file-mb N` | 100 | Minimum size for section 19 |
 | `--hiberfil off|reduced|keep` | ask | What section 15 does |
@@ -152,7 +152,7 @@ In `--json` mode each section also brackets itself on **stderr** so a caller can
 
 ## Config file
 
-`~\.windowsweep\config.json` stores defaults; flags always win.
+`%USERPROFILE%\.windowsweep\config.json` stores defaults; flags always win. Nothing else is kept there: no history, no path list and no record of what a run removed. Those live in the logs and reports.
 
 | Key | Default | Meaning |
 |---|---|---|
@@ -161,6 +161,6 @@ In `--json` mode each section also brackets itself on **stderr** so a caller can
 | `tempDays` | 3 | Temp idle window |
 | `largeFileMb` | 100 | Section 19 minimum size |
 | `scanRoots` | `[]` | Section 17 roots |
-| `excludePaths` | `[]` | Section 17 exclusions |
+| `excludePaths` | `[]` | Trees to leave alone, in **every** section - the same reach as `--exclude-path` |
 
-Last Updated: 2026-09-03
+Last Updated: 2026-09-05

@@ -15,7 +15,7 @@ path each section can reach on your machine.
 | 1 | Package-manager caches | rebuilds | - | safe, developer-gated |
 | 2 | Build-tool caches | rebuilds | - | safe, developer-gated |
 | 3 | Test-runner browsers | rebuilds | - | safe, developer-gated |
-| 4 | Android emulators (AVDs) | slow | - | opt-in |
+| 4 | Android emulators (AVDs) | slow | - | opt-in, developer-gated |
 | 5 | Docker | rebuilds | - | safe, developer-gated |
 | 6 | Editor caches and extensions | rebuilds | - | safe |
 | 7 | Browser caches | rebuilds | - | safe |
@@ -28,19 +28,17 @@ path each section can reach on your machine.
 | 14 | Component store (DISM) | rebuilds | admin | opt-in |
 | 15 | Hibernation file | config | admin | deep |
 | 16 | Event logs | permanent | admin | deep |
-| 17 | Stale project build artefacts | rebuilds | - | interactive |
+| 17 | Stale project build artefacts | rebuilds | - | interactive, developer-gated |
 | 18 | Partial downloads | Recycle Bin | - | interactive |
 | 19 | Large stale personal files | Recycle Bin | - | interactive |
-| 20 | Disk-image compaction | config | admin | deep |
+| 20 | Disk-image compaction | config | admin | deep, developer-gated |
 | 21 | Disk usage report | report | - | safe |
 | 22 | Global packages audit | report | - | safe, audit only |
 | 23 | Orphaned application data | Recycle Bin | - | interactive |
 | 24 | Installed programs not modified for N+ days | report | - | safe, audit only |
 | 25 | Startup items audit | report | - | safe, audit only |
 
-"Developer-gated" means the idle gate applies in developer mode and the cache is cleared completely otherwise
-([Developer mode](./developer-mode.md)). Every section honours `--dry-run`. Tier `recycle` means the item goes
-to the Recycle Bin (`--list` shows `recycle`).
+"Developer-gated" means the idle gate applies when the developer answer is yes; otherwise the cache is cleared completely. "Developer-only" means the section does not run at all when the answer is no ([Developer mode](./developer-mode.md)). Every section honours `--dry-run`. Tier `recycle` means the item goes to the Recycle Bin (`--list` shows `recycle`).
 
 ## 0 - System health report
 
@@ -67,9 +65,9 @@ are not locked.
 
 ## 3 - Test-runner browsers
 
-Cypress versions, Playwright browsers (per browser family), Playwright-Go and Puppeteer downloads. The newest
-build of each family is always kept; older builds go once idle for the window. A missing build is re-downloaded
-by the next `npx cypress install` / `npx playwright install`.
+Cypress versions, Playwright browsers (per browser family), Playwright-Go and Puppeteer downloads. The newest build of each family is always kept while the idle gate is running; a missing build is re-downloaded by the next `npx cypress install` or `npx playwright install`.
+
+Not touched: anything under a Chrome-for-Testing folder. The pattern list refuses it by name, so a real browser install is never mistaken for a test runner's copy.
 
 ## 4 - Android emulators
 
@@ -125,6 +123,8 @@ certificate URL cache, diagnostics results older than 30 days, and `ipconfig /fl
 
 `Clear-RecycleBin -Force` on every drive after a separate confirmation. Permanent. Deep-gated.
 
+Not touched: nothing is spared. This is the one section whose whole purpose is to remove what the Recycle Bin was holding for you, including anything sections 18, 19 and 23 put there. It asks a question of its own, and `--yes` does not answer it.
+
 ## 12 - Windows Update and system temp (admin)
 
 Stops `wuauserv` and `bits`, clears `SoftwareDistribution\Download`, restarts them; runs
@@ -159,6 +159,8 @@ smaller file. `keep` leaves it. Interactive runs ask; batch runs need the flag. 
 ## 16 - Event logs (admin)
 
 `wevtutil cl` for every log. Permanent loss of troubleshooting history. Deep-gated.
+
+Not touched: the log configuration, the channels themselves and their sizes. Only the recorded events go, and nothing puts them back. That is why this and section 11 are the only two sections in the permanent tier.
 
 ## 17 - Stale project build artefacts
 
@@ -280,4 +282,4 @@ is exactly what this rule exists to prevent. Each will be added once its folder 
 a hidden `GfxCPLBatchFiles` - driver support content, not installer extraction leftovers. It will not become
 a target.
 
-Last Updated: 2026-09-04
+Last Updated: 2026-09-05

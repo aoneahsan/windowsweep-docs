@@ -5,8 +5,7 @@ tags: [reports, logs, json]
 ---
 # Reports and logs
 
-Every run writes under `%USERPROFILE%\.windowsweep`, never inside the npm cache or the repository, so history
-survives every `npx` invocation.
+Every run writes under `%USERPROFILE%\.windowsweep`, never inside the npm cache or the repository, so history survives every `npx` invocation. Every run means every run: `--scan` and `--dry-run` write here too. `--no-report` skips the report, and `--cleanup-logs` deletes the log at exit.
 
 ```text
 %USERPROFILE%\.windowsweep\
@@ -58,12 +57,28 @@ windowsweep --stats                  # runs, dry-runs, total reclaimed, latest r
 windowsweep --json --all --yes       # one JSON line on stdout for scripts; human output on stderr
 ```
 
-The HTML export is a single self-contained file that follows the system light/dark preference. No external
-tool is needed for any conversion.
+The HTML export is a single self-contained file that follows the system light/dark preference. No external tool is needed for any conversion. The file references nothing on the network.
 
 ## Privacy
 
-Logs and reports contain paths from your machine and a snapshot of cache sizes. Nothing is transmitted:
-windowsweep makes no network calls. Review a bundle before attaching it to an issue.
+Logs and reports contain paths from your machine and a snapshot of cache sizes. Nothing is transmitted: the command-line tool makes no network calls of its own. Review a bundle before attaching it to an issue: the paths in it include your user name and your project folders.
 
-Last Updated: 2026-09-03
+## `targets[]` in a `--json` scan
+
+`--scan --json` fills `targets[]` with one entry per resolved path:
+
+```json
+{"section":1,"label":"npm cache (_cacache)",
+ "path":"C:\\Users\\you\\AppData\\Local\\npm-cache\\_cacache",
+ "bytes":1580019157,"newest_write_utc":"2026-09-07T18:52:39Z"}
+```
+
+`newest_write_utc` (added in 1.2.0) is the newest of write, access and creation time found anywhere under
+that target - the same rule the idle gate uses, which is why a cache whose own folder date looks stale can
+still report a recent timestamp. It is **`null`** for a target that is absent or holds no files, rather than
+a zero date that would sort as though it were real.
+
+It costs no extra work: under `--json` the size pass already enumerates every file, so the timestamp comes
+out of that same enumeration. A human `--scan` keeps the faster path and does not compute it.
+
+Last Updated: 2026-09-08
