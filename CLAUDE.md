@@ -2,7 +2,7 @@
 
 **Mirror of `AGENTS.md`** - byte-identical except the header names. Change one, change both.
 
-**Last Updated:** 2026-09-07
+**Last Updated:** 2026-09-12 (the workspace root is `windowsweep-root`; the product site is live; the HTTPS domain re-add is the agent's by owner decision D18)
 
 ## What this is
 
@@ -16,9 +16,10 @@ PowerShell CLI that deletes files to reclaim disk space.
 | **Deploy** | GitHub Pages via Actions on push to `main`. **No Firebase** |
 | **Repo visibility** | 🔴 **PUBLIC** |
 | **Dev ports** | 5972 (start) · 5973 (serve) |
-| **Source package** | `../windowsweep` (both repos sit under `D:\work\windows-cleanup-root\`) - **read-only from here** |
+| **Source package** | `../windowsweep` (the three repos sit under `D:\work\windowsweep-root\`) - **read-only from here** |
+| **Product site** | `https://windowsweep.aoneahsan.com` - the product's canonical homepage, live since 2026-09-08 (its own private repo, `../windowsweep-web`). A navbar `Website` item and the header comment's correction land in the HTTPS write-back commit (RW-102 / RW-112) |
 | **Palette** | windowsweep's registered hue 128 (lime): `#4d7c0f` light, `#a3e635` dark |
-| Context Budget Last Verified | 2026-09-08 — CLAUDE.md 5,044 B / no PENDING-TASKS.md; re-check due 2026-09-18 |
+| Context Budget Last Verified | 2026-09-12 — CLAUDE.md 5,988 B / no PENDING-TASKS.md; re-check due 2026-09-22 |
 
 ## 🔴 The rules that matter most here
 
@@ -61,6 +62,13 @@ longer depend on pushing and reading the Pages run. A dependency may now be adde
 fingerprint, a content map, a decision log and drafts under `docs/story/`, which is also the published content
 directory. It is excluded in `docusaurus.config.ts` and swept for in the deploy workflow - the same two lines
 of defence `MANUAL-TASKS.md` has. Neither may be removed.
+
+**8. HTTPS is GitHub's to issue, and the domain re-add is the agent's.** On 2026-09-12 the host still
+presented GitHub's own `*.github.io` certificate (`https_certificate: null`, the CNAME correct, no CAA record
+on the apex). Owner decision D18: the agent removes and re-adds the custom domain through
+`gh api -X PUT repos/aoneahsan/windowsweep-docs/pages` (cname `null`, then the domain back), polls
+`https_certificate.state`, sets `https_enforced`, and only then switches every docs link in the fleet in one
+pass - never one early.
 
 ## Verifying a change
 
