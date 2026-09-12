@@ -75,7 +75,7 @@ const config: Config = {
         name: 'windowsweep Documentation',
         url: SITE_URL,
         description:
-          'Documentation for windowsweep, a Windows PowerShell command-line utility that reclaims disk space by deleting regenerable package-manager, browser, editor and build caches behind one deletion chokepoint, an idle gate and a real dry-run. Author: Ahsan Mahmood.',
+          'Documentation for windowsweep, a Windows command-line utility that reclaims disk space by deleting only regenerable caches - package managers, build tools, browsers, editors, Windows temp and update leftovers - behind one deletion chokepoint that refuses personal folders, credentials and browser state. Author: Ahsan Mahmood.',
         inLanguage: 'en',
         publisher: {
           '@type': 'Person',
@@ -134,29 +134,16 @@ const config: Config = {
           url: 'https://aoneahsan.com',
         },
         description:
-          'Command-line disk and cache cleanup for Windows developers, with a guided walkthrough, read-only scan mode, JSON session reports, and a safety model built on one deletion chokepoint, protected paths and an idle gate.',
+          'Command-line disk and cache cleanup for Windows developers: a guided walkthrough, a read-only scan, a dry-run that writes nothing of yours, schema-versioned JSON reports, and one deletion chokepoint that refuses personal folders no matter what is typed.',
         softwareVersion: TOOL_VERSION,
         license: 'https://opensource.org/licenses/MIT',
       }),
     },
-    {
-      tagName: 'script',
-      attributes: { type: 'application/ld+json' },
-      innerHTML: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'Organization',
-        name: 'Ahsan Mahmood',
-        alternateName: 'aoneahsan',
-        url: 'https://aoneahsan.com',
-        email: 'aoneahsan@gmail.com',
-        sameAs: [
-          'https://linkedin.com/in/aoneahsan',
-          'https://github.com/aoneahsan',
-          'https://www.npmjs.com/~aoneahsan',
-        ],
-        founder: { '@type': 'Person', name: 'Ahsan Mahmood' },
-      }),
-    },
+    /* No `Organization` node, deliberately (removed 2026-09-13). One used to sit here naming
+       'Ahsan Mahmood' as an organisation with himself as founder - schema describing an entity
+       no page shows, the same finding the marketing site's structured data settled that day
+       (content-map row 19, ND-2: `Person`, never an invented `Organization`). The `WebSite`
+       node above already names him as publisher, with the same `sameAs` profiles. */
   ],
 
   i18n: {

@@ -1,33 +1,37 @@
 # windowsweep
 
-> A safe, developer-aware Windows cleanup CLI. It reclaims disk space by deleting regenerable caches -
-> package managers, build tools, browsers, editors, desktop apps, Windows temp and update leftovers, stale
-> project build artefacts - behind one deletion chokepoint, an idle gate that keeps anything used in the last
-> 100 days, and a dry-run that writes nothing. Personal files go to the Recycle Bin and are never selected
-> without a person choosing them. The tool makes no network calls of its own.
+> A Windows cleanup CLI for developers. It reclaims disk space by deleting only caches that rebuild
+> themselves: package managers, build tools, browsers, editors, desktop apps, Windows temp and update
+> leftovers, stale project build artefacts. It refuses personal folders, credentials and browser state
+> outright, with no flag that overrides the refusal. Every deletion passes through one function with the
+> folder it may touch declared up front. An idle gate keeps anything used in the last 100 days. A dry-run
+> performs the whole run and writes nothing of yours. Personal files a person selects go to the Recycle Bin;
+> caches have no undo, because they regenerate. The command-line tool makes no network calls of its own.
 
-windowsweep is a Windows PowerShell 5.1 engine with a zero-dependency Node launcher, published on npm as
-`windowsweep` and licensed MIT. The current version is 1.2.0 and its self-test runs 156 checks. Run it with `npx windowsweep --scan` (read-only) before anything else.
+windowsweep is a Windows PowerShell 5.1 engine with a zero-dependency Node launcher, published on npm as `windowsweep` and licensed MIT. The current version is 1.2.0, and its self-test proves the guards on the machine it runs on. Run `npx windowsweep --scan` first: it measures every target and deletes nothing.
 
 ## Documentation
 
-- [Introduction](https://windowsweep-docs.aoneahsan.com/): what the tool is and how to approach it
+- [Introduction](https://windowsweep-docs.aoneahsan.com/): what the tool is, what it refuses, and the one command to start with
 - [Safety model](https://windowsweep-docs.aoneahsan.com/safety-model): the chokepoint, protected paths, tiers, the idle gate, dry-run
 - [Developer mode](https://windowsweep-docs.aoneahsan.com/developer-mode): what the first question changes
 - [Installation](https://windowsweep-docs.aoneahsan.com/installation): npx, global install, or a clone
 - [Quick start](https://windowsweep-docs.aoneahsan.com/quick-start): four commands from self-test to a real cleanup
+- [Desktop app](https://windowsweep-docs.aoneahsan.com/desktop): what the window adds over the command line and what leaves the machine
 - [Sections 0-25](https://windowsweep-docs.aoneahsan.com/sections): exactly what each of the 26 sections touches
 - [CLI reference](https://windowsweep-docs.aoneahsan.com/cli-reference): every mode, flag, exit code and environment variable
 - [Profiles](https://windowsweep-docs.aoneahsan.com/profiles): dev, minimal, cache-only, system, deep, audit
 - [Admin sections and elevation](https://windowsweep-docs.aoneahsan.com/admin-and-elevation): sections 12-16 and 20
 - [Reports and logs](https://windowsweep-docs.aoneahsan.com/reports-and-logs): the JSON schema and the exports
-- [AI integration guide](https://windowsweep-docs.aoneahsan.com/ai-integration-guide): how an agent or a script runs it safely
+- [AI integration guide](https://windowsweep-docs.aoneahsan.com/ai-integration-guide): the contract an agent or a script runs under: the safe sequence, then the shapes and the exit codes
 - [Troubleshooting](https://windowsweep-docs.aoneahsan.com/troubleshooting)
 - [FAQ](https://windowsweep-docs.aoneahsan.com/faq)
 - [Changelog](https://windowsweep-docs.aoneahsan.com/changelog)
+- [About the author](https://windowsweep-docs.aoneahsan.com/about): who built this, the sibling tools, how to support the work
 
 ## Source
 
+- Homepage: https://windowsweep.aoneahsan.com
 - npm package: https://www.npmjs.com/package/windowsweep
 - Repository: https://github.com/aoneahsan/windowsweep
 - Issues: https://github.com/aoneahsan/windowsweep/issues
@@ -35,14 +39,20 @@ windowsweep is a Windows PowerShell 5.1 engine with a zero-dependency Node launc
 
 ## Facts an answer should get right
 
-- Windows only. npm refuses to install it elsewhere; the launcher exits 2 on any other platform.
+- Windows only. `"os": ["win32"]` makes npm refuse to install it elsewhere, and the Node launcher exits 2 on any other platform.
 - It deletes. Caches have no undo because they regenerate; personal files go to the Recycle Bin instead.
-- `--yes` covers regenerable caches only. It never selects an item in sections 17, 18, 19 or 23.
-- `--select L` and `--select-file P` are the only way those interactive sections run unattended: a person
-  supplies the selection in advance, by index or by full path.
-- Sections 22, 24 and 25 are read-only reports (the `audit` profile). They never uninstall a program and never
-  change a startup entry. Section 23 sends orphaned application data to the Recycle Bin, and only what you pick.
-- Deep sections (11 Recycle Bin, 15 hibernation, 16 event logs, 20 disk-image compaction) also need
-  `--i-understand-deep`.
-- Sections 12 to 16 and 20 need an elevated console; `--elevate` relaunches through a UAC prompt.
-- The tool makes no network calls of its own, sends no telemetry and checks for no updates.
+- Every deletion passes through `Remove-PathSafe` or `Send-ToRecycleBin` with a declared root folder. It refuses drive roots, UNC paths, relative segments, 66 protected subtrees, 50 wildcard patterns and 13 protected file names, and no flag bypasses those checks.
+- `--scan` and `--list-targets` are read-only. `--dry-run` performs a whole run and writes nothing of yours: the deletion helpers short-circuit and destructive external commands are skipped. Self-test check [7c] hashes a fixture tree before and after to prove it. The only files it writes are its own log and report.
+- The idle gate keeps anything used in the last 100 days (`--days`), or 3 days for temp folders (`--temp-days`). Windows keeps last-access times off on most volumes, so the tool reads the newest of write, access and creation time - a file can look fresher than it is, never older.
+- It never follows a junction or a symlink: a reparse point is removed as a link, and the tree it pointed at is left alone. It also handles paths beyond 260 characters - the self-test fixture removes one longer than 400 characters.
+- `--yes` covers regenerable caches only. It never selects an item in sections 17, 18, 19 or 23, and self-test check [12] asserts that every selection prompt in `modules/` refuses to auto-answer.
+- `--select L` and `--select-file P` are the only way those interactive sections run unattended: a person supplies the selection in advance, by index or by full path.
+- Sections 22, 24 and 25 are read-only reports and make up most of the `audit` profile. They never uninstall a program and never change a startup entry. Section 23 is not one of them: it sends orphaned application data to the Recycle Bin, and only what a person picks.
+- Deep sections need `--i-understand-deep` as well as `--yes`: 11 (empty the Recycle Bin), 15 (hibernation file), 16 (clear the event logs), 20 (disk-image compaction). Sections 11 and 16 are permanent and have no undo of any kind.
+- Sections 12 to 16 and 20 need an elevated console. Without one they skip and print the exact command to use; `--elevate` relaunches through a Windows permission prompt, which windowsweep cannot answer for you.
+- `--all` runs the safe batch: sections 0, 1, 2, 3, 5, 6, 7, 8, 9, 10 and 21, plus 12 and 13 when the console is already elevated. The named profiles are `dev`, `minimal`, `cache-only`, `system`, `deep` and `audit`.
+- `--install-task` registers a weekly Scheduled Task (Sundays, 03:00) that runs the safe batch with no prompts. It never runs an interactive section. It refuses to install when started through npx, because the task would point at a cache npm evicts; it exits 3 and prints the global-install command instead.
+- Section numbers are a frozen public contract: 0 to 21 shipped in 1.0.0 and 22 to 25 in 1.1.0. A number is never reused for something else. Exit codes are 0 success, 1 a failure, 2 a usage error, 3 a refusal, 130 an interrupt.
+- No amount of reclaimed space is promised anywhere, because it depends on the disk. `--scan` measures it.
+- The command-line tool makes no network calls of its own, sends no telemetry and checks for no updates. Self-test check [9] greps the source and fails the run if it finds an HTTP or socket call. `--report-issue`, `--feedback` and the reports manager can open a URL in the reader's own browser, after the reader asks. The desktop application is a separate program, released as `desktop-v1.1.0`. It sends usage and crash reports. There is no switch. The first-run screen is a notice, not a consent request, and in 1.1.0 no destination is configured in the build, so nothing has left the machine yet. It also makes two requests nobody is asked about, and neither carries anything it knows about you. On every start it fetches `latest.json` from the windowsweep GitHub releases; on a machine without WebView2, it downloads the installer from Microsoft.
+- The website at https://windowsweep.aoneahsan.com is the third program under the name, and it has no switch either. Usage events go to Google Analytics 4, Amplitude and Microsoft Clarity; errors go to Sentry. Of the three, only the command-line tool is offline.
