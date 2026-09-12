@@ -8,9 +8,12 @@ import type * as Preset from '@docusaurus/preset-classic';
 // Source package: https://github.com/aoneahsan/windowsweep
 //                 (npm: https://www.npmjs.com/package/windowsweep)
 //
-// Domain derivation (see ~/.claude/rules/docs-sites.md): windowsweep is an
-// npm package with no separate marketing site, so its docs domain is
-// <npm-package-name>-docs.aoneahsan.com. Pinned in static/CNAME.
+// Domain derivation (see ~/.claude/rules/docs-sites.md): the product's deployed
+// domain is https://windowsweep.aoneahsan.com (the marketing site, live since
+// 2026-09-08), so the docs domain is windowsweep-docs.aoneahsan.com. Pinned in
+// static/CNAME. The rule derives a docs domain from the VERIFIED deployed
+// domain, and both halves now resolve to the same base. HTTPS has been live
+// here since 2026-09-12.
 //
 // Deployment: GitHub Pages ONLY (.github/workflows/deploy-pages.yml).
 // This repo is PUBLIC and contains no Firebase config and no secrets.
@@ -292,6 +295,14 @@ const config: Config = {
         { to: '/quick-start', label: 'Quick start', position: 'left' },
         { to: '/cli-reference', label: 'CLI', position: 'left' },
         { to: '/changelog', label: 'Changelog', position: 'right' },
+        {
+          // The product's canonical homepage, live since 2026-09-08. It is a
+          // different site in a different repository, so this is an href and it
+          // leaves the origin.
+          href: 'https://windowsweep.aoneahsan.com',
+          label: 'Website',
+          position: 'right',
+        },
         {
           href: 'https://github.com/aoneahsan/windowsweep',
           label: 'GitHub',
