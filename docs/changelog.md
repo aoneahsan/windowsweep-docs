@@ -14,6 +14,33 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-09-17
+
+No change to what is cleaned, how it is decided, or what is refused. This release moves one printed
+address, splits two files that had grown past the project's own 500-line ceiling, and corrects the
+version rows inside the published package.
+
+### Changed
+
+- **The documentation address the tool carries is now the documentation site**,
+  `https://windowsweep-docs.aoneahsan.com`, instead of the README on GitHub. The site has served the
+  same pages over HTTPS since 2026-09-12.
+- **`lib/external.ps1`** takes `Invoke-External`, `Test-CommandPresent`, `Test-ProcessRunning`,
+  `Test-IsAdmin`, `Test-CanElevate` and `Invoke-Elevated` out of `lib/safety.ps1`, which is back under
+  500 lines. The deletion chokepoint stays where it was: running a process and raising privilege are a
+  different job from refusing a path.
+- **`modules/self_test_contract.ps1`** takes self-test group [18] out of `modules/self_test_extra.ps1`,
+  same fixture, same checks. Both moves are verbatim, and each was watched failing on a planted defect
+  before it was believed.
+- **The self-test grew by the two new files**, because groups [3] and [4] check every engine file by
+  name. No check was added, changed or removed - the suite is the same suite, counting one more file
+  twice.
+
+### Fixed
+
+- **The README at-a-glance rows inside the published package** were stale at 1.1.0 through the 1.2.0
+  cascade. They are correct here.
+
 ## [1.2.0] - 2026-09-08
 
 ### Added
