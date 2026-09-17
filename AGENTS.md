@@ -2,7 +2,7 @@
 
 **Mirror of `CLAUDE.md`** - byte-identical except the header names. Change one, change both.
 
-**Last Updated:** 2026-09-12 (the workspace root is `windowsweep-root`; the product site is live; **the docs site is now HTTPS** - the domain was re-added under D18 and the certificate issued the same day)
+**Last Updated:** 2026-09-17 (the v4 audit: typecheck and build re-run green, no MANUAL or story file in `build/`, the site answering 200 over HTTPS with its own certificate and `https_enforced`. 🔴 **CLI 1.3.0 ships in this run** (owner decision D23), so this site follows it: `TOOL_VERSION`, the footer labels, `static/llms.txt` and the changelog page all move in the same pass, re-mirrored from the product's `docs/`. Earlier 2026-09-12: the workspace root is `windowsweep-root`; the product site is live; the docs site went HTTPS - the domain was re-added under D18 and the certificate issued the same day)
 
 ## What this is
 
@@ -19,7 +19,7 @@ PowerShell CLI that deletes files to reclaim disk space.
 | **Source package** | `../windowsweep` (the three repos sit under `D:\work\windowsweep-root\`) - **read-only from here** |
 | **Product site** | `https://windowsweep.aoneahsan.com` - the product's canonical homepage, live since 2026-09-08 (its own private repo, `../windowsweep-web`). The navbar carries a `Website` item and the config header derives this docs domain from it, both landed in the 2026-09-12 HTTPS write-back (RW-102 / RW-112) |
 | **Palette** | windowsweep's registered hue 128 (lime): `#4d7c0f` light, `#a3e635` dark |
-| Context Budget Last Verified | 2026-09-12 — CLAUDE.md 6,418 B / no PENDING-TASKS.md; re-check due 2026-09-22 |
+| Context Budget Last Verified | 2026-09-17 — CLAUDE.md 6,825 B / no PENDING-TASKS.md; re-check due 2026-10-17 |
 
 ## 🔴 The rules that matter most here
 
