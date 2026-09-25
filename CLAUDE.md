@@ -2,7 +2,7 @@
 
 **Mirror of `AGENTS.md`** - byte-identical except the header names. Change one, change both.
 
-**Last Updated:** 2026-09-17 (the v4 audit: typecheck and build re-run green, no MANUAL or story file in `build/`, the site answering 200 over HTTPS with its own certificate and `https_enforced`. 🔴 **CLI 1.3.0 ships in this run** (owner decision D23), so this site follows it: `TOOL_VERSION`, the footer labels, `static/llms.txt` and the changelog page all move in the same pass, re-mirrored from the product's `docs/`. Earlier 2026-09-12: the workspace root is `windowsweep-root`; the product site is live; the docs site went HTTPS - the domain was re-added under D18 and the certificate issued the same day)
+**Last Updated:** 2026-09-25 (the safety model re-mirrored from windowsweep 332e7c8 as docs b4f6a4f: the approved tier table that never landed, the two duplicated headings and two doubled table cells fixed; build and typecheck green, broken links and anchors throwing. Earlier 2026-09-17: the v4 audit: typecheck and build re-run green, no MANUAL or story file in `build/`, the site answering 200 over HTTPS with its own certificate and `https_enforced`. 🔴 **CLI 1.3.0 ships in this run** (owner decision D23), so this site follows it: `TOOL_VERSION`, the footer labels, `static/llms.txt` and the changelog page all move in the same pass, re-mirrored from the product's `docs/`. Earlier 2026-09-12: the workspace root is `windowsweep-root`; the product site is live; the docs site went HTTPS - the domain was re-added under D18 and the certificate issued the same day)
 
 ## What this is
 
