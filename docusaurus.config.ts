@@ -20,7 +20,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 // ---------------------------------------------------------------------------
 
 const SITE_URL = 'https://windowsweep-docs.aoneahsan.com';
-const TOOL_VERSION = '1.3.0';
+const TOOL_VERSION = '1.3.1';
 
 // The one agent this site's structured data names (team-voice TV-11, owner decisions D45 and
 // D46, 2026-09-25: a product speaks as its team, never as one person). Its name is the footer
