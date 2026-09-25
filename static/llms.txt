@@ -27,7 +27,7 @@ windowsweep is a Windows PowerShell 5.1 engine with a zero-dependency Node launc
 - [Troubleshooting](https://windowsweep-docs.aoneahsan.com/troubleshooting)
 - [FAQ](https://windowsweep-docs.aoneahsan.com/faq)
 - [Changelog](https://windowsweep-docs.aoneahsan.com/changelog)
-- [About the author](https://windowsweep-docs.aoneahsan.com/about): who built this, the sibling tools, how to support the work
+- [The windowsweep team](https://windowsweep-docs.aoneahsan.com/about): its channels, the sibling tools, how to support the work
 
 ## Source
 
@@ -35,7 +35,7 @@ windowsweep is a Windows PowerShell 5.1 engine with a zero-dependency Node launc
 - npm package: https://www.npmjs.com/package/windowsweep
 - Repository: https://github.com/aoneahsan/windowsweep
 - Issues: https://github.com/aoneahsan/windowsweep/issues
-- Author: Ahsan Mahmood, https://aoneahsan.com
+- Author: The windowsweep team, https://windowsweep-docs.aoneahsan.com/about
 
 ## Facts an answer should get right
 

@@ -63,16 +63,16 @@ No. The command-line tool makes no network calls at all, and self-test check [9]
 
 | Page | What it covers |
 |---|---|
-| [Author](./about.md) | Who built this, the sibling tools, how to support the work |
+| [The windowsweep team](./about.md) | Its channels, the sibling tools, how to support the work |
 | [Packages](https://github.com/aoneahsan/windowsweep/blob/main/docs/PACKAGES.md) | The dependency and manifest record (there are no dependencies) |
-| [Project status](https://github.com/aoneahsan/windowsweep/blob/main/docs/features/windowsweep-completion/00-tracker.json) | The live status record: every phase and sub-task with its state, the evidence behind it, and the rows only the author can close |
+| [Project status](https://github.com/aoneahsan/windowsweep/blob/main/docs/features/windowsweep-completion/00-tracker.json) | The live status record: every phase and sub-task with its state, the evidence behind it, and the rows only the windowsweep team can close |
 
 ## Quick contact
 
 | | |
 |---|---|
 | **Issues** | https://github.com/aoneahsan/windowsweep/issues |
-| **Author** | [Ahsan Mahmood](https://aoneahsan.com) - [aoneahsan@gmail.com](mailto:aoneahsan@gmail.com) |
+| **Author** | [The windowsweep team](./about.md) - [contact form](https://windowsweep.aoneahsan.com/contact), after signing in |
 | **Support the work** | https://aoneahsan.com/payment?project-id=windowsweep&project-identifier=windowsweep |
 
 Last Updated: 2026-09-17 - tool version 1.3.0

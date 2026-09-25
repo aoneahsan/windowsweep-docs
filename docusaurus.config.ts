@@ -22,6 +22,16 @@ import type * as Preset from '@docusaurus/preset-classic';
 const SITE_URL = 'https://windowsweep-docs.aoneahsan.com';
 const TOOL_VERSION = '1.3.0';
 
+// The one agent this site's structured data names (team-voice TV-11, owner decisions D45 and
+// D46, 2026-09-25: a product speaks as its team, never as one person). Its name is the footer
+// column's title on every page and its url the team page, the same pair both llms.txt files
+// carry, so a machine reading any of them finds one entity.
+const TEAM = {
+  '@type': 'Organization',
+  name: 'The windowsweep team',
+  url: 'https://windowsweep-docs.aoneahsan.com/about',
+} as const;
+
 // Analytics are env-gated: an absent key means the provider is skipped
 // entirely, so a clone with no secrets still builds. Never inline a real key.
 const gaMeasurementId = process.env.GA_MEASUREMENT_ID?.trim();
@@ -75,19 +85,9 @@ const config: Config = {
         name: 'windowsweep Documentation',
         url: SITE_URL,
         description:
-          'Documentation for windowsweep, a Windows command-line utility that reclaims disk space by deleting only regenerable caches - package managers, build tools, browsers, editors, Windows temp and update leftovers - behind one deletion chokepoint that refuses personal folders, credentials and browser state. Author: Ahsan Mahmood.',
+          'Documentation for windowsweep, a Windows command-line utility that reclaims disk space by deleting only regenerable caches - package managers, build tools, browsers, editors, Windows temp and update leftovers - behind one deletion chokepoint that refuses personal folders, credentials and browser state.',
         inLanguage: 'en',
-        publisher: {
-          '@type': 'Person',
-          name: 'Ahsan Mahmood',
-          url: 'https://aoneahsan.com',
-          email: 'aoneahsan@gmail.com',
-          sameAs: [
-            'https://linkedin.com/in/aoneahsan',
-            'https://github.com/aoneahsan',
-            'https://www.npmjs.com/~aoneahsan',
-          ],
-        },
+        publisher: TEAM,
         license: 'https://opensource.org/licenses/MIT',
       }),
     },
@@ -102,11 +102,7 @@ const config: Config = {
         programmingLanguage: 'PowerShell',
         runtimePlatform: 'Windows PowerShell 5.1 or PowerShell 7 on Windows 10 and 11',
         license: 'https://opensource.org/licenses/MIT',
-        author: {
-          '@type': 'Person',
-          name: 'Ahsan Mahmood',
-          url: 'https://aoneahsan.com',
-        },
+        author: TEAM,
         description:
           'Windows PowerShell cleanup utility with a zero-dependency Node launcher. Prunes yarn/npm/pnpm/bun/deno/pip/NuGet/Cargo/Go caches, browser and editor caches, Docker layers, Android emulator images, Windows Update leftovers, stale node_modules and partial downloads — every deletion through one chokepoint with a declared root, an idle gate and a real dry-run.',
         keywords:
@@ -128,22 +124,18 @@ const config: Config = {
         // any surface. `isAccessibleForFree` is the same claim in another field and is
         // equally out. See docs/story/decision-log.md.
         url: 'https://www.npmjs.com/package/windowsweep',
-        author: {
-          '@type': 'Person',
-          name: 'Ahsan Mahmood',
-          url: 'https://aoneahsan.com',
-        },
+        author: TEAM,
         description:
           'Command-line disk and cache cleanup for Windows developers: a guided walkthrough, a read-only scan, a dry-run that writes nothing of yours, schema-versioned JSON reports, and one deletion chokepoint that refuses personal folders no matter what is typed.',
         softwareVersion: TOOL_VERSION,
         license: 'https://opensource.org/licenses/MIT',
       }),
     },
-    /* No `Organization` node, deliberately (removed 2026-09-13). One used to sit here naming
-       'Ahsan Mahmood' as an organisation with himself as founder - schema describing an entity
-       no page shows, the same finding the marketing site's structured data settled that day
-       (content-map row 19, ND-2: `Person`, never an invented `Organization`). The `WebSite`
-       node above already names him as publisher, with the same `sameAs` profiles. */
+    /* No separate `Organization` node: the three nodes above carry `TEAM` inline, and the footer
+       column names it on every page. Until 2026-09-25 they named a `Person`; the team-voice run
+       (content-map row 9, D45) replaced it - and an earlier node naming a person as an
+       organisation with himself as founder was removed on 2026-09-13 for describing an entity no
+       page showed. Schema that describes what no page shows is the one thing this data may not do. */
   ],
 
   i18n: {
@@ -229,27 +221,25 @@ const config: Config = {
       {
         name: 'description',
         content:
-          'Documentation for windowsweep — a Windows PowerShell CLI that reclaims disk space by pruning regenerable caches (yarn, npm, pnpm, browsers, editors, Docker, Gradle, Cypress, Playwright, Android AVDs, stale node_modules) behind one deletion chokepoint and an idle gate. By Ahsan Mahmood.',
+          'Documentation for windowsweep — a Windows PowerShell CLI that reclaims disk space by pruning regenerable caches (yarn, npm, pnpm, browsers, editors, Docker, Gradle, Cypress, Playwright, Android AVDs, stale node_modules) behind one deletion chokepoint and an idle gate.',
       },
       {
         name: 'keywords',
         content:
           'windows cleanup, free disk space windows, clear yarn cache, clear npm cache, delete node_modules, windows disk full, windows temp files cleanup, powershell cleanup script, safe disk cleanup, windows cache cleaner cli, windows update cache cleanup',
       },
-      { name: 'author', content: 'Ahsan Mahmood' },
+      { name: 'author', content: 'The windowsweep team' },
       {
         name: 'robots',
         content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
       },
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:creator', content: '@aoneahsan' },
-      { name: 'twitter:site', content: '@aoneahsan' },
       { property: 'og:type', content: 'website' },
       { property: 'og:site_name', content: 'windowsweep Docs' },
       { property: 'og:locale', content: 'en_GB' },
       { property: 'og:image:width', content: '1200' },
       { property: 'og:image:height', content: '630' },
-      { property: 'article:author', content: 'Ahsan Mahmood' },
+      { property: 'article:author', content: 'The windowsweep team' },
     ],
     colorMode: {
       defaultMode: 'light',
@@ -327,12 +317,10 @@ const config: Config = {
           ],
         },
         {
-          title: 'Built by Ahsan Mahmood',
+          title: 'The windowsweep team',
           items: [
-            { label: 'aoneahsan.com', href: 'https://aoneahsan.com' },
-            { label: 'LinkedIn', href: 'https://linkedin.com/in/aoneahsan' },
-            { label: 'GitHub', href: 'https://github.com/aoneahsan' },
-            { label: 'npm packages', href: 'https://www.npmjs.com/~aoneahsan' },
+            { label: 'About the team', to: '/about' },
+            { label: 'Contact', href: 'https://windowsweep.aoneahsan.com/contact' },
           ],
         },
       ],

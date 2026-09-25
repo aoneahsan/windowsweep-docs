@@ -40,5 +40,5 @@
   <text x="410" y="470" font-family="Consolas, Menlo, monospace" font-size="30" fill="#a3e635">npx windowsweep --scan</text>
 
   <text x="90" y="560" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="24" fill="#7d8a6f">windowsweep-docs.aoneahsan.com</text>
-  <text x="1110" y="560" text-anchor="end" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="24" fill="#7d8a6f">MIT - Ahsan Mahmood</text>
+  <text x="1110" y="560" text-anchor="end" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="24" fill="#7d8a6f">MIT - The windowsweep team</text>
 </svg>
