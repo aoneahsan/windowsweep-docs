@@ -1,0 +1,15 @@
+# Built, generated or fetched - never hand-formatted.
+build
+.docusaurus
+node_modules
+.yarn
+
+# Copied verbatim into build/ and served as-is (CNAME, llms.txt, robots.txt, the images).
+static
+
+# The markdown is a MIRROR. docs/*.md and docs/*.mdx match the product repo's docs/ byte for byte below
+# their front matter, and the parity checks compare them with cmp - a formatter pass here would rewrap
+# paragraphs and realign tables in one repo only. The CLAUDE.md / AGENTS.md pair is proved byte-identical
+# below its header the same way.
+*.md
+*.mdx

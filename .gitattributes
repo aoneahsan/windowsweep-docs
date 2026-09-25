@@ -22,3 +22,10 @@
 *.yaml text eol=lf
 *.svg text eol=lf
 *.txt text eol=lf
+
+# Extensionless, so no rule above reaches them, and each is read line-exact: sh runs the husky hook (a CRLF
+# checkout would hand it "yarn lint-staged --no-stash" plus a carriage return), nvm reads .nvmrc, and
+# prettier checks its own .prettierrc against endOfLine: lf.
+.husky/* text eol=lf
+.nvmrc text eol=lf
+.prettierrc text eol=lf

@@ -2,7 +2,7 @@
 
 **Mirror of `CLAUDE.md`** - byte-identical except the header names. Change one, change both.
 
-**Last Updated:** 2026-09-25 (latest: the site follows `desktop-v1.3.0` and CLI 1.3.1 - `desktop.md` re-mirrored, the changelog page gains 1.3.1, `TOOL_VERSION` 1.3.1, and `llms.txt` names the new release and says what the index says about telemetry. Earlier: `desktop.md`'s second front-matter block removed - it rendered as a visible heading on the live page since 2026-09-08 - and rule 4's exception for a source that carries its own. Earlier the same day: the safety model re-mirrored from windowsweep 332e7c8 as docs b4f6a4f: the approved tier table that never landed, the two duplicated headings and two doubled table cells fixed; build and typecheck green, broken links and anchors throwing. Earlier 2026-09-17: the v4 audit: typecheck and build re-run green, no MANUAL or story file in `build/`, the site answering 200 over HTTPS with its own certificate and `https_enforced`. 🔴 **CLI 1.3.0 ships in this run** (owner decision D23), so this site follows it: `TOOL_VERSION`, the footer labels, `static/llms.txt` and the changelog page all move in the same pass, re-mirrored from the product's `docs/`. Earlier 2026-09-12: the workspace root is `windowsweep-root`; the product site is live; the docs site went HTTPS - the domain was re-added under D18 and the certificate issued the same day)
+**Last Updated:** 2026-09-25 (latest: D37 - the fleet package baseline for a docs site: prettier and a husky hook that never touches Markdown, .nvmrc, the script contract, the Pages workflow on .nvmrc. Earlier: the site follows `desktop-v1.3.0` and CLI 1.3.1 - `desktop.md` re-mirrored, the changelog page gains 1.3.1, `TOOL_VERSION` 1.3.1, and `llms.txt` names the new release and says what the index says about telemetry. Earlier: `desktop.md`'s second front-matter block removed - it rendered as a visible heading on the live page since 2026-09-08 - and rule 4's exception for a source that carries its own. Earlier the same day: the safety model re-mirrored from windowsweep 332e7c8 as docs b4f6a4f: the approved tier table that never landed, the two duplicated headings and two doubled table cells fixed; build and typecheck green, broken links and anchors throwing. Earlier 2026-09-17: the v4 audit: typecheck and build re-run green, no MANUAL or story file in `build/`, the site answering 200 over HTTPS with its own certificate and `https_enforced`. 🔴 **CLI 1.3.0 ships in this run** (owner decision D23), so this site follows it: `TOOL_VERSION`, the footer labels, `static/llms.txt` and the changelog page all move in the same pass, re-mirrored from the product's `docs/`. Earlier 2026-09-12: the workspace root is `windowsweep-root`; the product site is live; the docs site went HTTPS - the domain was re-added under D18 and the certificate issued the same day)
 
 ## What this is
 
@@ -11,7 +11,7 @@ PowerShell CLI that deletes files to reclaim disk space.
 
 | | |
 |---|---|
-| **Stack** | Docusaurus 3.10 · React 19 · TypeScript ~6.0.3 · yarn 4 |
+| **Stack** | Docusaurus 3.10 · React 19.3 · TypeScript ~6.0.3 (ledger pin) · yarn 4 · Node 24.13.0 (`.nvmrc`) |
 | **Domain** | `windowsweep-docs.aoneahsan.com` (pinned in `static/CNAME`) |
 | **Deploy** | GitHub Pages via Actions on push to `main`. **No Firebase** |
 | **Repo visibility** | 🔴 **PUBLIC** |
@@ -79,15 +79,22 @@ change DNS.
 ## Verifying a change
 
 ```bash
-yarn build      # ALSO the link checker - onBrokenLinks and onBrokenAnchors are 'throw'
-yarn typecheck
+yarn gates             # typecheck, then build - the build is ALSO the link checker
+yarn typecheck:clean   # after any dependency change
 ```
 
-Zero warnings, zero errors. A broken internal link fails the build by design. Until the local install exists,
-**the Pages workflow is the gate**: push and read the run.
+Zero warnings, zero errors. A broken internal link or anchor fails the build by design (`onBrokenLinks` and
+`onBrokenAnchors` are `'throw'`).
 
-Never start a dev server to "check" something in an automated session - `yarn build` then `yarn serve` is the
-sanctioned path.
+Never start a dev server to "check" something in an automated session - `yarn build` then
+`yarn serve --no-open` is the sanctioned path. Without `--no-open`, `docusaurus serve` opens the system's default
+browser, which on the owner's machines is his own Chrome.
+
+**The commit hook** (husky, installed by `postinstall`; an existing checkout runs `yarn postinstall` once) runs
+`yarn lint-staged --no-stash`: prettier on staged TypeScript, JSON, CSS and YAML. 🔴 **Never on Markdown** - the
+pages are the mirror (rule 4), so `.lintstagedrc.json` names no Markdown pattern and `.prettierignore` excludes
+`*.md` and `*.mdx`. Never run `yarn format` over the tree. No ESLint: the repo has no application source; add it
+(ESLint 10, `lint` in `gates`) the day `src/` gains a `.ts`, `.tsx` or `.js` file. (D37, 2026-09-25.)
 
 ## Content conventions
 

@@ -1,0 +1,8 @@
+# lint-staged formats what is staged - TypeScript, JSON, CSS and YAML, never Markdown. docs/*.md and
+# docs/*.mdx mirror the product repo's docs/ byte for byte, so .lintstagedrc.json names no Markdown pattern
+# and .prettierignore excludes *.md and *.mdx as the second line of defence.
+# --no-stash: lint-staged's default backup goes through git stash create/store, and the house rule bans any
+# git stash, for any reason - the stack is shared by every checkout and session. Without it lint-staged
+# still hides a partially staged file's unstaged changes, through a patch file of its own (17.5.1
+# gitWorkflow.js, prepare); what goes is only the backup, and with it the undo when a task fails.
+yarn lint-staged --no-stash
