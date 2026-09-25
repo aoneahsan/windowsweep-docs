@@ -2,7 +2,7 @@
 
 **Mirror of `AGENTS.md`** - byte-identical except the header names. Change one, change both.
 
-**Last Updated:** 2026-09-25 (the safety model re-mirrored from windowsweep 332e7c8 as docs b4f6a4f: the approved tier table that never landed, the two duplicated headings and two doubled table cells fixed; build and typecheck green, broken links and anchors throwing. Earlier 2026-09-17: the v4 audit: typecheck and build re-run green, no MANUAL or story file in `build/`, the site answering 200 over HTTPS with its own certificate and `https_enforced`. 🔴 **CLI 1.3.0 ships in this run** (owner decision D23), so this site follows it: `TOOL_VERSION`, the footer labels, `static/llms.txt` and the changelog page all move in the same pass, re-mirrored from the product's `docs/`. Earlier 2026-09-12: the workspace root is `windowsweep-root`; the product site is live; the docs site went HTTPS - the domain was re-added under D18 and the certificate issued the same day)
+**Last Updated:** 2026-09-25 (`desktop.md`'s second front-matter block removed - it rendered as a visible heading on the live page since 2026-09-08 - and rule 4's exception for a source that carries its own. Earlier the same day: the safety model re-mirrored from windowsweep 332e7c8 as docs b4f6a4f: the approved tier table that never landed, the two duplicated headings and two doubled table cells fixed; build and typecheck green, broken links and anchors throwing. Earlier 2026-09-17: the v4 audit: typecheck and build re-run green, no MANUAL or story file in `build/`, the site answering 200 over HTTPS with its own certificate and `https_enforced`. 🔴 **CLI 1.3.0 ships in this run** (owner decision D23), so this site follows it: `TOOL_VERSION`, the footer labels, `static/llms.txt` and the changelog page all move in the same pass, re-mirrored from the product's `docs/`. Earlier 2026-09-12: the workspace root is `windowsweep-root`; the product site is live; the docs site went HTTPS - the domain was re-added under D18 and the certificate issued the same day)
 
 ## What this is
 
@@ -42,7 +42,10 @@ not a Firebase app. GitHub Pages is the only deploy path (`~/.claude/rules/docs-
 **4. The content is a MIRROR of `windowsweep/docs/`.** One page per source page, flat, same file names,
 plus `ai-integration-guide.md` from the CLI repo root. **Fix the CLI repo first, then re-mirror** - never
 patch a page here and leave the source wrong. Every CLI release re-mirrors, and the front matter
-(`title`, `description`, `tags`) is added on top of the mirrored body.
+(`title`, `description`, `tags`) is added on top of the mirrored body - 🔴 **unless the source already carries
+it**, as `desktop.md` has since 2026-09-07: that page is a plain copy. A second block is not ignored, it renders
+as a visible H2 made of the front matter's text, which the live `/desktop` page showed from 2026-09-08 to
+2026-09-25. Check every re-mirror with `grep -c '^title: '` per page -> 1.
 
 `faq` is the one page whose mirror is not a plain copy: it is mirrored into `faq.mdx`, and the page-scoped
 `<Head>` FAQPage JSON-LD block is re-applied on top of the mirrored body. Google requires every question and
