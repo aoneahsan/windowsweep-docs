@@ -11,7 +11,7 @@ Built with [Docusaurus](https://docusaurus.io) and deployed to GitHub Pages by
 ## Local development
 
 ```bash
-yarn install
+yarn install --immutable
 yarn start      # http://localhost:5972
 yarn build      # production build; also the link checker
 yarn serve      # serve the build on http://localhost:5973
