@@ -1,13 +1,13 @@
 # Manual / User-Only Tasks - windowsweep-docs
 > Fixed path: docs/MANUAL-TASKS.md - excluded from the build (`docusaurus.config.ts` `exclude`), and the
-> deploy workflow fails if any file matching `*MANUAL*` reaches `build/`.
+> confirm locally before publishing that no file matching `*MANUAL*` reaches `build/`.
 > Last updated: 2026-09-12 (row 2b CLOSED: the agent re-added the domain under D18, GitHub issued the
 > certificate within the hour, and HTTPS is now enforced)
 
 ## Pending
 | # | Task | Why only you | Runbook | Status |
 |---|------|--------------|---------|--------|
-| 3b | Optional, and **nothing reads these three today**: `CLARITY_PROJECT_ID`, `AMPLITUDE_API_KEY`, `SENTRY_DSN`. They appear in `.env.example` and in the workflow's `env:` block, but `docusaurus.config.ts` reads only `GA_MEASUREMENT_ID`. Creating them now would have no effect - they need wiring in the config first | repository secrets | `.env.example`, `docusaurus.config.ts` L24 | Not started - **do nothing until the config reads them** |
+| 3b | Optional, and **nothing reads these three today**: `CLARITY_PROJECT_ID`, `AMPLITUDE_API_KEY`, `SENTRY_DSN`. They appear in `.env.example`, but `docusaurus.config.ts` reads only `GA_MEASUREMENT_ID`. Creating them now would have no effect - they need wiring in the config first | repository secrets | `.env.example`, `docusaurus.config.ts` | Not started - **do nothing until the config reads them** |
 
 ## Completed
 | # | Task | Completed | Evidence |
