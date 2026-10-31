@@ -8,6 +8,7 @@ node_modules/
 .docusaurus/
 build/
 dist/
+*.tsbuildinfo
 
 # Generated files
 .cache-loader

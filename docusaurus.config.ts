@@ -214,6 +214,7 @@ const config: Config = {
             '**/*.test.{js,jsx,ts,tsx}',
             '**/__tests__/**',
             'MANUAL-TASKS.md',
+            'PACKAGES.md',
             // docs/PENDING-MIRROR-<version>.md holds replacement lines staged for a release that has
             // not shipped yet. Same problem as MANUAL-TASKS.md: it sits under docs/, so without this
             // entry it would publish as a page announcing a version that does not exist.
