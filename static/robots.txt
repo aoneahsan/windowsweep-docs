@@ -1,60 +1,13 @@
-# windowsweep documentation — https://windowsweep-docs.aoneahsan.com
-# Public documentation. Search and AI crawlers are explicitly welcome.
-
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Applebot
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: YandexBot
-Allow: /
-
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Claude-User
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-# SEO crawlers that consume budget without sending readers.
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: SemrushBot
-Disallow: /
-
-User-agent: MJ12bot
-Disallow: /
-
-User-agent: DotBot
-Disallow: /
+# windowsweep documentation - https://windowsweep-docs.aoneahsan.com
+#
+# Every page on this host is public documentation, so every crawler gets the same answer: search
+# engines, answer engines, AI training crawlers and SEO tools alike, as on windowsweep.aoneahsan.com.
+# There is no private path here. /search and the tag listings are kept out of search results by their
+# own `noindex`, which a Disallow would hide from the crawler.
+#
+# Keep this to the one `*` group. A named User-agent group REPLACES the `*` group for that bot rather
+# than adding to it, so any rule added later would have to be repeated in every named group; with
+# none, every bot reads the rules below.
 
 User-agent: *
 Allow: /

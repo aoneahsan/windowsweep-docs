@@ -1,6 +1,6 @@
 # WindowSweep docs — active guide
 
-**Last Updated:** 2026-10-20
+**Last Updated:** 2026-10-31
 **Context pass:** 2026-10-14; next routine optimization eligible 2026-11-13.
 
 This public Docusaurus repository is the GitHub Pages documentation site for the Windows cleanup CLI and desktop app. It is nested under the private `../windowsweep-root/` alongside public source `../windowsweep/` and private website `../windowsweep-web/`. The former detailed guide is archived in `context/docs-guide-2026-09-28.md` for a targeted lookup. Do not load it unless the task names a rule or historical incident there. Current release/version status comes from the product tracker and parent `../remaining-work-summary.md`.
@@ -14,6 +14,8 @@ Pages here mirror `../windowsweep/docs/`, plus the root AI integration guide. Fi
 ## Checks and deploy
 
 Use Yarn: `yarn install --immutable`, `yarn gates` (typecheck and Docusaurus build), and `yarn typecheck:clean` after dependency changes. Broken internal links/anchors fail the build. Preview the built site with `yarn serve --no-open` in a controlled browser at desktop and mobile widths before pushing. A `main` push triggers GitHub Pages; confirm Actions success and live HTTPS after it. Do not deploy docs from a failed local build. Never run a dev server as proof of a production build.
+
+`plugins/site-pages.ts` builds `/sitemap`, `/feed` and `/feed.xml` from the sidebar and `docs/changelog.md` (Keep a Changelog, `## [X.Y.Z] - YYYY-MM-DD`) and dates every `sitemap.xml` URL from git (an uncommitted file reads as today). The build fails on an undated release, an undated sitemap URL, or a `/search` or tag page without `noindex`. `plugins/rehype-table-scroll.ts` puts every table in a labelled, focusable scroll region.
 
 Markdown pages need title and description front matter, sidebar registration in the same change, relative local links, Docusaurus admonitions and language-tagged code fences. The staged-file hook excludes Markdown so mirrored content stays byte-consistent. Fetch/merge remote `main` before editing and again before direct push. Never force-push. The root branch remains unrelated and private.
 

@@ -1,6 +1,8 @@
-import { themes as prismThemes } from 'prism-react-renderer';
+import { themes as prismThemes, type PrismTheme, type PrismThemeEntry } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import { createSitemapItems } from './plugins/site-pages';
+import rehypeTableScroll from './plugins/rehype-table-scroll';
 
 // ---------------------------------------------------------------------------
 // windowsweep — Documentation site config
@@ -31,6 +33,34 @@ const TEAM = {
   name: 'The windowsweep team',
   url: 'https://windowsweep-docs.aoneahsan.com/about',
 } as const;
+
+/** A code theme with every token style passed through `fix`. */
+function restyle(theme: PrismTheme, fix: (style: PrismThemeEntry) => PrismThemeEntry): PrismTheme {
+  return { ...theme, styles: theme.styles.map((s) => ({ ...s, style: fix(s.style) })) };
+}
+
+// The code themes, with every token colour that fell under WCAG AA on its own code background darkened
+// within its hue to 4.6:1 or more (contrast sweep, 2026-10-31). Light, GitHub on #f6f8fa: comments
+// 2.71:1, strings 4.32:1, numbers and properties 2.58:1, at-rules and attribute names 2.69:1,
+// functions 4.30:1, and namespaces dimmed to 0.7 opacity 4.48:1. Dark, Dracula on #282a36: comments
+// 3.03:1; its other colours pass.
+const LIGHT_CODE_COLOURS: Record<string, string> = {
+  '#999988': '#717161',
+  '#e3116c': '#da1067',
+  '#36acaa': '#277b7a',
+  '#00a4db': '#0078a0',
+  '#d73a49': '#d42d3d',
+};
+const lightCodeTheme = restyle(prismThemes.github, (style) => ({
+  ...style,
+  ...(style.color && LIGHT_CODE_COLOURS[style.color]
+    ? { color: LIGHT_CODE_COLOURS[style.color] }
+    : {}),
+  ...(style.opacity === 0.7 ? { opacity: 0.8 } : {}),
+}));
+const darkCodeTheme = restyle(prismThemes.dracula, (style) =>
+  style.color === 'rgb(98, 114, 164)' ? { ...style, color: '#8b9ac9' } : style
+);
 
 // Analytics are env-gated: an absent key means the provider is skipped
 // entirely, so a clone with no secrets still builds. Never inline a real key.
@@ -114,16 +144,16 @@ const config: Config = {
       attributes: { type: 'application/ld+json' },
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'SoftwareApplication',
+        // One entity across the site and the docs (search audit SA-WINDOWSWEEP-005, 2026-10-31):
+        // the same `@id`, url, category and operating systems as the website's node, so
+        // answer engines see one product. The plan set (D56, 2026-10-30) replaced the
+        // 2026-09-05 no-pricing decision; `offers` lives on the website's /pricing node,
+        // generated from the plan rows, and is not repeated here.
+        '@id': 'https://windowsweep.aoneahsan.com/#software',
         name: 'windowsweep',
-        applicationCategory: 'DeveloperApplication',
-        operatingSystem: 'Windows 10, Windows 11',
-        // 🔴 No `offers` block, deliberately. A price of '0' is a machine-readable
-        // pricing claim on the one surface answer engines parse structurally, and the
-        // owner's 2026-09-05 decision is that this product makes no pricing claim on
-        // any surface. `isAccessibleForFree` is the same claim in another field and is
-        // equally out. See docs/story/decision-log.md.
-        url: 'https://www.npmjs.com/package/windowsweep',
+        applicationCategory: 'UtilitiesApplication',
+        operatingSystem: 'Windows 10 (1809 and later), Windows 11',
+        url: 'https://windowsweep.aoneahsan.com/',
         author: TEAM,
         description:
           'Command-line disk and cache cleanup for Windows developers: a guided walkthrough, a read-only scan, a dry-run that writes nothing of yours, schema-versioned JSON reports, and one deletion chokepoint that refuses personal folders no matter what is typed.',
@@ -198,20 +228,30 @@ const config: Config = {
           editUrl: 'https://github.com/aoneahsan/windowsweep-docs/edit/main/',
           showLastUpdateTime: true,
           breadcrumbs: true,
+          // Every table sits in a labelled, keyboard-focusable scroll region (F-EXP-006).
+          rehypePlugins: [rehypeTableScroll],
         },
         blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
+        // Google ignores changefreq and priority, so neither is emitted. lastmod is the day each
+        // page's words last changed, and /search and the tag listings (noindex) stay out - see
+        // createSitemapItems in plugins/site-pages.ts.
         sitemap: {
-          changefreq: 'weekly',
-          priority: 0.7,
+          changefreq: null,
+          priority: null,
           lastmod: 'date',
+          ignorePatterns: ['/tags', '/tags/**', '/search', '/search/**'],
+          createSitemapItems,
         },
         ...(gaMeasurementId ? { gtag: { trackingID: gaMeasurementId, anonymizeIP: true } } : {}),
       } satisfies Preset.Options,
     ],
   ],
+
+  // /sitemap, /feed, /feed.xml, the 404 page's head and the noindex check on utility pages.
+  plugins: ['./plugins/site-pages.ts'],
 
   themeConfig: {
     // Most social scrapers ignore SVG, so the card was effectively missing. The SVG stays the
@@ -323,12 +363,23 @@ const config: Config = {
             { label: 'Contact', href: 'https://windowsweep.aoneahsan.com/contact' },
           ],
         },
+        {
+          title: 'Find everything',
+          items: [
+            { label: 'Sitemap', to: '/sitemap' },
+            { label: 'Release feed', to: '/feed' },
+            // feed.xml is written after the build, where the link checker cannot see it, so it and
+            // llms.txt are linked by their absolute URLs.
+            { label: 'RSS (feed.xml)', href: `${SITE_URL}/feed.xml` },
+            { label: 'llms.txt', href: `${SITE_URL}/llms.txt` },
+          ],
+        },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Ahsan Mahmood. Built with Docusaurus. windowsweep is MIT-licensed and provided without warranty — it deletes files.`,
     },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      theme: lightCodeTheme,
+      darkTheme: darkCodeTheme,
       additionalLanguages: ['powershell', 'json', 'diff', 'bash'],
     },
   } satisfies Preset.ThemeConfig,

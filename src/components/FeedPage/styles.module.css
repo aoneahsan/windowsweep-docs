@@ -1,0 +1,30 @@
+/* In dark mode the lime link colour is almost as light as the text, so a link inside a sentence is
+   underlined there, as on the docs pages (custom.css; WCAG 1.4.1). */
+:global([data-theme='dark']) .intro a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.release {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.release:last-of-type {
+  border-bottom: none;
+}
+
+.version {
+  margin-bottom: 0.25rem;
+}
+
+.date {
+  margin-bottom: 0.75rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.kind {
+  font-size: 1rem;
+  margin: 1rem 0 0.4rem;
+}

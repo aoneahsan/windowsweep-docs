@@ -69,7 +69,7 @@ No. The command-line tool makes no network calls at all, and self-test check [9]
 
 ## Quick contact
 
-| | |
+| Channel | Where |
 |---|---|
 | **Issues** | https://github.com/aoneahsan/windowsweep/issues |
 | **Author** | [The windowsweep team](./about.md) - [contact form](https://windowsweep.aoneahsan.com/contact), after signing in |

@@ -1,7 +1,7 @@
 /**
  * windowsweep docs — Infima theme overrides. Primary hue 128 (lime), the project's registered palette.
  *
- * Palette: teal. Chosen to read as "maintenance / system utility" rather than
+ * Palette: lime. Chosen to read as "maintenance / system utility" rather than
  * alarm-red, while keeping destructive callouts (:::danger) visually distinct.
  * All colours are Infima CSS variables so light and dark stay in step.
  */
@@ -22,6 +22,14 @@
 
   --ifm-navbar-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --ifm-toc-border-color: var(--ifm-color-emphasis-200);
+
+  /* WCAG AA text contrast in light mode (F-EXP-008). The search box's placeholder and its keyboard
+     hint (the "ctrl K" <kbd>) were emphasis-500 on emphasis-200, 1.51:1; emphasis-700 is 4.88:1. The
+     active breadcrumb and the active sidebar link were primary on the 5% hover overlay, 4.46:1;
+     primary-dark is 5.24:1. */
+  --ifm-navbar-search-input-placeholder-color: var(--ifm-color-emphasis-700);
+  --ifm-breadcrumb-color-active: var(--ifm-color-primary-dark);
+  --ifm-menu-color-active: var(--ifm-color-primary-dark);
 }
 
 [data-theme='dark'] {
@@ -36,14 +44,36 @@
   --ifm-background-color: #0d1117;
   --ifm-background-surface-color: #161b22;
   --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+
+  /* Dark mode already passes with Infima's values (5.12:1 for the hint, above 10:1 for the active
+     links), so the light-mode overrides above are handed back here. */
+  --ifm-navbar-search-input-placeholder-color: var(--ifm-color-emphasis-500);
+  --ifm-breadcrumb-color-active: var(--ifm-color-primary);
+  --ifm-menu-color-active: var(--ifm-color-primary);
 }
 
-/* Tables carry most of the reference content here. Keep wide reference
-   tables scrollable inside the article on narrow screens. */
+/* Tables carry most of the reference content here. Every Markdown table is wrapped at build time in
+   a labelled, keyboard-focusable scroll region (plugins/rehype-table-scroll.ts), so a table wider than
+   the column scrolls inside the article by mouse, touch or keyboard. The table itself keeps
+   display: table at every width, which keeps its table semantics for screen readers. */
+.markdown .table-scroll {
+  overflow-x: auto;
+  margin-bottom: var(--ifm-spacing-vertical);
+}
+
+.markdown .table-scroll:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
 .markdown table {
   display: table;
   width: 100%;
   table-layout: auto;
+}
+
+.markdown .table-scroll > table {
+  margin-bottom: 0;
 }
 
 .markdown table th,
@@ -57,16 +87,19 @@
 }
 
 @media (max-width: 768px) {
-  .markdown table {
-    display: block;
-    max-width: 100%;
-    overflow-x: auto;
-  }
-
   .markdown table td code {
     white-space: normal;
     word-break: break-word;
   }
+}
+
+/* In dark mode the lime link colour is almost as light as the body text (1.17:1), so colour alone
+   cannot mark a link inside a sentence or a table cell (WCAG 1.4.1, axe link-in-text-block). Links in
+   the article are underlined there; light mode passes on colour (3.37:1) and keeps Infima's style.
+   The heading anchors (#) are left as they are. */
+[data-theme='dark'] .markdown a:not(.hash-link) {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
 
 /* Long absolute paths must wrap rather than push the layout sideways. */
