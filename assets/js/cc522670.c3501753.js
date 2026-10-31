@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwindowsweep_docs||=[]).push([[5901],{4012(e){e.exports=JSON.parse('{"tag":{"label":"flags","permalink":"/tags/flags","allTagsPath":"/tags","count":1,"items":[{"id":"cli-reference","title":"CLI reference","description":"Every mode, option, exit code, environment variable and config key.","permalink":"/cli-reference"}],"unlisted":false}}')}}]);

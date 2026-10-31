@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwindowsweep_docs||=[]).push([[9565],{4450(e){e.exports=JSON.parse('{"tag":{"label":"releases","permalink":"/tags/releases","allTagsPath":"/tags","count":1,"items":[{"id":"changelog","title":"Changelog","description":"Every published version of windowsweep.","permalink":"/changelog"}],"unlisted":false}}')}}]);

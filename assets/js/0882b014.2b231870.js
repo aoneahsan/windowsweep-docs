@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwindowsweep_docs||=[]).push([[232],{6123(e){e.exports=JSON.parse('{"tag":{"label":"faq","permalink":"/tags/faq","allTagsPath":"/tags","count":1,"items":[{"id":"faq","title":"FAQ","description":"The questions people ask first about a tool that deletes files.","permalink":"/faq"}],"unlisted":false}}')}}]);

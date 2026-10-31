@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwindowsweep_docs||=[]).push([[7916],{2721(e){e.exports=JSON.parse('{"tag":{"label":"profiles","permalink":"/tags/profiles","allTagsPath":"/tags","count":1,"items":[{"id":"profiles","title":"Profiles","description":"The named section bundles: dev, minimal, cache-only, system, deep and audit.","permalink":"/profiles"}],"unlisted":false}}')}}]);
