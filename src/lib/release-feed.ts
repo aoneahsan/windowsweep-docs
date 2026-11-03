@@ -52,8 +52,8 @@ export function watchRelease(
       if (error) throw error;
       if (active) onRecord(parseReleaseRecord(data));
     } catch {
-      // A saved normal notice still blocks on the next start when offline.
-      if (active) onRecord(null);
+      // Keep a release already seen in this tab, including an urgent block.
+      // A cold offline start still uses any normal notice saved on this device.
     } finally {
       pending = false;
       if (reread && active) {
