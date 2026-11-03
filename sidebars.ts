@@ -29,6 +29,12 @@ const sidebars: SidebarsConfig = {
     'sections',
     {
       type: 'category',
+      label: 'Desktop account and updates',
+      collapsed: true,
+      items: ['plans', 'updates', 'legal-notice', 'desktop-tours'],
+    },
+    {
+      type: 'category',
       label: 'Reference',
       collapsed: true,
       items: [

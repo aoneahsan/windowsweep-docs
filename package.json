@@ -34,7 +34,8 @@
     "typecheck:clean": "tsc --noEmit --incremental false",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "gates": "yarn typecheck && yarn build",
+    "test:release": "node --experimental-strip-types --test src/lib/release-state.test.mjs",
+    "gates": "yarn typecheck && yarn test:release && yarn build",
     "deps:outdated": "npx -y npm-check-updates",
     "deps:update": "npx -y npm-check-updates -u --reject typescript && yarn install",
     "postinstall": "husky"
@@ -47,10 +48,12 @@
     "@docusaurus/theme-mermaid": "^3.10.2",
     "@easyops-cn/docusaurus-search-local": "^0.55.3",
     "@mdx-js/react": "^3.1.1",
+    "@supabase/supabase-js": "^2.118.0",
     "clsx": "^2.1.1",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "react-dom": "^19.3.0",
+    "strata-storage": "^3.1.4"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.10.2",

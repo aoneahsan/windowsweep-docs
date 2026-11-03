@@ -17,11 +17,11 @@ delete files (subject to every guard in the [safety model](./safety-model.md)).
 
 | Mode | Flags | What it does |
 |---|---|---|
-| Walkthrough (default) | `-w`, `--walkthrough` | ðŸ”¥ Guided run through every section, one confirmation per step |
-| Menu | `-m`, `--menu` | ðŸ”¥ Pick one section at a time; toggle dry-run and auto-yes |
-| Safe batch | `-a`, `--all` | ðŸ”¥ Sections 0,1,2,3,5,6,7,8,9,10,21,28 (+12,13 when elevated), no prompts with `--yes` |
-| Only | `--only L` | ðŸ”¥ Exactly these sections, e.g. `--only 1,3,5-7` |
-| Profile | `--profile NAME` | ðŸ”¥ A named bundle - see [Profiles](./profiles.md) |
+| Walkthrough (default) | `-w`, `--walkthrough` | 🔥 Guided run through every section, one confirmation per step |
+| Menu | `-m`, `--menu` | 🔥 Pick one section at a time; toggle dry-run and auto-yes |
+| Safe batch | `-a`, `--all` | 🔥 Sections 0,1,2,3,5,6,7,8,9,10,21,28 (+12,13 when elevated), no prompts with `--yes` |
+| Only | `--only L` | 🔥 Exactly these sections, e.g. `--only 1,3,5-7` |
+| Profile | `--profile NAME` | 🔥 A named bundle - see [Profiles](./profiles.md) |
 | Scan | `-s`, `--scan` | Read-only: health report, every target with its size, personal-file scanners |
 | List | `--list` | The section catalogue |
 | List targets | `--list-targets` | Every path the tool can touch, plus the protected list |
@@ -49,7 +49,7 @@ delete files (subject to every guard in the [safety model](./safety-model.md)).
 | `--elevate` | off | Relaunch elevated through a UAC prompt; the elevated run writes its own log |
 | `-d N`, `--days N` | 100 | Idle window for caches: a file goes when its newest timestamp is N+ days old |
 | `--temp-days N` | 3 | Idle window for temp folders (sections 10 and 12) |
-| `--purge-all` | off | ðŸ”¥ Clear cache targets completely instead of pruning idle files (a console run asks for a typed `purge` once; `--yes` confirms in batch) |
+| `--purge-all` | off | 🔥 Clear cache targets completely instead of pruning idle files (a console run asks for a typed `purge` once; `--yes` confirms in batch) |
 | `--developer` / `--not-developer` | saved answer | Override developer mode for this run only |
 | `--forget-developer` | - | Ask the developer question again |
 | `--scan-roots "P1;P2"` | auto-detected | Project roots for section 17 (semicolon-separated) |
@@ -61,7 +61,7 @@ delete files (subject to every guard in the [safety model](./safety-model.md)).
 | `--large-file-mb N` | 100 | Large-file threshold for section 19; files older than `--days` qualify at any size |
 | `--hiberfil off|reduced|keep` | ask | What section 15 does |
 | `--reset-base` | off | Add `/ResetBase` to section 14 |
-| `--permanent` | off | Sections 18, 19 and 23 delete instead of using the Recycle Bin |
+| `--permanent` | off | Supported selected leftovers can be deleted instead of recycled; section 19 always recycles selected personal files |
 | `--logs-dir P`, `--reports-dir P` | `~\.windowsweep\...` | Where logs and reports are written |
 | `--no-report` | off | Skip the JSON report (the log is still written) |
 | `--cleanup-logs` | off | Delete this run's log at exit; reports are kept |

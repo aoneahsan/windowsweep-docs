@@ -5,8 +5,8 @@ developer-aware Windows cleanup CLI.
 
 **Live site:** https://windowsweep-docs.aoneahsan.com
 
-Built with [Docusaurus](https://docusaurus.io) and deployed to GitHub Pages by
-[`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) on every push to `main`.
+Built with [Docusaurus](https://docusaurus.io). The verified production build is published manually
+to GitHub Pages from the `gh-pages` branch; a push to `main` updates source only.
 
 ## Local development
 

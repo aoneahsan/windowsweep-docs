@@ -2,7 +2,8 @@
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
     "baseUrl": ".",
-    "ignoreDeprecations": "6.0"
+    "ignoreDeprecations": "6.0",
+    "allowImportingTsExtensions": true
   },
   "include": ["src/", "plugins/", "docusaurus.config.ts", "sidebars.ts"],
   "exclude": [".docusaurus", "build", "node_modules"]

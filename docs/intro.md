@@ -54,6 +54,10 @@ No. The command-line tool makes no network calls at all, and self-test check [9]
 | [Admin sections and elevation](./admin-and-elevation.md) | What needs Administrator rights, how `--elevate` works, the hibernation decision |
 | [Reports and logs](./reports-and-logs.md) | What a run writes under `%USERPROFILE%\.windowsweep`, the JSON schema, exports |
 | [Desktop app](./desktop.md) | The window over the same engine: what it adds, what it collects, the SmartScreen note, where it writes |
+| [Desktop plans](./plans.md) | Real-run allowance, plan requests and referrals |
+| [Required updates](./updates.md) | Notices and installing a required release |
+| [Policy notice](./legal-notice.md) | Terms and Privacy links in the desktop app and website |
+| [Desktop tours](./desktop-tours.md) | Page tours and the walkthrough |
 | [AI integration guide](./ai-integration-guide.md) | The contract for an agent or a script: `--json`, exit codes, guarantees |
 
 ## When something is off
@@ -84,4 +88,4 @@ them; the whole `windowsweep-root` folder has to be copied. The status record ab
 | **Author** | [The windowsweep team](./about.md) - [contact form](https://windowsweep.aoneahsan.com/contact), after signing in |
 | **Support the work** | https://aoneahsan.com/payment?project-id=windowsweep&project-identifier=windowsweep |
 
-Last Updated: 2026-09-28 - tool version 1.3.2
+Last Updated: 2026-11-03 - tool version 1.4.1

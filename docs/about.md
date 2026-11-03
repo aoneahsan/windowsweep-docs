@@ -23,7 +23,7 @@ No guessed paths. A path becomes a target only once it has been seen on a real m
 | macOS | [macleanup](https://github.com/aoneahsan/macleanup) | `npx macleanup` |
 | Windows | [windowsweep](https://github.com/aoneahsan/windowsweep) | `npx windowsweep` |
 
-All three share the same stance: name every path before touching it, prune files idle for 100 days by default, refuse to enter personal folders, and ship a real dry-run. None of the three makes a network call unless you ask one to check for an update.
+All three share the same stance: name every path before touching it and show a dry-run before removal. Windowsweep also lets you scan Downloads or folders you add for large or old files; those selected files go to the Recycle Bin. The command-line engines make no network call unless you request an update check.
 
 ## Supporting the work
 

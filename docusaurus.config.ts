@@ -17,12 +17,13 @@ import rehypeTableScroll from './plugins/rehype-table-scroll';
 // domain, and both halves now resolve to the same base. HTTPS has been live
 // here since 2026-09-12.
 //
-// Deployment: GitHub Pages ONLY (.github/workflows/deploy-pages.yml).
+// Deployment: GitHub Pages ONLY, published manually from a verified build.
 // This repo is PUBLIC and contains no Firebase config and no secrets.
 // ---------------------------------------------------------------------------
 
 const SITE_URL = 'https://windowsweep-docs.aoneahsan.com';
-const TOOL_VERSION = '1.3.2';
+const TOOL_VERSION = '1.4.1';
+const releaseChannel = process.env.DOCS_RELEASE_CHANNEL === 'test' ? 'test' : 'production';
 
 // The one agent this site's structured data names (team-voice TV-11, owner decisions D45 and
 // D46, 2026-09-25: a product speaks as its team, never as one person). Its name is the footer
@@ -77,6 +78,13 @@ const config: Config = {
 
   organizationName: 'aoneahsan',
   projectName: 'windowsweep-docs',
+
+  customFields: {
+    releaseVersion: TOOL_VERSION,
+    releaseChannel,
+    supabaseUrl: process.env.DOCS_SUPABASE_URL?.trim() ?? '',
+    supabasePublishableKey: process.env.DOCS_SUPABASE_PUBLISHABLE_KEY?.trim() ?? '',
+  },
 
   // The build IS the link checker. Anything broken fails CI rather than
   // shipping a dead link to a page about deleting files.

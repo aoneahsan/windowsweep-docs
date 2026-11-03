@@ -170,7 +170,7 @@ smaller file. `keep` leaves it. Interactive runs ask; batch runs need the flag. 
 
 `wevtutil cl` for every log. Permanent loss of troubleshooting history. Deep-gated.
 
-Not touched: the log configuration, the channels themselves and their sizes. Only the recorded events go, and nothing puts them back. That is why this and section 11 are the only two sections in the permanent tier.
+Not touched: the log configuration, the channels themselves and their sizes. Only the recorded events go, and nothing puts them back. Section 11 is the other deep-gated permanent section; section 26 can also permanently uninstall a program you select.
 
 ## 17 - Stale project build artefacts
 
@@ -197,7 +197,7 @@ qualifies when it is at least `--large-file-mb` MB (default 100) **or** at least
 regardless of size. The engine offers at most 500 selectable files at once, largest first, and reports
 protected files as unselectable rows. Large and old describe a file, not whether you still need it.
 You select paths one by one with `--select-file`; `--yes` never chooses them. Selected files go to the
-Recycle Bin by default. Immediately before removal the engine checks that each is still the same file,
+Recycle Bin even when `--permanent` is set. Immediately before removal the engine checks that each is still the same file,
 size and write time, and that no path component became a link; a changed file is kept.
 
 ## 20 - Disk-image compaction (admin)
@@ -302,7 +302,7 @@ previous Codex release are kept. It can run in `--all`, `dev` and `deep`; dry-ru
 ## 29 - Chrome on-device AI model policy
 
 Deep and elevated. Sets Chrome's `GenAILocalFoundationalModelSettings` policy to `1`; Chrome then
-removes its downloaded on-device model. Chrome displays â€œManaged by your organizationâ€ for this
+removes its downloaded on-device model. Chrome displays “Managed by your organization” for this
 policy. The policy remains until you remove it; the model may return after that.
 
 ## Candidate targets awaiting verification
