@@ -5,6 +5,7 @@ node_modules/
 .pnp.*
 
 # Build outputs
+.playwright-cli/
 .docusaurus/
 build/
 dist/
