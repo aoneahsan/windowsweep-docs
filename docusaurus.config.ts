@@ -69,7 +69,7 @@ const gaMeasurementId = process.env.GA_MEASUREMENT_ID?.trim();
 const config: Config = {
   title: 'windowsweep',
   tagline:
-    'Developer-aware Windows cleanup CLI: dry-run first, personal folders refused, zero install via npx.',
+    'Windows cleanup CLI: dry-run first, personal files chosen row by row, zero install via npx.',
   favicon: 'img/favicon.svg',
 
   url: SITE_URL,
@@ -115,7 +115,7 @@ const config: Config = {
         name: 'windowsweep Documentation',
         url: SITE_URL,
         description:
-          'Documentation for windowsweep, a Windows command-line utility that reclaims disk space by deleting only regenerable caches - package managers, build tools, browsers, editors, Windows temp and update leftovers - behind one deletion chokepoint that refuses personal folders, credentials and browser state.',
+          'Documentation for windowsweep, a Windows command-line utility that clears regenerable caches and offers large or old files in Downloads and folders you add for individual Recycle Bin removal. Credentials and browser state remain protected.',
         inLanguage: 'en',
         publisher: TEAM,
         license: 'https://opensource.org/licenses/MIT',
@@ -156,7 +156,7 @@ const config: Config = {
         url: 'https://windowsweep.aoneahsan.com/',
         author: TEAM,
         description:
-          'Command-line disk and cache cleanup for Windows developers: a guided walkthrough, a read-only scan, a dry-run that writes nothing of yours, schema-versioned JSON reports, and one deletion chokepoint that refuses personal folders no matter what is typed.',
+          'Command-line disk and cache cleanup for Windows developers: a guided walkthrough, a read-only scan, a real dry-run, JSON reports, and an optional large or old file scanner with individual Recycle Bin removal.',
         softwareVersion: TOOL_VERSION,
         license: 'https://opensource.org/licenses/MIT',
       }),
