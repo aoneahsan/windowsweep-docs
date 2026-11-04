@@ -24,7 +24,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start --port 5972 --host 0.0.0.0",
-    "build": "docusaurus build",
+    "build": "NODE_OPTIONS=--no-experimental-webstorage docusaurus build",
     "swizzle": "docusaurus swizzle",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve --port 5973",
@@ -51,20 +51,19 @@
     "@supabase/supabase-js": "^2.118.0",
     "clsx": "^2.1.1",
     "prism-react-renderer": "^2.4.1",
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "strata-storage": "^3.1.4"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.10.2",
-    "@docusaurus/tsconfig": "^3.10.2",
     "@docusaurus/types": "^3.10.2",
     "@types/react": "^19.3.0",
-    "github-slugger": "^1.5.0",
+    "github-slugger": "^2.0.0",
     "husky": "^9.1.7",
-    "lint-staged": "^17.5.1",
-    "prettier": "^3.9.9",
-    "typescript": "~6.0.3"
+    "lint-staged": "^17.6.0",
+    "prettier": "^3.9.10",
+    "typescript": "~7.0.2"
   },
   "resolutions": {
     "qs": "npm:6.17.1",
