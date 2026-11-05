@@ -1,6 +1,6 @@
 // Cache-free takeover worker. plugins/worker-fingerprint.ts writes the main bundle's name into BUILD after
 // every build, so an older tab's registration.update() always sees changed bytes.
-const BUILD = 'main.616c05f9.js';
+const BUILD = 'main.b100ea4f.js';
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', (event) => event.waitUntil(self.clients.claim()));
 self.addEventListener('message', (event) => {
