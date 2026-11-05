@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import { themes as prismThemes, type PrismTheme, type PrismThemeEntry } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
@@ -23,6 +24,23 @@ import rehypeTableScroll from './plugins/rehype-table-scroll';
 
 const SITE_URL = 'https://windowsweep-docs.aoneahsan.com';
 const TOOL_VERSION = '1.4.1';
+
+// 🔴 The release gate's two public client identifiers come from the environment, never a literal in
+// this public repo. Docusaurus loads no .env of its own, so the untracked `.env.local` (then `.env`) is
+// loaded here; a variable already set in the shell wins, because loadEnvFile never overwrites one.
+for (const file of ['.env.local', '.env']) {
+  if (existsSync(file)) process.loadEnvFile(file);
+}
+const supabaseUrl = process.env.DOCS_SUPABASE_URL?.trim() ?? '';
+const supabasePublishableKey = process.env.DOCS_SUPABASE_PUBLISHABLE_KEY?.trim() ?? '';
+// 🔴 A production build without them ships a release gate that never reads a record: the live docs
+// ran so from 2026-11-04 until this guard (found on the test channel, 2026-11-05). Refuse to build.
+if (process.env.NODE_ENV === 'production' && (!supabaseUrl || !supabasePublishableKey)) {
+  throw new Error(
+    'DOCS_SUPABASE_URL and DOCS_SUPABASE_PUBLISHABLE_KEY are required for a build (the release gate). ' +
+      'Put the two public client identifiers in .env.local (see CLAUDE.md "Checks and deploy").'
+  );
+}
 const releaseChannel = process.env.DOCS_RELEASE_CHANNEL === 'test' ? 'test' : 'production';
 
 // The one agent this site's structured data names (team-voice TV-11, owner decisions D45 and
@@ -82,8 +100,8 @@ const config: Config = {
   customFields: {
     releaseVersion: TOOL_VERSION,
     releaseChannel,
-    supabaseUrl: process.env.DOCS_SUPABASE_URL?.trim() ?? '',
-    supabasePublishableKey: process.env.DOCS_SUPABASE_PUBLISHABLE_KEY?.trim() ?? '',
+    supabaseUrl,
+    supabasePublishableKey,
   },
 
   // The build IS the link checker. Anything broken fails CI rather than

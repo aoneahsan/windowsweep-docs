@@ -1,3 +1,8 @@
+# Local environment: never in this PUBLIC repo. `.env.local` holds the release gate's two public client
+# identifiers for builds on this machine (docusaurus.config.ts loads it; the build refuses without them).
+.env
+.env.*
+
 # Dependencies
 node_modules/
 .yarn/cache
