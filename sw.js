@@ -1,5 +1,6 @@
-// Versioned, cache-free takeover worker. Bump BUILD for each published docs build.
-const BUILD = '1.4.1';
+// Cache-free takeover worker. plugins/worker-fingerprint.ts writes the main bundle's name into BUILD after
+// every build, so an older tab's registration.update() always sees changed bytes.
+const BUILD = 'main.616c05f9.js';
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', (event) => event.waitUntil(self.clients.claim()));
 self.addEventListener('message', (event) => {

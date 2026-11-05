@@ -6,7 +6,7 @@
 > files; it selects nothing by itself. A dry-run changes nothing of yours. Chosen personal files go
 > to the Recycle Bin. The command-line tool makes no network calls of its own.
 
-windowsweep is a Windows PowerShell 5.1 engine with a zero-dependency Node launcher, published on npm as `windowsweep` and licensed MIT. The current version is 1.4.1, and its self-test proves the guards on the machine it runs on. Run `npx windowsweep --scan` first: it measures every target and deletes nothing.
+windowsweep is a Windows PowerShell 5.1 engine with a zero-dependency Node launcher, published on npm as `windowsweep` and licensed MIT. The current version is 1.4.2, and its self-test proves the guards on the machine it runs on. Run `npx windowsweep --scan` first: it measures every target and deletes nothing.
 
 ## Documentation
 

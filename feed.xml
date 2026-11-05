@@ -5,8 +5,16 @@
     <link>https://windowsweep-docs.aoneahsan.com/feed</link>
     <description>Every windowsweep release, newest first: the version, the date and what changed.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 03 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://windowsweep-docs.aoneahsan.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>windowsweep 1.4.2</title>
+      <link>https://windowsweep-docs.aoneahsan.com/changelog#142---2026-11-05</link>
+      <guid isPermaLink="false">windowsweep-1.4.2</guid>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <category>release</category>
+      <description>&lt;p&gt;&lt;strong&gt;Added&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Desktop tours. Each main screen has Tour this page in the header. Its steps name the controls on that screen, skip any that are hidden in your current state, and close before a run starts. Walk through windowsweep shows the path from scan to report in seven screens captured from 1.4.1. Neither starts a cleanup or spends a real-run claim.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Changed&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;The desktop app installs its updates. When the update check finds a newer build, the app downloads it in the background and installs it when you close the window, so the next start is the new version. Install and restart still installs at once. A run in progress is never interrupted for an update.&lt;/li&gt;&lt;li&gt;An elevated run&apos;s log reaches the window as it is written. The app watches the run folder instead of re-reading it every 0.7 seconds.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Fixed&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Release notices follow the newest record. A notice the app stored no longer outranks a newer, lower release record, so a corrected release takes effect on the next check, and a record at or below the running version clears the notice.&lt;/li&gt;&lt;li&gt;The command-line tool is unchanged in this release. It moves to 1.4.2 so the CLI and the desktop app stay on one version.&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>windowsweep 1.4.1</title>
       <link>https://windowsweep-docs.aoneahsan.com/changelog#141---2026-11-03</link>
