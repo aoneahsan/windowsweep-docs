@@ -23,7 +23,7 @@ import rehypeTableScroll from './plugins/rehype-table-scroll';
 // ---------------------------------------------------------------------------
 
 const SITE_URL = 'https://windowsweep-docs.aoneahsan.com';
-const TOOL_VERSION = '1.4.1';
+const TOOL_VERSION = '1.4.2';
 
 // 🔴 The release gate's two public client identifiers come from the environment, never a literal in
 // this public repo. Docusaurus loads no .env of its own, so the untracked `.env.local` (then `.env`) is
@@ -278,7 +278,7 @@ const config: Config = {
   ],
 
   // /sitemap, /feed, /feed.xml, the 404 page's head and the noindex check on utility pages.
-  plugins: ['./plugins/site-pages.ts'],
+  plugins: ['./plugins/site-pages.ts', './plugins/worker-fingerprint.ts'],
 
   themeConfig: {
     // Most social scrapers ignore SVG, so the card was effectively missing. The SVG stays the
