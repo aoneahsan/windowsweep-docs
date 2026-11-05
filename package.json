@@ -34,7 +34,7 @@
     "typecheck:clean": "tsc --noEmit --incremental false",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test:release": "node --experimental-strip-types --test src/lib/release-state.test.mjs",
+    "test:release": "node --experimental-strip-types --test src/lib/release-state.test.mjs src/lib/no-polling.test.ts",
     "gates": "yarn typecheck && yarn test:release && yarn build",
     "deps:outdated": "npx -y npm-check-updates",
     "deps:update": "npx -y npm-check-updates -u --reject typescript && yarn install",
