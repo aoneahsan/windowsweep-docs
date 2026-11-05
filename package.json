@@ -38,8 +38,7 @@
     "gates": "yarn typecheck && yarn test:release && yarn build",
     "deps:outdated": "npx -y npm-check-updates",
     "deps:update": "npx -y npm-check-updates -u --reject typescript && yarn install",
-    "postinstall": "husky",
-    "deploy": "yarn build && npx -y wrangler@4 pages deploy build --project-name windowsweep-docs --branch main --commit-dirty=true"
+    "postinstall": "husky"
   },
   "dependencies": {
     "@docusaurus/core": "^3.10.2",
