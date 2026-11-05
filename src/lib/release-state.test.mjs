@@ -34,13 +34,14 @@ test('a new normal version warns before its next-start block', () => {
   assert.equal(decideRelease({ running: '1.3.2', record: normal, stored: oldStored, runId: 'now' }).kind, 'notice');
 });
 
-test('a stale view row never weakens a newer stored notice', () => {
-  const newerStored = { ...stored, version: '1.4.3', reason: 'Later release.' };
-  const olderView = { ...normal, version: '1.4.2' };
-  const decision = decideRelease({ running: '1.4.1', record: olderView, stored: newerStored, runId: 'now' });
-  assert.equal(decision.kind, 'block');
-  assert.equal(decision.release.version, '1.4.3');
-  assert.equal(decision.release.reason, 'Later release.');
+test('the newest row corrects a stored notice: a mistake is fixed by a newer row', () => {
+  // Proved on the test channel 2026-11-05: 1.4.2 published, then 1.4.1. A row at or below this
+  // build clears the stored notice; one still above it is announced as its own release.
+  const higherStored = { ...stored, version: '1.4.3', reason: 'Mistaken release.' };
+  assert.deepEqual(decideRelease({ running: '1.4.2', record: normal, stored: higherStored, runId: 'now' }), { kind: 'none' });
+  const corrected = decideRelease({ running: '1.4.1', record: normal, stored: higherStored, runId: 'now' });
+  assert.equal(corrected.kind, 'notice');
+  assert.equal(corrected.release.version, '1.4.2');
 });
 
 test('urgent release blocks immediately with the published reason', () => {

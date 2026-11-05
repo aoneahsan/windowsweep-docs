@@ -107,28 +107,27 @@ export function decideRelease({
   const validRecord = recordOrder === null ? null : record;
   const storedOrder = stored ? compareSemver(running, stored.version) : null;
   const storedIsNewer = storedOrder !== null && storedOrder < 0;
-  const recordIsNewer = validRecord !== null && recordOrder !== null && recordOrder < 0;
-  if (!recordIsNewer && !storedIsNewer) return { kind: 'none' };
 
-  // An earlier known release cannot be weakened by a lagging or offline view.
-  const preferStored =
-    storedIsNewer && (!recordIsNewer || compareSemver(stored!.version, validRecord!.version)! > 0);
-
+  // 🔴 The newest published row is the truth: a mistake is corrected by publishing a newer row
+  // (update-flow contract), so a stored notice never outranks a record that was read - a row at or
+  // below this build clears it. The stored notice stands in only with no record or a failed read.
+  // Proved on the test channel 2026-11-05: the older rule kept a copy blocked on 1.4.2 after 1.4.1.
   let release: ReleaseRecord;
-  if (preferStored && stored) {
+  if (validRecord) {
+    if ((recordOrder ?? 0) >= 0) return { kind: 'none' };
+    release = validRecord;
+  } else if (stored && storedIsNewer) {
     release = {
       version: stored.version,
       severity: 'normal',
       reason: stored.reason,
       minNativeVersion: null,
     };
-  } else if (recordIsNewer && validRecord) {
-    release = validRecord;
   } else return { kind: 'none' };
   if (release.severity === 'urgent') {
     return { kind: 'block', release, fromEarlierStart: false };
   }
-  if (storedIsNewer && stored?.version === release.version && stored.runId !== runId) {
+  if (stored && storedIsNewer && stored.version === release.version && stored.runId !== runId) {
     return { kind: 'block', release, fromEarlierStart: true };
   }
   return {
