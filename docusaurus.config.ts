@@ -175,6 +175,9 @@ const config: Config = {
         // answer engines see one product. The plan set (D56, 2026-10-30) replaced the
         // 2026-09-05 no-pricing decision; `offers` lives on the website's /pricing node,
         // generated from the plan rows, and is not repeated here.
+        // 🔴 `@type` is required on every node (SA-WINDOWSWEEP-013, 2026-11-05: the 005 fix left
+        // it out and every probe still matched); plugins/discovery-facts.ts fails the build without it.
+        '@type': 'SoftwareApplication',
         '@id': 'https://windowsweep.aoneahsan.com/#software',
         name: 'windowsweep',
         applicationCategory: 'UtilitiesApplication',
@@ -278,7 +281,11 @@ const config: Config = {
   ],
 
   // /sitemap, /feed, /feed.xml, the 404 page's head and the noindex check on utility pages.
-  plugins: ['./plugins/site-pages.ts', './plugins/worker-fingerprint.ts'],
+  plugins: [
+    './plugins/site-pages.ts',
+    './plugins/worker-fingerprint.ts',
+    ['./plugins/discovery-facts.ts', { version: TOOL_VERSION }],
+  ],
 
   themeConfig: {
     // Most social scrapers ignore SVG, so the card was effectively missing. The SVG stays the
