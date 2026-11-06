@@ -42,6 +42,12 @@ if (process.env.NODE_ENV === 'production' && (!supabaseUrl || !supabasePublishab
   );
 }
 const releaseChannel = process.env.DOCS_RELEASE_CHANNEL === 'test' ? 'test' : 'production';
+/* The release-notes signup in the footer (D90): the FilesHub list, its subscribe-only browser key (FilesHub key
+   92, a public client identifier) and an optional Turnstile site key. All optional: without the first two the
+   footer has no signup row. */
+const newsletterListId = process.env.DOCS_NEWSLETTER_LIST_ID?.trim() ?? '';
+const newsletterKey = process.env.DOCS_FILESHUB_NEWSLETTER_KEY?.trim() ?? '';
+const turnstileSiteKey = process.env.DOCS_TURNSTILE_SITE_KEY?.trim() ?? '';
 
 // The one agent this site's structured data names (team-voice TV-11, owner decisions D45 and
 // D46, 2026-09-25: a product speaks as its team, never as one person). Its name is the footer
@@ -102,6 +108,9 @@ const config: Config = {
     releaseChannel,
     supabaseUrl,
     supabasePublishableKey,
+    newsletterListId,
+    newsletterKey,
+    turnstileSiteKey,
   },
 
   // The build IS the link checker. Anything broken fails CI rather than

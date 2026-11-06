@@ -1,0 +1,141 @@
+/*
+ * The release-notes signup in the docs footer (web dummy amendment 35, docs-newsletter.html): the footer's
+ * top row, the copy beside the form, split by the receipt's dashed perforation. Infima's own variables, so it
+ * follows the footer's dark skin and the light/dark theme.
+ */
+.nl {
+  display: grid;
+  gap: 1.25rem 2rem;
+  align-items: start;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px dashed var(--ifm-footer-link-color);
+}
+.nl > * {
+  min-width: 0;
+}
+@media (min-width: 760px) {
+  .nl {
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  }
+  .side {
+    padding-inline-start: 2rem;
+    border-inline-start: 1px dashed var(--ifm-footer-link-color);
+  }
+}
+.copy {
+  display: grid;
+  gap: 0.75rem;
+}
+.title {
+  margin: 0;
+}
+.body {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--ifm-footer-link-color);
+}
+.side {
+  display: grid;
+  gap: 0.75rem;
+}
+.form {
+  display: grid;
+  gap: 0.5rem;
+}
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ifm-footer-title-color);
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.input {
+  flex: 1 1 13rem;
+  min-width: 0;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--ifm-footer-link-color);
+  border-radius: var(--ifm-global-radius);
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font: inherit;
+}
+.input:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+.button {
+  flex: 0 0 auto;
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+@media (max-width: 420px) {
+  .button {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+}
+.spin {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid currentColor;
+  border-inline-end-color: transparent;
+  border-radius: 50%;
+  animation: nl-spin 0.8s linear infinite;
+}
+@keyframes nl-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spin {
+    animation: none;
+  }
+}
+.error {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  color: var(--ifm-color-danger-light);
+}
+.error a {
+  color: inherit;
+  text-decoration: underline;
+}
+.live:empty {
+  position: absolute;
+}
+.live:focus {
+  outline: none;
+}
+.done {
+  display: flex;
+  gap: 0.75rem;
+  align-items: start;
+  margin: 0;
+  padding: 1rem 1.25rem;
+  border-radius: var(--ifm-global-radius);
+  background: var(--ifm-color-success-contrast-background);
+  color: var(--ifm-color-success-contrast-foreground);
+  font-size: 0.875rem;
+  font-weight: 560;
+}
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: none;
+}
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
