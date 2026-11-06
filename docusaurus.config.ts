@@ -23,7 +23,7 @@ import rehypeTableScroll from './plugins/rehype-table-scroll';
 // ---------------------------------------------------------------------------
 
 const SITE_URL = 'https://windowsweep-docs.aoneahsan.com';
-const TOOL_VERSION = '1.4.2';
+const TOOL_VERSION = '1.4.3';
 
 // 🔴 The release gate's two public client identifiers come from the environment, never a literal in
 // this public repo. Docusaurus loads no .env of its own, so the untracked `.env.local` (then `.env`) is
@@ -386,7 +386,7 @@ const config: Config = {
           title: 'Reference',
           items: [
             { label: 'CLI reference', to: '/cli-reference' },
-            { label: 'Sections 0-25', to: '/sections' },
+            { label: 'Sections 0-29', to: '/sections' },
             { label: 'Reports and logs', to: '/reports-and-logs' },
             { label: 'Changelog', to: '/changelog' },
           ],
