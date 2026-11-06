@@ -5,8 +5,16 @@
     <link>https://windowsweep-docs.aoneahsan.com/feed</link>
     <description>Every windowsweep release, newest first: the version, the date and what changed.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 05 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://windowsweep-docs.aoneahsan.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>windowsweep 1.4.3</title>
+      <link>https://windowsweep-docs.aoneahsan.com/changelog#143---2026-11-06</link>
+      <guid isPermaLink="false">windowsweep-1.4.3</guid>
+      <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
+      <category>release</category>
+      <description>&lt;p&gt;&lt;strong&gt;Changed&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;One bar replaces the full-screen first-run notice. In the desktop app it sits at the bottom right and holds the Privacy Policy and Terms of Service sentence, the usage-data line and Okay; the policy links open in the browser. The usage line ends &quot;Never a file path, never the contents of anything.&quot; The window stays usable under the bar, which closes by itself after 10 seconds; hover or keyboard focus holds it. Okay or Escape closes it. A machine that has shown it never shows it again, and a signed-in account that saw it on one machine is not shown it on another. It never appears on the start screen, on the Run, Choose and Admin screens, or beside an update notice or block.&lt;/li&gt;&lt;li&gt;The tour hint waits for the bar. The one-time Tour this page hint now waits until that bar has closed, and while an update notice or block is on screen, so two notes never stack.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Fixed&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Walkthrough step numbers are centred. In Walk through windowsweep, the step numbers sit in the centre of their circles; in 1.4.2 each sat 14 px left of centre.&lt;/li&gt;&lt;li&gt;The command-line tool is unchanged in this release. It moves to 1.4.3 so the CLI and the desktop app stay on one version.&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>windowsweep 1.4.2</title>
       <link>https://windowsweep-docs.aoneahsan.com/changelog#142---2026-11-05</link>
