@@ -2,9 +2,11 @@
  * The release-notes signup, the docs footer's top row (owner decision D90; web dummy amendment 35,
  * `docs-newsletter.html`). The same words, states and order as the website's changelog signup.
  *
- * States: idle → pending (the button holds a spinner and cannot be pressed twice; the field is read-only) →
- * done ("Check your inbox ...", focus moved to it) or already ("If this address is on the list ...", never a
- * confirmation of membership) or failed (at the form, role="alert", the address stays typed).
+ * States: idle → invalid (an address that is not complete, an empty one included: S6's words at the field,
+ * role="alert", the field marked and focused, nothing sent) or pending (the button holds a spinner and cannot be
+ * pressed twice; the field is read-only) → done ("Open the confirmation email ...", focus moved to it) or already
+ * ("If this address is on the list ...", never a confirmation of membership) or failed (at the form,
+ * role="alert", the address stays typed). Words: d91-strings S6 and S8, under double opt-in (dummy amendment 38).
  *
  * 🔴 It renders nothing until the build carries the list id and the subscribe-only key (`customFields`), and it
  * sends a Cloudflare Turnstile token when a site key is configured, as FilesHub asks of browser signups.
@@ -15,22 +17,26 @@ import { normalizeEmail, rememberSent, subscribe, wasSent } from '../../lib/news
 import { turnstileToken } from './turnstile';
 import styles from './styles.module.css';
 
-/* emails-1.4.0.md, "Release newsletter signup — website and docs" (approved). The docs site has no i18n
-   catalogue, so its strings live here as the release gate's do. */
+/* emails-1.4.0.md, "Release newsletter signup — website and docs", with d91-strings S6 and S8 (approved). The
+   docs site has no i18n catalogue, so its strings live here as the release gate's do. */
 const T = {
   heading: 'Get release notes by email',
   body: 'One email when a windowsweep release is ready. It names what changed, where to get it and any limit that matters. No cleanup path, file name or machine name is collected for the list.',
   label: 'Email address',
   button: 'Get release emails',
-  done: 'Check your inbox for release notes. You can leave the list from any email.',
-  already: 'If this address is on the list, the next release email will arrive there.',
+  invalidEmail: 'Enter a complete email address, such as name@example.com.',
+  done: 'Open the confirmation email in your inbox and confirm this address on the page it links to. Release emails start only after that, and you can leave the list from any of them.',
+  already:
+    'If this address is on the list, the next release email will arrive there. If it is not confirmed yet, open the confirmation email in your inbox.',
   failedLead: 'The signup was not confirmed. Try again or use the ',
   failedLink: 'site contact form',
   failedTail: '.',
 } as const;
 const CONTACT = 'https://windowsweep.aoneahsan.com/contact';
+/* S6's shape, as the dummy checks it: something, one @, then a domain with a dot in it. */
+const COMPLETE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-type State = 'idle' | 'pending' | 'done' | 'already' | 'failed';
+type State = 'idle' | 'invalid' | 'pending' | 'done' | 'already' | 'failed';
 
 function Check() {
   return (
@@ -58,10 +64,12 @@ export default function NewsletterSignup() {
   const [state, setState] = useState<State>('idle');
   const [address, setAddress] = useState('');
   const liveRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const captchaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (state === 'done' || state === 'already') liveRef.current?.focus();
+    if (state === 'invalid') inputRef.current?.focus();
   }, [state]);
 
   if (!fields.newsletterListId || !fields.newsletterKey) return null;
@@ -72,6 +80,10 @@ export default function NewsletterSignup() {
     event.preventDefault();
     if (state === 'pending') return;
     const value = normalizeEmail(address);
+    if (!COMPLETE.test(value)) {
+      setState('invalid');
+      return;
+    }
     setState('pending');
     const token = fields.turnstileSiteKey
       ? await turnstileToken(fields.turnstileSiteKey, captchaRef.current)
@@ -106,7 +118,7 @@ export default function NewsletterSignup() {
       </div>
       <div className={styles.side}>
         {answered ? null : (
-          <form className={styles.form} onSubmit={onSubmit}>
+          <form className={styles.form} onSubmit={onSubmit} noValidate>
             <label className={styles.label} htmlFor={`${id}-email`}>
               {T.label}
             </label>
@@ -114,16 +126,18 @@ export default function NewsletterSignup() {
               <input
                 id={`${id}-email`}
                 className={styles.input}
+                ref={inputRef}
                 type="email"
                 name="email"
-                required
                 autoComplete="email"
+                aria-invalid={state === 'invalid' ? true : undefined}
+                aria-describedby={state === 'invalid' ? `${id}-email-error` : undefined}
                 spellCheck={false}
                 readOnly={state === 'pending'}
                 value={address}
                 onChange={(e) => {
                   setAddress(e.target.value);
-                  if (state === 'failed') setState('idle');
+                  if (state === 'failed' || state === 'invalid') setState('idle');
                 }}
               />
               <button
@@ -135,6 +149,11 @@ export default function NewsletterSignup() {
                 {T.button}
               </button>
             </div>
+            {state === 'invalid' ? (
+              <p id={`${id}-email-error`} className={styles.error} role="alert">
+                <span>{T.invalidEmail}</span>
+              </p>
+            ) : null}
             {state === 'failed' ? (
               <p className={styles.error} role="alert">
                 <span>

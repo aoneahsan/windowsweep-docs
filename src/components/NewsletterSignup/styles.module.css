@@ -99,6 +99,9 @@
     animation: none;
   }
 }
+.input[aria-invalid='true'] {
+  border-color: var(--ifm-color-danger-lightest);
+}
 .error {
   margin: 0.25rem 0 0;
   font-size: 0.875rem;
