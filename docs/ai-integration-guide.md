@@ -126,7 +126,7 @@ self-contained HTML page without extra tools.
 
 ## Elevation
 
-Sections 12-16 and 20 need Administrator rights. Without them the runner skips each with the exact command
+Sections 12-16, 20, 27 and 29 need Administrator rights. Without them the runner skips each with the exact command
 to run. `--elevate` relaunches the whole run through a UAC prompt: **a new elevated window opens with its own
 log and report**, and the original process waits and returns the child's exit code. That prompt cannot be
 answered by a script, so `--elevate` does not belong in an unattended context.
@@ -138,7 +138,7 @@ answered by a script, so `--elevate` does not belong in an unattended context.
 - - **Protected paths are refused regardless of flags**: every drive root, fifteen declared roots (Windows, System32, SysWOW64, both Program Files folders, ProgramData, `C:\Users` with Default and Public, the profile root, and the AppData Roaming, Local and LocalLow folders), 66 protected subtrees, 50 path patterns and 13 file names. Two paths are declared exceptions - `%LOCALAPPDATA%\Android\Sdk\.temp` and `.downloadIntermediates` - and there are no others. No flag bypasses any of it.
 - **Junctions and symlinks are removed as links, never followed.**
 - **`--dry-run` and `--scan` write nothing** but the log and the report.
-- **Section numbers are a public contract.** 0-29 in the 1.4.0 source; a section may be retired as a no-op, and a number is
+- **Section numbers are a public contract.** 0-29 in the current source; a section may be retired as a no-op, and a number is
   never reused. Read `--list --json` rather than hard-coding the set.
 - **Zero runtime dependencies.** The package is PowerShell plus a Node launcher that uses only built-in
   modules.
