@@ -4,6 +4,7 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import { createSitemapItems } from './plugins/site-pages';
 import rehypeTableScroll from './plugins/rehype-table-scroll';
+import rehypeThirdPartyLinks from './plugins/rehype-third-party-links';
 
 // ---------------------------------------------------------------------------
 // windowsweep — Documentation site config
@@ -268,7 +269,7 @@ const config: Config = {
           showLastUpdateTime: true,
           breadcrumbs: true,
           // Every table sits in a labelled, keyboard-focusable scroll region (F-EXP-006).
-          rehypePlugins: [rehypeTableScroll],
+          rehypePlugins: [rehypeTableScroll, rehypeThirdPartyLinks],
         },
         blog: false,
         theme: {
