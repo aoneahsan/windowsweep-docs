@@ -1,6 +1,6 @@
 ---
 title: 'Use a desktop plan'
-description: 'How real-run allowances, Pro, Team, referrals and plan requests work in windowsweep.'
+description: 'How real-run allowances, Pro, Team, checkout and referrals work in windowsweep.'
 tags: [desktop, plans, runs]
 ---
 
@@ -20,9 +20,13 @@ Free keeps signed-in run-summary sync, History across machines and the report ex
 
 The command-line `--install-task` remains available without a desktop plan. A Free user's old desktop weekly task is removed on the first start of 1.4.0, with a one-time notice; a command-line task is left alone.
 
-## How do I request a plan while checkout is closed?
+## How do I buy Pro or Team?
 
-Choose **Request Pro** or **Request Team** on Plans, or request one from [Pricing](https://windowsweep.aoneahsan.com/pricing). A request records the plan you want. It charges nothing and grants nothing. When checkout opens, the windowsweep team emails a pay link and marks the request notified; the team closes it separately. Until a payment is recorded, your current plan stays in effect.
+Choose **Subscribe to Pro** or **Subscribe to Team**, on **Plans** in the desktop app from version 1.4.4 or on [Pricing](https://windowsweep.aoneahsan.com/pricing). A plan belongs to an account. Signed out, both buttons ask you to sign in with Google first. On Plans, Polar's checkout page opens in your browser, and Plans shows the plan once Polar confirms the payment. On Pricing, the browser leaves for Polar's checkout in the same tab, and the plan shows on your account once Polar confirms it. Either way, the checkout carries your Monthly or Yearly choice and, for Team, the seat count.
+
+Polar is the merchant of record: it takes the payment, adds any sales tax or VAT and issues the receipt. It also hosts the customer portal and emails each buyer its link.
+
+If you requested a plan while checkout was closed, the windowsweep team emails you a link to pay, which opens Pricing with the period and seats you asked for already chosen. The request alone grants nothing. Until a payment is recorded, your current plan stays in effect.
 
 ## How do referral rewards work?
 

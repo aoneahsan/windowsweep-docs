@@ -17,7 +17,7 @@ windowsweep is a Windows PowerShell 5.1 engine with a zero-dependency Node launc
 - [Quick start](https://windowsweep-docs.aoneahsan.com/quick-start): four commands from self-test to a real cleanup
 - [Desktop app](https://windowsweep-docs.aoneahsan.com/desktop): what the window adds over the command line and what leaves the machine
 - [Sections 0-29](https://windowsweep-docs.aoneahsan.com/sections): exactly what each of the 30 sections touches in the current source
-- [Desktop plans](https://windowsweep-docs.aoneahsan.com/plans): what counts as a real run, what each plan adds, plan requests and referral time
+- [Desktop plans](https://windowsweep-docs.aoneahsan.com/plans): what counts as a real run, what each plan adds, how to buy Pro or Team, and referral time
 - [Required updates](https://windowsweep-docs.aoneahsan.com/updates): the notice, block and verified desktop installer
 - [Policy notice](https://windowsweep-docs.aoneahsan.com/legal-notice): the Terms and Privacy links and where the bar appears
 - [Desktop tours](https://windowsweep-docs.aoneahsan.com/desktop-tours): page tours and the walkthrough; no tour starts a run
