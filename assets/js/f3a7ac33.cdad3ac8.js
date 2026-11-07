@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwindowsweep_docs||=[]).push([[7800],{3764(a){a.exports=JSON.parse('{"tag":{"label":"plans","permalink":"/tags/plans","allTagsPath":"/tags","count":1,"items":[{"id":"plans","title":"Use a desktop plan","description":"How real-run allowances, Pro, Team, checkout and referrals work in windowsweep.","permalink":"/plans"}],"unlisted":false}}')}}]);

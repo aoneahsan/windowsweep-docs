@@ -5,8 +5,16 @@
     <link>https://windowsweep-docs.aoneahsan.com/feed</link>
     <description>Every windowsweep release, newest first: the version, the date and what changed.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 06 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 07 Nov 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://windowsweep-docs.aoneahsan.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>windowsweep 1.4.4</title>
+      <link>https://windowsweep-docs.aoneahsan.com/changelog#144---2026-11-07</link>
+      <guid isPermaLink="false">windowsweep-1.4.4</guid>
+      <pubDate>Sat, 07 Nov 2026 00:00:00 GMT</pubDate>
+      <category>release</category>
+      <description>&lt;p&gt;&lt;strong&gt;Changed&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Checkout is open on Plans. In the desktop app, Subscribe to Pro and Subscribe to Team stand where Request Pro and Request Team stood, and a plan request left pending from before no longer disables them. Pro&apos;s button is filled and Team&apos;s is outlined; in 1.4.3 both were filled. Pressing one creates a checkout for the signed-in account with the Monthly or Yearly choice and the Team seat count, and opens Polar&apos;s checkout page in your browser. The app refuses any checkout address that is not on polar.sh. If the checkout does not open, the note under the cards ends &quot;Nothing was charged.&quot;&lt;/li&gt;&lt;li&gt;A paid plan appears with no restart and no refresh. Once Polar confirms the payment, a private signal for that one account tells the window to read the plan again, and so do focus and a returning network. Never on a timer. The note under the cards then names the plan: &quot;Pro is on this account now, with no limit on real runs.&quot;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Fixed&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;The release broadcast reconnects after a network drop. An update notice or block arrives on that broadcast. In 1.4.3, after a drop, the window stopped listening until the app restarted; meanwhile it read the release record only on focus or when the network came back.&lt;/li&gt;&lt;li&gt;The command-line tool is unchanged in this release. It moves to 1.4.4 so the CLI and the desktop app stay on one version.&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>windowsweep 1.4.3</title>
       <link>https://windowsweep-docs.aoneahsan.com/changelog#143---2026-11-06</link>
