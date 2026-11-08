@@ -5,8 +5,16 @@
     <link>https://windowsweep-docs.aoneahsan.com/feed</link>
     <description>Every windowsweep release, newest first: the version, the date and what changed.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 07 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 08 Nov 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://windowsweep-docs.aoneahsan.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>windowsweep 1.4.5</title>
+      <link>https://windowsweep-docs.aoneahsan.com/changelog#145---2026-11-08</link>
+      <guid isPermaLink="false">windowsweep-1.4.5</guid>
+      <pubDate>Sun, 08 Nov 2026 00:00:00 GMT</pubDate>
+      <category>release</category>
+      <description>&lt;p&gt;&lt;strong&gt;Fixed&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;A plan cancelled in Polar&apos;s customer portal reads its end on Plans. The desktop app said &quot;Renews on&quot; until the paid period ran out, because the cancellation never reached the account. It does now, and Plans reads &quot;Ends on&quot; with the period&apos;s last day; if the cancellation is withdrawn, &quot;Renews on&quot; comes back. Polar stops charging a cancelled subscription, and the plan runs to the end of its period either way.&lt;/li&gt;&lt;li&gt;Closing the window during an update download installs the update. The install on close took effect only once the download had finished, so a window closed straight after start closed without installing, and the update came one start late. A close during the download now hides the window, lets the download finish for up to a minute, then runs the installer. Past that minute the app closes, and the next start downloads the update again.&lt;/li&gt;&lt;li&gt;The command-line tool is unchanged in this release. It moves to 1.4.5 so the CLI and the desktop app stay on one version.&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>windowsweep 1.4.4</title>
       <link>https://windowsweep-docs.aoneahsan.com/changelog#144---2026-11-07</link>
