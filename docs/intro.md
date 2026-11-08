@@ -88,4 +88,4 @@ them; the whole `windowsweep-root` folder has to be copied. The status record ab
 | **Author** | [The windowsweep team](./about.md) - [contact form](https://windowsweep.aoneahsan.com/contact), after signing in |
 | **Support the work** | https://aoneahsan.com/payment?project-id=windowsweep&project-identifier=windowsweep |
 
-Last Updated: 2026-11-08 - tool version 1.4.5
+Last Updated: 2026-11-08 - tool version 1.4.6
