@@ -24,7 +24,7 @@ import rehypeThirdPartyLinks from './plugins/rehype-third-party-links';
 // ---------------------------------------------------------------------------
 
 const SITE_URL = 'https://windowsweep-docs.aoneahsan.com';
-const TOOL_VERSION = '1.4.4';
+const TOOL_VERSION = '1.4.5';
 
 // 🔴 The release gate's two public client identifiers come from the environment, never a literal in
 // this public repo. Docusaurus loads no .env of its own, so the untracked `.env.local` (then `.env`) is
