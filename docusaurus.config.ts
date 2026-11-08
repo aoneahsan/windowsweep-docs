@@ -341,7 +341,8 @@ const config: Config = {
       logo: {
         alt: 'windowsweep logo',
         src: 'img/logo.svg',
-        srcDark: 'img/logo.svg',
+        // the header's mark in each appearance's page ink, as windowsweep.aoneahsan.com draws it
+        srcDark: 'img/logo-dark.svg',
         width: 32,
         height: 32,
       },
