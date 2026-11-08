@@ -8,6 +8,14 @@
     <lastBuildDate>Sun, 08 Nov 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://windowsweep-docs.aoneahsan.com/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>windowsweep 1.4.6</title>
+      <link>https://windowsweep-docs.aoneahsan.com/changelog#146---2026-11-08</link>
+      <guid isPermaLink="false">windowsweep-1.4.6</guid>
+      <pubDate>Sun, 08 Nov 2026 00:00:00 GMT</pubDate>
+      <category>release</category>
+      <description>&lt;p&gt;&lt;strong&gt;Changed&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;The desktop app&apos;s icon is the website header&apos;s mark. The taskbar and the Start menu show two sweep curves at full strength on the dark tile, where every desktop release from 1.1.0 to 1.4.5 drew three strokes of falling weight on a gradient. The installer, which showed its build tool&apos;s stock icon and pictures, now shows the same icon, and the mark and the name on its Welcome and Finish pages.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Fixed&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Update checks after the start screen wait for a slow server. In 1.4.5 every check gave up after 4 seconds, so while the address that serves updates took 4 to 12 seconds to answer, installed apps skipped check after check. The checks made when the window comes back into focus or into view, when the network comes back, and when Update or Update now is pressed on a required release now wait up to 20 seconds. The start screen&apos;s own check keeps its 4 seconds, so starting the app takes no longer than before.&lt;/li&gt;&lt;li&gt;The command-line tool is unchanged in this release. It moves to 1.4.6 so the CLI and the desktop app stay on one version.&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
       <title>windowsweep 1.4.5</title>
       <link>https://windowsweep-docs.aoneahsan.com/changelog#145---2026-11-08</link>
       <guid isPermaLink="false">windowsweep-1.4.5</guid>
