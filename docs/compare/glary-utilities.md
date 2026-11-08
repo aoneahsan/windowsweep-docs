@@ -6,53 +6,61 @@ tags: [compare, moving]
 
 # Moving from Glary Utilities
 
-**Last checked 7 November 2026.** Glary Utilities is a toolkit of more than 20 tools. windowsweep is the disk cleanup part of that picture and nothing else, so this is a move for that part only.
+**Last checked 7 November 2026.** Glary Utilities is a free toolkit of more than 20 Windows tools, with a paid Pro edition that adds a deeper scan and scheduled maintenance. windowsweep is one of those jobs, disk cleanup, and nothing else.
 
-## What this covers, and what stays with Glary Utilities
+Keep Glary for registry repair, file recovery, the duplicate finder, software updates and one-click maintenance. Move the cleanup if you would rather have thirty numbered sections that never change meaning, a dry-run before any real run, and a command line that costs nothing and is never counted.
 
-Sections 7 to 10 cover what Glary's Disk Cleanup page lists as temporary files and internet cache. Section 12 and section 16 cover the logs, both elevated, and section 16 is permanent. The [sections page](../sections.md) says what each one removes.
+## Two Glary tools have a counterpart
 
-What windowsweep will not do for you:
+Disk Cleanup and the uninstaller. Glary's Disk Cleanup page lists temporary files and internet cache, which sections 7 to 10 cover. Sections 12 and 16 reach the logs from an elevated run, and section 16 is permanent. Section 26 is the uninstaller. The [sections page](../sections.md) has every path.
 
-- Registry repair, file recovery, the duplicate finder and software updates. windowsweep does none of them.
-- Tracking cookies, if another tool clears them for you. windowsweep does not.
+Everything else in the toolkit stays put:
 
-## The move, step by step
+- Registry repair, file recovery, the duplicate finder and software updates.
+- Tracking cookies, if Glary or another tool clears them for you. windowsweep never does.
 
-1. Look first. This deletes nothing:
+## Swapping out Disk Cleanup
+
+1. Start with the read-only scan, which measures each target:
 
    ```powershell
    npx windowsweep --scan
    ```
 
-2. Rehearse the sections that do this job. Each line says what it would remove, and nothing goes:
+2. Rehearse the temporary files and internet cache. Nothing goes:
 
    ```powershell
    npx windowsweep --dry-run --only 7,8,9,10 --yes
    ```
 
-3. Run them. There is no undo for a cache it deletes, though the program rebuilds it:
+3. Run it. There is no undo for a deleted cache; the program behind it makes a new one:
 
    ```powershell
    npx windowsweep --only 7,8,9,10 --yes
    ```
 
-4. Prefer a window? The [desktop app](../desktop.md) drives the same engine. A real run there counts against your plan's allowance. A dry-run and the command line never do.
+4. Add the Windows Update side of the logs, elevated. Section 16, the event logs, is deep-gated and permanent, so it is left out of this command on purpose:
 
-Section 26 uninstalls programs you pick, each with its own registered uninstaller, so that one Glary tool does have a direct counterpart.
+   ```powershell
+   npx windowsweep --dry-run --only 12 --elevate --yes
+   ```
 
-Read the [safety model](../safety-model.md) if you want to see what every run refuses.
+For Glary's uninstaller, `npx windowsweep --only 26` lists installed programs and runs the uninstaller each one registered.
 
-## The facts, as read on 7 November 2026
+The [desktop app](../desktop.md) puts a window on the same engine. Real runs there count against your plan's allowance, and dry-runs and the command line are not counted. The refusals behind every section are in the [safety model](../safety-model.md).
 
-Glary Utilities's own pages, copied as they stood that day. A price can change the day after it is read, so [open Glary Utilities's site](https://www.glarysoft.com/glary-utilities/) before you buy.
+## Glary's prices, 7 November 2026
+
+Taken from Glarysoft's pages that day. Check the store before buying: [open Glary Utilities's site](https://www.glarysoft.com/glary-utilities/).
 
 | Plan | Price | Terms | Where it was read |
 |---|---|---|---|
 | Glary Utilities | $0 | The page calls it free | [Source](https://www.glarysoft.com/glary-utilities/), read 7 November 2026 |
 | Glary Utilities Pro | $39.95 a year | 3 PCs | [Source](https://www.glarysoft.com/store/), read 7 November 2026 |
 
-windowsweep's current prices and its Free plan's run limit are on the [pricing page](https://windowsweep.aoneahsan.com/pricing).
+windowsweep's side, with the Free plan's run limit, is on the [pricing page](https://windowsweep.aoneahsan.com/pricing).
+
+## The cleanup jobs compared
 
 | The job | Glary Utilities | windowsweep |
 |---|---|---|
@@ -65,4 +73,4 @@ windowsweep's current prices and its Free plan's run limit are on the [pricing p
 | Open source | Not stated on the pages we checked | Yes |
 | States no ads or bundled offers | Not stated on the pages we checked | Yes |
 
-"Not stated on the pages we checked" is not a no. The page did not say. The side-by-side version is at [Glary Utilities and windowsweep](https://windowsweep.aoneahsan.com/compare/glary-utilities).
+"Not stated on the pages we checked" means Glarysoft's page was silent, not that the answer is no. Side by side on the website: [Glary Utilities and windowsweep](https://windowsweep.aoneahsan.com/compare/glary-utilities).

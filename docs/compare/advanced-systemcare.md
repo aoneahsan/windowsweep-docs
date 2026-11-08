@@ -6,53 +6,59 @@ tags: [compare, moving]
 
 # Moving from Advanced SystemCare
 
-**Last checked 7 November 2026.** Advanced SystemCare decides for you with an AI mode. windowsweep does the reverse: thirty numbered sections, and you pick. If you liked not choosing, that is a real difference.
+**Last checked 7 November 2026.** Advanced SystemCare is IObit's all-in-one cleaner, with a free edition and a Pro subscription that adds deeper junk cleaning, registry cleaning and automatic privacy sweeps. An AI mode decides what to clean.
 
-## What this covers, and what stays with Advanced SystemCare
+windowsweep works the other way round: a numbered catalogue instead of a mode, and you pick. If you liked not choosing, along with the startup optimizer and online-trace sweeping in one window, Advanced SystemCare is the better fit. If you want a rehearsal that deletes nothing and a command line you can script with no account, read on.
 
-Sections 7 to 10 cover the junk files. Section 12 covers Windows Update and system temp when elevated, section 23 lists orphaned folders, and section 26 uninstalls what you pick. The [sections page](../sections.md) says what each one removes.
+## From a mode to a catalogue
 
-What windowsweep will not do for you:
+Sections 7 to 10 cover the junk files. Section 12 takes Windows Update and system temp when elevated, section 23 lists orphaned folders, and section 26 uninstalls what you pick. The [sections page](../sections.md) explains each one.
 
-- The startup optimizer. Section 25 here only lists startup items and changes nothing.
-- Registry cleaning and the automatic online-trace sweep. windowsweep does neither, and it clears no tracking cookies.
+No counterpart for:
 
-## The move, step by step
+- The startup optimizer. Section 25 lists startup items and changes nothing.
+- Registry cleaning and the automatic online-trace sweep. windowsweep does neither, and clears no tracking cookies.
 
-1. Look first. This deletes nothing:
+## Seeing the choices the AI mode made for you
+
+1. Print the catalogue. This lists every path windowsweep can touch, then the protected ones it refuses:
 
    ```powershell
-   npx windowsweep --scan
+   npx windowsweep --list-targets
    ```
 
-2. Rehearse the sections that do this job. Each line says what it would remove, and nothing goes:
+2. Rehearse the junk-file sections against your own disk:
 
    ```powershell
    npx windowsweep --dry-run --only 7,8,9,10 --yes
    ```
 
-3. Run them. There is no undo for a cache it deletes, though the program rebuilds it:
+3. Run them. Deleted caches have no undo, and each program rebuilds its own:
 
    ```powershell
    npx windowsweep --only 7,8,9,10 --yes
    ```
 
-4. Prefer a window? The [desktop app](../desktop.md) drives the same engine. A real run there counts against your plan's allowance. A dry-run and the command line never do.
+4. Look at startup separately. Section 25 shows everything that launches at sign-in, and you make changes in Task Manager, where they can be undone:
 
-Section 25 is worth one run on its own: `npx windowsweep --only 25`. It shows everything that starts at sign-in, and you change it in Task Manager, where you can undo it.
+   ```powershell
+   npx windowsweep --only 25
+   ```
 
-Read the [safety model](../safety-model.md) if you want to see what every run refuses.
+The [desktop app](../desktop.md) offers the same catalogue as a window. A real run there counts against your plan's allowance; dry-runs and the command line never do. The [safety model](../safety-model.md) covers what no section is allowed to remove.
 
-## The facts, as read on 7 November 2026
+## IObit's prices, 7 November 2026
 
-Advanced SystemCare's own pages, copied as they stood that day. A price can change the day after it is read, so [open Advanced SystemCare's site](https://www.iobit.com/en/advancedsystemcarefree.php) before you buy.
+Read from IObit's pages that day. The Pro price was a promotion, so [open Advanced SystemCare's site](https://www.iobit.com/en/advancedsystemcarefree.php) before you buy.
 
 | Plan | Price | Terms | Where it was read |
 |---|---|---|---|
 | Advanced SystemCare Free | $0 | - | [Source](https://www.iobit.com/en/advancedsystemcarefree.php), read 7 November 2026 |
 | Advanced SystemCare Pro | $16.77 a year | 1 PC, promotional price shown with $39.95 struck through | [Source](https://www.iobit.com/en/advancedsystemcarepro.php), read 7 November 2026 |
 
-windowsweep's current prices and its Free plan's run limit are on the [pricing page](https://windowsweep.aoneahsan.com/pricing).
+windowsweep lists its prices and the Free plan's run limit on the [pricing page](https://windowsweep.aoneahsan.com/pricing).
+
+## Job against job
 
 | The job | Advanced SystemCare | windowsweep |
 |---|---|---|
@@ -65,4 +71,4 @@ windowsweep's current prices and its Free plan's run limit are on the [pricing p
 | Open source | Not stated on the pages we checked | Yes |
 | States no ads or bundled offers | Not stated on the pages we checked | Yes |
 
-"Not stated on the pages we checked" is not a no. The page did not say. The side-by-side version is at [Advanced SystemCare and windowsweep](https://windowsweep.aoneahsan.com/compare/advanced-systemcare).
+IObit's page did not cover the two "Not stated" rows; that is silence, not a no. The website's version: [Advanced SystemCare and windowsweep](https://windowsweep.aoneahsan.com/compare/advanced-systemcare).

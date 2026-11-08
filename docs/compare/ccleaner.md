@@ -6,46 +6,48 @@ tags: [compare, moving]
 
 # Moving from CCleaner
 
-**Last checked 7 November 2026.** CCleaner's free edition and windowsweep overlap on browser data and junk files. They part ways after that: CCleaner's paid plans update drivers and software, and windowsweep names each path before it deletes anything.
+**Last checked 7 November 2026.** CCleaner comes from Gen Digital: a free edition, and two paid subscriptions that add driver and software updates, a performance optimizer and automatic cleaning. windowsweep reclaims disk space and does nothing else.
 
-## What this covers, and what stays with CCleaner
+So the question is which CCleaner you use. If you pay for the driver updates, the sleep mode for background apps or the cloud drive cleaner, keep paying; windowsweep has none of them. If you open the free edition to clear junk and browser files, windowsweep covers that ground with every section on its Free plan, a dry-run that deletes nothing, a command line with no run limit, and MIT source you can read.
 
-Sections 7 to 10 cover browser caches, desktop-app caches, Windows user caches and user temp, which is the part of the job CCleaner's page describes as junk files and temporary internet files. The [sections page](../sections.md) says what each one removes.
+## The part of CCleaner this replaces
 
-What windowsweep will not do for you:
+CCleaner's page talks about junk files and temporary internet files. Here that work is split across four sections: 7 for browser caches, 8 for desktop-app caches, 9 for Windows user caches and 10 for user temp. Every path in each is listed on the [sections page](../sections.md).
 
-- Tracking cookies. windowsweep does not clear them today, so keep a tool that does if you rely on that.
-- Driver and software updates, and the sleep mode for background apps. windowsweep has neither.
+Two things have no counterpart:
 
-## The move, step by step
+- Tracking cookies. windowsweep leaves cookies, logins and history alone in every browser profile. If CCleaner clears cookies for you today, you still need something that does.
+- Driver updates, software updates and sleep mode for background apps.
 
-1. Look first. This deletes nothing:
+## Your first run without CCleaner
+
+1. Close your browsers. windowsweep skips an open browser entirely instead of clearing round it, so a browser left open keeps its whole cache.
+
+2. Measure. The scan sizes every target and removes nothing:
 
    ```powershell
    npx windowsweep --scan
    ```
 
-2. Rehearse the sections that do this job. Each line says what it would remove, and nothing goes:
+3. Rehearse sections 7 to 10. Every line of output names a path that would go:
 
    ```powershell
    npx windowsweep --dry-run --only 7,8,9,10 --yes
    ```
 
-3. Run them. There is no undo for a cache it deletes, though the program rebuilds it:
+4. Run them for real. A deleted cache has no undo; the program it belonged to builds a fresh one:
 
    ```powershell
    npx windowsweep --only 7,8,9,10 --yes
    ```
 
-4. Prefer a window? The [desktop app](../desktop.md) drives the same engine. A real run there counts against your plan's allowance. A dry-run and the command line never do.
+CCleaner puts automatic cleaning behind its paid plans. windowsweep's weekly task needs a global install rather than a plan: `npm install -g windowsweep`, then `windowsweep --install-task`. The [desktop app](../desktop.md) runs the same engine with its own weekly schedule on [Pro](../plans.md); a real run there counts against your plan's allowance, and dry-runs and the command line never do.
 
-Want it to run by itself? CCleaner's automatic cleaning is a paid feature on its page. Here, a global install adds a weekly task: `npm install -g windowsweep`, then `windowsweep --install-task`. The desktop app's own weekly schedule is on [Pro](../plans.md).
+Before the real run, the [safety model](../safety-model.md) lists what windowsweep refuses whatever you type.
 
-Read the [safety model](../safety-model.md) if you want to see what every run refuses.
+## CCleaner's prices, 7 November 2026
 
-## The facts, as read on 7 November 2026
-
-CCleaner's own pages, copied as they stood that day. A price can change the day after it is read, so [open CCleaner's site](https://www.ccleaner.com/ccleaner) before you buy.
+Copied from CCleaner's page that day. Both paid plans renew at a higher price than the first year, so [open CCleaner's site](https://www.ccleaner.com/ccleaner) before you buy.
 
 | Plan | Price | Terms | Where it was read |
 |---|---|---|---|
@@ -53,17 +55,15 @@ CCleaner's own pages, copied as they stood that day. A price can change the day 
 | CCleaner Professional | $29.95 a year | First year, 1 device; the page states a renewal price of $44.95 a year | [Source](https://www.ccleaner.com/ccleaner), read 7 November 2026 |
 | CCleaner Professional Plus | $39.95 a year | First year, 3 devices; the page states a renewal price of $64.95 a year | [Source](https://www.ccleaner.com/ccleaner), read 7 November 2026 |
 
-windowsweep's current prices and its Free plan's run limit are on the [pricing page](https://windowsweep.aoneahsan.com/pricing).
+What windowsweep costs, and how many real runs its Free plan allows, is on the [pricing page](https://windowsweep.aoneahsan.com/pricing).
+
+## What CCleaner's page confirms
+
+Read on 7 November 2026, the page did not say whether CCleaner clears log files or tracking cookies, finds folders left by removed software, uninstalls programs, is open source, or comes without ads and bundled offers. Those rows are left out here. A page that does not mention something has not said no.
 
 | The job | CCleaner | windowsweep |
 |---|---|---|
 | Clears browser and app caches | Yes ([source](https://www.ccleaner.com/ccleaner)) | Yes |
-| Clears log files | Not stated on the pages we checked | Yes |
-| Clears tracking cookies | Not stated on the pages we checked | No |
-| Finds folders left by removed software | Not stated on the pages we checked | Yes |
-| Uninstalls programs | Not stated on the pages we checked | Yes |
 | Free to use | Yes ([source](https://www.ccleaner.com/ccleaner)) | Yes |
-| Open source | Not stated on the pages we checked | Yes |
-| States no ads or bundled offers | Not stated on the pages we checked | Yes |
 
-"Not stated on the pages we checked" is not a no. The page did not say. The side-by-side version is at [CCleaner and windowsweep](https://windowsweep.aoneahsan.com/compare/ccleaner).
+The website sets the two side by side at [CCleaner and windowsweep](https://windowsweep.aoneahsan.com/compare/ccleaner).

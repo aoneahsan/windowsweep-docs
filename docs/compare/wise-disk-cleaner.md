@@ -6,52 +6,59 @@ tags: [compare, moving]
 
 # Moving from Wise Disk Cleaner
 
-**Last checked 7 November 2026.** Wise Disk Cleaner is free with no run count, and its page covers temporary files, old updates, logs and uninstalled residues. windowsweep does most of that with a dry-run first, and it clears no cookies.
+**Last checked 7 November 2026.** Wise Disk Cleaner is free, from WiseCleaner, with scheduled cleaning, a defrag and TRIM tool and a privacy sweep of browser traces. Its page covers temporary files, old updates, logs and uninstalled residues.
 
-## What this covers, and what stays with Wise Disk Cleaner
+Wise Disk Cleaner suits you if cookies and history are part of the clean, or you rely on its defrag and TRIM pass; it does all of it with no run count. windowsweep suits you if you want a rehearsal before anything goes, every target named before it is touched, an uninstaller in the same tool, and source you can read.
 
-Sections 7, 9 and 10 cover browser caches, Windows user caches and user temp. Section 12 covers Windows Update and system temp when elevated, and sections 23 and 27 list what uninstalled programs left. The [sections page](../sections.md) says what each one removes.
+## Which sections match
 
-What windowsweep will not do for you:
+Sections 7, 9 and 10 cover browser caches, Windows user caches and user temp. Section 12 takes Windows Update and system temp when elevated, and sections 23 and 27 list what uninstalled programs left. Each path is on the [sections page](../sections.md).
 
-- Cookies and history. Wise Disk Cleaner's privacy sweep clears them and windowsweep does not.
-- Defrag and TRIM. windowsweep has neither.
+Not coming with you:
 
-## The move, step by step
+- Cookies and history. Wise Disk Cleaner's privacy sweep clears them; windowsweep does not.
+- Defrag and TRIM, which windowsweep lacks.
 
-1. Look first. This deletes nothing:
+## Rebuilding your schedule
 
-   ```powershell
-   npx windowsweep --scan
-   ```
-
-2. Rehearse the sections that do this job. Each line says what it would remove, and nothing goes:
+1. Rehearse a weekly pass. The `minimal` profile is sections 7 to 10, and the dry-run removes nothing:
 
    ```powershell
-   npx windowsweep --dry-run --only 7,9,10 --yes
+   npx windowsweep --profile minimal --dry-run --yes
    ```
 
-3. Run them. There is no undo for a cache it deletes, though the program rebuilds it:
+2. Rehearse the old-updates part from an elevated run. That is section 12:
 
    ```powershell
-   npx windowsweep --only 7,9,10 --yes
+   npx windowsweep --dry-run --only 12 --elevate --yes
    ```
 
-4. Prefer a window? The [desktop app](../desktop.md) drives the same engine. A real run there counts against your plan's allowance. A dry-run and the command line never do.
+3. When both lists look right, run the same two commands without `--dry-run`. A deleted cache cannot be brought back, though the program rebuilds it.
 
-Wise Disk Cleaner's scheduled cleaning has a counterpart here too: `npm install -g windowsweep`, then `windowsweep --install-task` for a weekly run.
+4. Put it on a timer. The weekly task refuses to run under `npx`, so install globally first:
 
-Read the [safety model](../safety-model.md) if you want to see what every run refuses.
+   ```powershell
+   npm install -g windowsweep
+   windowsweep --install-task
+   ```
 
-## The facts, as read on 7 November 2026
+   It runs on Sundays at 03:00 as your user.
 
-Wise Disk Cleaner's own pages, copied as they stood that day. A price can change the day after it is read, so [open Wise Disk Cleaner's site](https://www.wisecleaner.com/wise-disk-cleaner.html) before you buy.
+Uninstalled residues are interactive here: `npx windowsweep --only 23` for AppData, `--only 27 --elevate` for Program Files, and you pick each folder.
+
+In the [desktop app](../desktop.md), the same engine with a window, a real run counts against your plan's allowance; a dry-run and the command line never do. The [safety model](../safety-model.md) shows what windowsweep refuses on every run.
+
+## Wise Disk Cleaner's price, 7 November 2026
+
+As WiseCleaner's page gave it that day. [Open Wise Disk Cleaner's site](https://www.wisecleaner.com/wise-disk-cleaner.html) before you decide.
 
 | Plan | Price | Terms | Where it was read |
 |---|---|---|---|
 | Wise Disk Cleaner | $0 | The page says completely free to download and use | [Source](https://www.wisecleaner.com/wise-disk-cleaner.html), read 7 November 2026 |
 
-windowsweep's current prices and its Free plan's run limit are on the [pricing page](https://windowsweep.aoneahsan.com/pricing).
+For windowsweep, plans and the Free plan's run count are on the [pricing page](https://windowsweep.aoneahsan.com/pricing).
+
+## Feature rows
 
 | The job | Wise Disk Cleaner | windowsweep |
 |---|---|---|
@@ -64,4 +71,4 @@ windowsweep's current prices and its Free plan's run limit are on the [pricing p
 | Open source | Not stated on the pages we checked | Yes |
 | States no ads or bundled offers | Not stated on the pages we checked | Yes |
 
-"Not stated on the pages we checked" is not a no. The page did not say. The side-by-side version is at [Wise Disk Cleaner and windowsweep](https://windowsweep.aoneahsan.com/compare/wise-disk-cleaner).
+Where a row reads "Not stated on the pages we checked", WiseCleaner's page did not say either way. The website version: [Wise Disk Cleaner and windowsweep](https://windowsweep.aoneahsan.com/compare/wise-disk-cleaner).

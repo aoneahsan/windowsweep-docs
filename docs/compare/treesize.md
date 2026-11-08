@@ -6,63 +6,60 @@ tags: [compare, moving]
 
 # Moving from TreeSize
 
-**Last checked 7 November 2026.** TreeSize lets you sort, move and delete anything you can see. windowsweep only touches paths it has declared, and it refuses the protected ones. These are different tools, and you may want both.
+**Last checked 7 November 2026.** TreeSize is a disk space manager from JAM Software, in Free, Personal and Professional editions, and it lets you delete and act on files in bulk inside the folder view. windowsweep only touches paths it has declared, and refuses the protected ones.
 
-## What this covers, and what stays with TreeSize
+These are different tools, and you may want both. TreeSize suits sorting files by size, age or type, moving or deleting them in bulk, and in the Professional edition scanning servers and network shares on a schedule. windowsweep suits a cleaner that already knows the cache, log and leftover paths, refuses the protected ones, and reports the bytes each section reclaimed.
 
-Sections 7 to 10 remove caches and temp files from declared paths. Section 19 offers large or old files from Downloads and folders you add, and they go to the Recycle Bin. The [sections page](../sections.md) says what each one removes.
+## What changes hands
 
-What windowsweep will not do for you:
+Sections 7 to 10 remove caches and temp files from declared paths. Section 19 offers large or old files from Downloads and folders you add, and they go to the Recycle Bin. See the [sections page](../sections.md) for each path.
+
+TreeSize stays in charge of:
 
 - Bulk moves, sorting by age or type, and in the Professional edition, server and network-share scans. windowsweep scans none of those.
-- Tracking cookies stay untouched by windowsweep.
+- Tracking cookies are left alone by windowsweep as well.
 
-## The move, step by step
+## From hunting cache folders by hand
 
-1. Look first. This deletes nothing:
-
-   ```powershell
-   npx windowsweep --scan
-   ```
-
-2. Rehearse the sections that do this job. Each line says what it would remove, and nothing goes:
+1. Print the list you used to build in TreeSize. This shows every path each section can reach on your machine, then the protected ones:
 
    ```powershell
-   npx windowsweep --dry-run --only 7,8,9,10 --yes
+   npx windowsweep --list-targets
    ```
 
-3. Run them. There is no undo for a cache it deletes, though the program rebuilds it:
+2. Fence off anything you manage yourself. `--exclude-path` is refused in every section, so a tree you tidy in TreeSize stays exactly as you left it. Rehearse with it in place:
 
    ```powershell
-   npx windowsweep --only 7,8,9,10 --yes
+   npx windowsweep --dry-run --only 7,8,9,10 --yes --exclude-path D:\Archive
    ```
 
-4. Prefer a window? The [desktop app](../desktop.md) drives the same engine. A real run there counts against your plan's allowance. A dry-run and the command line never do.
+3. Run the same command without `--dry-run`. A cache removed this way has no undo; its program rebuilds it.
 
-If you used TreeSize to find cache folders by hand, `windowsweep --list-targets` prints every path each section can reach on your machine.
+4. For the large files TreeSize sorted for you, point section 19 at the folders you choose, then select each file:
 
-Read the [safety model](../safety-model.md) if you want to see what every run refuses.
+   ```powershell
+   npx windowsweep --only 19 --personal-roots "D:\Media"
+   ```
 
-## The facts, as read on 7 November 2026
+The [desktop app](../desktop.md) gives the same engine a window. Real runs in it count against your plan's allowance; dry-runs and the command line do not. The [safety model](../safety-model.md) sets out every refusal.
 
-TreeSize's own pages, copied as they stood that day. A price can change the day after it is read, so [open TreeSize's site](https://www.jam-software.com/treesize) before you buy.
+## JAM Software's prices, 7 November 2026
+
+Read from JAM Software's pages that day. A perpetual licence is offered beside the subscription, so [open TreeSize's site](https://www.jam-software.com/treesize) to compare them.
 
 | Plan | Price | Terms | Where it was read |
 |---|---|---|---|
 | TreeSize Free | $0 | For private use in a non-commercial environment | [Source](https://www.jam-software.com/treesize_free), read 7 November 2026 |
 | TreeSize Personal, single licence | $25.20 a year | Subscription, annual billing; a perpetual model is also offered | [Source](https://customers.jam-software.de/prices.php?language=EN&article_no=90), read 7 November 2026 |
 
-windowsweep's current prices and its Free plan's run limit are on the [pricing page](https://windowsweep.aoneahsan.com/pricing).
+What windowsweep costs, Free plan run limit included, is on the [pricing page](https://windowsweep.aoneahsan.com/pricing).
+
+## What TreeSize's pages state
+
+They describe a disk space manager, and of the eight cleaner rows compared here they confirm only the free edition. They did not say whether TreeSize clears caches, logs or tracking cookies, finds folders left by removed software, uninstalls programs, is open source, or comes without ads or bundled offers. Those rows are hidden; a page's silence is not a no.
 
 | The job | TreeSize | windowsweep |
 |---|---|---|
-| Clears browser and app caches | Not stated on the pages we checked | Yes |
-| Clears log files | Not stated on the pages we checked | Yes |
-| Clears tracking cookies | Not stated on the pages we checked | No |
-| Finds folders left by removed software | Not stated on the pages we checked | Yes |
-| Uninstalls programs | Not stated on the pages we checked | Yes |
 | Free to use | Yes ([source](https://www.jam-software.com/treesize_free)) | Yes |
-| Open source | Not stated on the pages we checked | Yes |
-| States no ads or bundled offers | Not stated on the pages we checked | Yes |
 
-"Not stated on the pages we checked" is not a no. The page did not say. The side-by-side version is at [TreeSize and windowsweep](https://windowsweep.aoneahsan.com/compare/treesize).
+Side by side on the website: [TreeSize and windowsweep](https://windowsweep.aoneahsan.com/compare/treesize).

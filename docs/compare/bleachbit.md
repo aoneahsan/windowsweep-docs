@@ -6,52 +6,60 @@ tags: [compare, moving]
 
 # Moving from BleachBit
 
-**Last checked 7 November 2026.** BleachBit is open source and free with no run count, and it clears things windowsweep refuses to touch. Moving across fully only makes sense if you never used it for cookies or history.
+**Last checked 7 November 2026.** BleachBit is an open-source cleaner for Windows and Linux. It previews every file before deletion, can shred files and wipe free space, and has no run count at all.
 
-## What this covers, and what stays with BleachBit
+If you use it for cookies, history and browser traces, on Linux, or with CleanerML rules you wrote yourself, stay with it: windowsweep does none of that and refuses to touch cookies. What windowsweep adds is the part BleachBit's page does not state. It finds orphaned AppData and leftover Program Files folders, uninstalls programs from the same tool, and its desktop window syncs run history to your account.
 
-Sections 7 to 10 do the cache and temp work. Section 12 adds Windows Update and system temp, and needs an elevated run. The [sections page](../sections.md) says what each one removes.
+## Keep BleachBit, add the leftovers
 
-What windowsweep will not do for you:
+The two can sit on one machine. Sections 7 to 10 do the same cache and temp work BleachBit does, and section 12 adds Windows Update and system temp from an elevated run. The [sections page](../sections.md) lists every path.
 
-- Cookies, history, saved passwords and browser traces. BleachBit clears these and windowsweep leaves them alone.
-- Shredding, free-space wiping, Linux, and your CleanerML rules.
+BleachBit keeps these:
 
-## The move, step by step
+- Cookies, history, saved passwords and browser traces. windowsweep leaves them alone in every browser profile.
+- Shredding, free-space wiping, Linux and your CleanerML rules.
 
-1. Look first. This deletes nothing:
+## Start where BleachBit stops
 
-   ```powershell
-   npx windowsweep --scan
-   ```
-
-2. Rehearse the sections that do this job. Each line says what it would remove, and nothing goes:
+1. Ask what removed programs left in AppData. The dry-run lists folders no installed program claims and removes nothing:
 
    ```powershell
-   npx windowsweep --dry-run --only 7,8,9,10 --yes
+   npx windowsweep --dry-run --only 23
    ```
 
-3. Run them. There is no undo for a cache it deletes, though the program rebuilds it:
+2. Pick from that list for real. Section 23 never picks for you, and what you choose goes to the Recycle Bin:
 
    ```powershell
-   npx windowsweep --only 7,8,9,10 --yes
+   npx windowsweep --only 23
    ```
 
-4. Prefer a window? The [desktop app](../desktop.md) drives the same engine. A real run there counts against your plan's allowance. A dry-run and the command line never do.
+3. Do the same under Program Files and ProgramData. Section 27 needs an elevated run:
 
-What windowsweep adds beside it: section 23 lists orphaned AppData folders, section 27 lists folders that removed programs left, and section 26 uninstalls programs you pick. The two can sit on one machine.
+   ```powershell
+   npx windowsweep --only 27 --elevate
+   ```
 
-Read the [safety model](../safety-model.md) if you want to see what every run refuses.
+4. Uninstall what you no longer use with section 26, which runs each program's own registered uninstaller. Uninstalling is permanent:
 
-## The facts, as read on 7 November 2026
+   ```powershell
+   npx windowsweep --only 26
+   ```
 
-BleachBit's own pages, copied as they stood that day. A price can change the day after it is read, so [open BleachBit's site](https://www.bleachbit.org/) before you buy.
+BleachBit can stay on cache duty. If you would rather windowsweep took that too, rehearse with `npx windowsweep --dry-run --only 7,8,9,10 --yes`, then drop `--dry-run`.
+
+The [desktop app](../desktop.md) drives the same engine and is where run history syncs. Its real runs count against your plan's allowance; a dry-run or the command line never does. The [safety model](../safety-model.md) has the paths every run refuses.
+
+## BleachBit's price, 7 November 2026
+
+From BleachBit's own page that day. [Open BleachBit's site](https://www.bleachbit.org/) to see it as it stands now.
 
 | Plan | Price | Terms | Where it was read |
 |---|---|---|---|
 | BleachBit | $0 | The page says 100% free forever, GPLv3 | [Source](https://www.bleachbit.org/), read 7 November 2026 |
 
-windowsweep's current prices and its Free plan's run limit are on the [pricing page](https://windowsweep.aoneahsan.com/pricing).
+windowsweep's prices and its Free plan's run limit: the [pricing page](https://windowsweep.aoneahsan.com/pricing).
+
+## Job by job
 
 | The job | BleachBit | windowsweep |
 |---|---|---|
@@ -64,4 +72,4 @@ windowsweep's current prices and its Free plan's run limit are on the [pricing p
 | Open source | Yes ([source](https://www.bleachbit.org/)) | Yes |
 | States no ads or bundled offers | Yes ([source](https://www.bleachbit.org/)) | Yes |
 
-"Not stated on the pages we checked" is not a no. The page did not say. The side-by-side version is at [BleachBit and windowsweep](https://windowsweep.aoneahsan.com/compare/bleachbit).
+Two rows read "Not stated on the pages we checked": BleachBit's page was silent on them, which is not the same as no. On the website: [BleachBit and windowsweep](https://windowsweep.aoneahsan.com/compare/bleachbit).
