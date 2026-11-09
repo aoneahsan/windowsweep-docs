@@ -302,6 +302,7 @@ const config: Config = {
     // master and this PNG is a re-runnable 1200x630 export of it - re-export whenever the master changes.
     image: 'img/social-card.png',
     metadata: [
+      { name: 'yandex-verification', content: 'bfb02722189028cf' },
       {
         name: 'description',
         content:
