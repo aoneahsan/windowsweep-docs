@@ -73,6 +73,6 @@ windowsweep's prices, and the exact number of real runs on its Free plan, are on
 | Uninstalls programs | Yes ([source](https://www.avast.com/cleanup)) | Yes |
 | Free to use | Partly ([source](https://www.avast.com/cleanup)) | Yes |
 | Open source | Not stated on the pages we checked | Yes |
-| States no ads or bundled offers | Not stated on the pages we checked | Yes |
+| States no third-party ads or bundled offers | Not stated on the pages we checked | Yes |
 
 Avast's page left three rows unaddressed, marked "Not stated on the pages we checked"; none of them is a no. The website version: [Avast Cleanup and windowsweep](https://windowsweep.aoneahsan.com/compare/avast-cleanup).

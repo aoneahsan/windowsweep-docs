@@ -61,7 +61,7 @@ windowsweep's prices and its Free plan's run limit sit on the [pricing page](htt
 
 ## What Microsoft's page states
 
-The support page is about one setting, and of the eight rows compared in these guides it confirms only that Storage Sense costs nothing. It does not say whether it clears browser and app caches, log files or tracking cookies, finds folders left by removed software, uninstalls programs, is open source, or carries ads or bundled offers. Those rows are hidden rather than marked no.
+The support page is about one setting, and of the eight rows compared in these guides it confirms only that Storage Sense costs nothing. It does not say whether it clears browser and app caches, log files or tracking cookies, finds folders left by removed software, uninstalls programs, is open source, or carries third-party ads or bundled offers. Those rows are hidden rather than marked no.
 
 | The job | Storage Sense | windowsweep |
 |---|---|---|

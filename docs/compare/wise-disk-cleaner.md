@@ -69,6 +69,6 @@ For windowsweep, plans and the Free plan's run count are on the [pricing page](h
 | Uninstalls programs | Not stated on the pages we checked | Yes |
 | Free to use | Yes ([source](https://www.wisecleaner.com/wise-disk-cleaner.html)) | Yes |
 | Open source | Not stated on the pages we checked | Yes |
-| States no ads or bundled offers | Not stated on the pages we checked | Yes |
+| States no third-party ads or bundled offers | Not stated on the pages we checked | Yes |
 
 Where a row reads "Not stated on the pages we checked", WiseCleaner's page did not say either way. The website version: [Wise Disk Cleaner and windowsweep](https://windowsweep.aoneahsan.com/compare/wise-disk-cleaner).

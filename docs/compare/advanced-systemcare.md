@@ -69,6 +69,6 @@ windowsweep lists its prices and the Free plan's run limit on the [pricing page]
 | Uninstalls programs | Yes ([source](https://www.iobit.com/en/advancedsystemcarefree.php)) | Yes |
 | Free to use | Yes ([source](https://www.iobit.com/en/advancedsystemcarefree.php)) | Yes |
 | Open source | Not stated on the pages we checked | Yes |
-| States no ads or bundled offers | Not stated on the pages we checked | Yes |
+| States no third-party ads or bundled offers | Not stated on the pages we checked | Yes |
 
 IObit's page did not cover the two "Not stated" rows; that is silence, not a no. The website's version: [Advanced SystemCare and windowsweep](https://windowsweep.aoneahsan.com/compare/advanced-systemcare).

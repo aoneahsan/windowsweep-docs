@@ -60,7 +60,7 @@ windowsweep's prices and the Free plan's run limit are on its [pricing page](htt
 
 ## What WizTree's page states
 
-WizTree's page is about analysing disk space. Of the eight cleaner jobs in these guides, it states one: free for personal use. Whether it clears caches, logs or tracking cookies, finds folders left by removed software, uninstalls programs, is open source or carries ads goes unsaid, so those rows are hidden. Not mentioned is not the same as no.
+WizTree's page is about analysing disk space. Of the eight cleaner jobs in these guides, it states one: free for personal use. Whether it clears caches, logs or tracking cookies, finds folders left by removed software, uninstalls programs, is open source or carries third-party ads goes unsaid, so those rows are hidden. Not mentioned is not the same as no.
 
 | The job | WizTree | windowsweep |
 |---|---|---|

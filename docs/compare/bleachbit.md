@@ -70,6 +70,6 @@ windowsweep's prices and its Free plan's run limit: the [pricing page](https://w
 | Uninstalls programs | Not stated on the pages we checked | Yes |
 | Free to use | Yes ([source](https://www.bleachbit.org/)) | Yes |
 | Open source | Yes ([source](https://www.bleachbit.org/)) | Yes |
-| States no ads or bundled offers | Yes ([source](https://www.bleachbit.org/)) | Yes |
+| States no third-party ads or bundled offers | Yes ([source](https://www.bleachbit.org/)) | Yes |
 
 Two rows read "Not stated on the pages we checked": BleachBit's page was silent on them, which is not the same as no. On the website: [BleachBit and windowsweep](https://windowsweep.aoneahsan.com/compare/bleachbit).

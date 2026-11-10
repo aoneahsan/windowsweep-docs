@@ -71,6 +71,6 @@ windowsweep's side, with the Free plan's run limit, is on the [pricing page](htt
 | Uninstalls programs | Yes ([source](https://www.glarysoft.com/glary-utilities/)) | Yes |
 | Free to use | Yes ([source](https://www.glarysoft.com/glary-utilities/)) | Yes |
 | Open source | Not stated on the pages we checked | Yes |
-| States no ads or bundled offers | Not stated on the pages we checked | Yes |
+| States no third-party ads or bundled offers | Not stated on the pages we checked | Yes |
 
 "Not stated on the pages we checked" means Glarysoft's page was silent, not that the answer is no. Side by side on the website: [Glary Utilities and windowsweep](https://windowsweep.aoneahsan.com/compare/glary-utilities).

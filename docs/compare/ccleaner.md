@@ -59,7 +59,7 @@ What windowsweep costs, and how many real runs its Free plan allows, is on the [
 
 ## What CCleaner's page confirms
 
-Read on 7 November 2026, the page did not say whether CCleaner clears log files or tracking cookies, finds folders left by removed software, uninstalls programs, is open source, or comes without ads and bundled offers. Those rows are left out here. A page that does not mention something has not said no.
+Read on 7 November 2026, the page did not say whether CCleaner clears log files or tracking cookies, finds folders left by removed software, uninstalls programs, is open source, or comes without third-party ads and bundled offers. Those rows are left out here. A page that does not mention something has not said no.
 
 | The job | CCleaner | windowsweep |
 |---|---|---|

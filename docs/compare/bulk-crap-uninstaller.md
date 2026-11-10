@@ -68,6 +68,6 @@ windowsweep's plans and its Free plan's run limit: the [pricing page](https://wi
 | Uninstalls programs | Yes ([source](https://www.bcuninstaller.com/)) | Yes |
 | Free to use | Yes ([source](https://www.bcuninstaller.com/)) | Yes |
 | Open source | Yes ([source](https://www.bcuninstaller.com/)) | Yes |
-| States no ads or bundled offers | Not stated on the pages we checked | Yes |
+| States no third-party ads or bundled offers | Not stated on the pages we checked | Yes |
 
 Its page is about uninstalling, so four rows read "Not stated on the pages we checked". That means unmentioned, not no. The website compares them at [Bulk Crap Uninstaller and windowsweep](https://windowsweep.aoneahsan.com/compare/bulk-crap-uninstaller).

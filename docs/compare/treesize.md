@@ -56,7 +56,7 @@ What windowsweep costs, Free plan run limit included, is on the [pricing page](h
 
 ## What TreeSize's pages state
 
-They describe a disk space manager, and of the eight cleaner rows compared here they confirm only the free edition. They did not say whether TreeSize clears caches, logs or tracking cookies, finds folders left by removed software, uninstalls programs, is open source, or comes without ads or bundled offers. Those rows are hidden; a page's silence is not a no.
+They describe a disk space manager, and of the eight cleaner rows compared here they confirm only the free edition. They did not say whether TreeSize clears caches, logs or tracking cookies, finds folders left by removed software, uninstalls programs, is open source, or comes without third-party ads or bundled offers. Those rows are hidden; a page's silence is not a no.
 
 | The job | TreeSize | windowsweep |
 |---|---|---|

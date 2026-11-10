@@ -59,7 +59,7 @@ windowsweep's plans and its Free plan's run limit are on the [pricing page](http
 
 ## What Revo's pages confirm
 
-Revo's pages, read on 7 November 2026, did not say whether it clears browser and app caches, log files or tracking cookies, is open source, or comes without ads or bundled offers. Those five rows are hidden; an unmentioned feature is not a missing one.
+Revo's pages, read on 7 November 2026, did not say whether it clears browser and app caches, log files or tracking cookies, is open source, or comes without third-party ads or bundled offers. Those five rows are hidden; an unmentioned feature is not a missing one.
 
 | The job | Revo Uninstaller | windowsweep |
 |---|---|---|

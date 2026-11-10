@@ -73,6 +73,6 @@ For windowsweep's prices and the Free plan's run limit, see the [pricing page](h
 | Uninstalls programs | Yes ([source](https://singularlabs.com/software/system-ninja/)) | Yes |
 | Free to use | Yes ([source](https://singularlabs.com/software/system-ninja/)) | Yes |
 | Open source | Not stated on the pages we checked | Yes |
-| States no ads or bundled offers | Yes ([source](https://singularlabs.com/software/system-ninja/)) | Yes |
+| States no third-party ads or bundled offers | Yes ([source](https://singularlabs.com/software/system-ninja/)) | Yes |
 
 The three "Not stated" rows are ones SingularLabs' page did not address, which leaves them open rather than no. On the website: [System Ninja and windowsweep](https://windowsweep.aoneahsan.com/compare/system-ninja).

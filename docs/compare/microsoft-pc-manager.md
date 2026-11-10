@@ -55,7 +55,7 @@ windowsweep's plans, and how many real runs the Free plan includes: the [pricing
 
 ## What Microsoft's pages state
 
-Of the eight jobs compared across these guides, Microsoft's pages stated one: that PC Manager is free. They did not say whether it clears browser and app caches, log files or tracking cookies, finds folders left by removed software, uninstalls programs, is open source, or states no ads or bundled offers, so those rows are hidden. Silence on a page is not a no.
+Of the eight jobs compared across these guides, Microsoft's pages stated one: that PC Manager is free. They did not say whether it clears browser and app caches, log files or tracking cookies, finds folders left by removed software, uninstalls programs, is open source, or states no third-party ads or bundled offers, so those rows are hidden. Silence on a page is not a no.
 
 | The job | Microsoft PC Manager | windowsweep |
 |---|---|---|
