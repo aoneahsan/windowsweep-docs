@@ -24,7 +24,7 @@ import rehypeThirdPartyLinks from './plugins/rehype-third-party-links';
 // ---------------------------------------------------------------------------
 
 const SITE_URL = 'https://windowsweep-docs.aoneahsan.com';
-const TOOL_VERSION = '1.4.6';
+const TOOL_VERSION = '1.4.7';
 
 // 🔴 The release gate's two public client identifiers come from the environment, never a literal in
 // this public repo. Docusaurus loads no .env of its own, so the untracked `.env.local` (then `.env`) is
@@ -130,6 +130,41 @@ const config: Config = {
   // canonical version, i.e. telling search engines the whole site is duplicates of `/`.
   // Measured 2026-09-07: 51 of 51 pages carried both tags. Do not re-add it.
   headTags: [
+    {
+      tagName: 'meta',
+      attributes: { name: 'referrer', content: 'strict-origin-when-cross-origin' },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        'http-equiv': 'Content-Security-Policy',
+        content: [
+          "default-src 'self'",
+          "base-uri 'self'",
+          "object-src 'none'",
+          "form-action 'self'",
+          "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://challenges.cloudflare.com",
+          "style-src 'self' 'unsafe-inline'",
+          "img-src 'self' data: blob: https:",
+          "font-src 'self' data:",
+          "worker-src 'self' blob:",
+          'frame-src https://challenges.cloudflare.com',
+          [
+            "connect-src 'self'",
+            ...(supabaseUrl
+              ? [
+                  new URL(supabaseUrl).origin,
+                  new URL(supabaseUrl).origin.replace(/^https:/, 'wss:'),
+                ]
+              : []),
+            'https://fileshub.zaions.com',
+            'https://*.google-analytics.com',
+            'https://*.analytics.google.com',
+            'https://www.googletagmanager.com',
+          ].join(' '),
+        ].join('; '),
+      },
+    },
     {
       tagName: 'meta',
       attributes: { name: 'application-name', content: 'windowsweep Docs' },

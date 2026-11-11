@@ -74,12 +74,6 @@ No. The command-line tool makes no network calls at all, and self-test check [9]
 | [The windowsweep team](./about.md) | Its channels, the sibling tools, how to support the work |
 | [Project status](https://github.com/aoneahsan/windowsweep/blob/main/docs/features/windowsweep-completion/00-tracker.json) | Every phase and sub-task with its state, its evidence and its commit |
 
-ðŸ”´ **The three planning files are no longer in this repository.** Since 2026-09-07 (owner decision)
-`remaining-work.md` (the specification of every open item), `remaining-work-summary.md` (the one-page view
-with the percentage) and `what-this-project-consists-of.md` (what exists today) live one level above the
-repository, in the workspace folder that holds it - **outside version control**. A `git clone` does not carry
-them; the whole `windowsweep-root` folder has to be copied. The status record above stays here.
-
 ## Quick contact
 
 | Channel | Where |
