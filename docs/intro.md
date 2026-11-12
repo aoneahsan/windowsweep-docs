@@ -82,4 +82,4 @@ No. The command-line tool makes no network calls at all, and self-test check [9]
 | **Author** | [The windowsweep team](./about.md) - [contact form](https://windowsweep.aoneahsan.com/contact), after signing in |
 | **Support the work** | https://aoneahsan.com/payment?project-id=windowsweep&project-identifier=windowsweep |
 
-Last Updated: 2026-11-11 - tool version 1.4.7
+Last Updated: 2026-11-12 - tool version 1.4.8
