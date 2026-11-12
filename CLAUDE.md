@@ -1,7 +1,7 @@
 # WindowSweep docs — active guide
 
-**Last Updated:** 2026-11-05
-**Context pass:** 2026-10-14; next routine optimization eligible 2026-11-13.
+**Last Updated:** 2026-11-13
+**Context pass:** 2026-11-13; next routine optimization eligible 2026-12-13.
 
 This public Docusaurus repository is the GitHub Pages documentation site for the Windows cleanup CLI and desktop app. It is nested under the private `../windowsweep-root/` alongside public source `../windowsweep/` and private website `../windowsweep-web/`. The former detailed guide is archived in `context/docs-guide-2026-09-28.md` for a targeted lookup. Do not load it unless the task names a rule or historical incident there. Current release/version status comes from the product tracker and parent `../remaining-work-summary.md`.
 
@@ -30,9 +30,9 @@ Before stopping, commit every legitimate change and work-progress checkpoint in 
 
 | Field | Value |
 |---|---|
-| Last optimized | 2026-10-14 |
-| Next routine optimization eligible | 2026-11-13 |
-| Guide bytes | 4,428 B |
+| Last optimized | 2026-11-13 |
+| Next routine optimization eligible | 2026-12-13 |
+| Guide bytes | 4,466 B |
 | Covered subtree | This repository; parent windowsweep-root measured separately |
-| Method | Existing 2026-10-14 context pass retained; formal measurement fields repaired 2026-11-12, no routine optimization repeated |
+| Method | Due review: compact project-specific guidance retained; mirrors, routing, task headings and inherited root checked; current release facts corrected where needed |
 | Fleet record | code/docs/tracking/project-context-budget-tracker.json |
