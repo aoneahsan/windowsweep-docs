@@ -5,8 +5,16 @@
     <link>https://windowsweep-docs.aoneahsan.com/feed</link>
     <description>Every windowsweep release, newest first: the version, the date and what changed.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 08 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://windowsweep-docs.aoneahsan.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>windowsweep 1.4.7</title>
+      <link>https://windowsweep-docs.aoneahsan.com/changelog#147---2026-11-11</link>
+      <guid isPermaLink="false">windowsweep-1.4.7</guid>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 GMT</pubDate>
+      <category>release</category>
+      <description>&lt;p&gt;&lt;strong&gt;Changed&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Settings → About opens the team&apos;s other tools. Each card under More from the same team now hands its product&apos;s page to your browser, the way Source and Support do: the card waits while the address is handed over, then ticks. Nothing counts the press. The note above the cards now says what they are: ads for the team&apos;s own tools, never an advertising network, and windowsweep never appears in its own list.&lt;/li&gt;&lt;li&gt;The desktop app&apos;s libraries move to their current releases, Tauri 2.12 among them.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Fixed&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Trizlink&apos;s name. The list of the team&apos;s tools spelled it TrizLink.&lt;/li&gt;&lt;li&gt;The command-line tool is unchanged in this release. It moves to 1.4.7 so the CLI and the desktop app stay on one version.&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>windowsweep 1.4.6</title>
       <link>https://windowsweep-docs.aoneahsan.com/changelog#146---2026-11-08</link>
