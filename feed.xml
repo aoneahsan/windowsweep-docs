@@ -5,8 +5,16 @@
     <link>https://windowsweep-docs.aoneahsan.com/feed</link>
     <description>Every windowsweep release, newest first: the version, the date and what changed.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 11 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://windowsweep-docs.aoneahsan.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>windowsweep 1.4.8</title>
+      <link>https://windowsweep-docs.aoneahsan.com/changelog#148---2026-11-12</link>
+      <guid isPermaLink="false">windowsweep-1.4.8</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+      <category>release</category>
+      <description>&lt;p&gt;&lt;strong&gt;Fixed&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;The desktop Home screen keeps the unmeasured readout clear of its action buttons at the default window size.&lt;/li&gt;&lt;li&gt;The website plan editor keeps Save and its result visible while its fields scroll.&lt;/li&gt;&lt;li&gt;The command-line tool is unchanged. It moves to 1.4.8 so the CLI and the desktop app stay on one version.&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>windowsweep 1.4.7</title>
       <link>https://windowsweep-docs.aoneahsan.com/changelog#147---2026-11-11</link>
