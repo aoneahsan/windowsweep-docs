@@ -6,7 +6,7 @@ tags: [desktop, plans, runs]
 
 # Use a desktop plan
 
-Open **Plans** to see your current plan and how many real runs remain; a plan changes the desktop allowance and extra features while all 30 sections and their protected-path checks stay the same. Even when no real runs remain this month, a dry-run, scan, report-only run or command-line run is never counted.
+Open **Plans** to see your current plan and how many real runs remain; a plan changes the desktop allowance and extra features while all 33 sections and their protected-path checks stay the same. Even when no real runs remain this month, a dry-run, scan, report-only run or command-line run is never counted.
 
 ## How many real runs remain?
 

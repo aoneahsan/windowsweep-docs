@@ -6,9 +6,9 @@ tags: [compare, moving]
 
 # Moving from CCleaner
 
-**Last checked 7 November 2026.** CCleaner comes from Gen Digital: a free edition, and two paid subscriptions that add driver and software updates, a performance optimizer and automatic cleaning. windowsweep reclaims disk space and does nothing else.
+**Last checked 7 November 2026.** CCleaner comes from Gen Digital: a free edition, and two paid subscriptions that add driver and software updates, a performance optimizer and automatic cleaning. windowsweep reclaims disk space and installs the updates you pick, nothing else.
 
-So the question is which CCleaner you use. If you pay for the driver updates, the sleep mode for background apps or the cloud drive cleaner, keep paying; windowsweep has none of them. If you open the free edition to clear junk and browser files, windowsweep covers that ground with every section on its Free plan, a dry-run that deletes nothing, a command line with no run limit, and MIT source you can read.
+So the question is which CCleaner you use. If you pay for the sleep mode for background apps or the cloud drive cleaner, keep paying; windowsweep has neither. Its sections 31 and 32 install the driver and app updates you pick, from Windows Update and winget. If you open the free edition to clear junk and browser files, windowsweep covers that ground with every section on its Free plan, a dry-run that deletes nothing, a command line with no run limit, and MIT source you can read.
 
 ## The part of CCleaner this replaces
 
@@ -17,7 +17,7 @@ CCleaner's page talks about junk files and temporary internet files. Here that w
 Two things have no counterpart:
 
 - Tracking cookies. windowsweep leaves cookies, logins and history alone in every browser profile. If CCleaner clears cookies for you today, you still need something that does.
-- Driver updates, software updates and sleep mode for background apps.
+- Sleep mode for background apps.
 
 ## Your first run without CCleaner
 

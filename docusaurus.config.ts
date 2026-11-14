@@ -424,7 +424,7 @@ const config: Config = {
           title: 'Reference',
           items: [
             { label: 'CLI reference', to: '/cli-reference' },
-            { label: 'Sections 0-29', to: '/sections' },
+            { label: 'Sections 0-32', to: '/sections' },
             { label: 'Reports and logs', to: '/reports-and-logs' },
             { label: 'Changelog', to: '/changelog' },
           ],

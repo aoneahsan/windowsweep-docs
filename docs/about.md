@@ -23,10 +23,10 @@ No guessed paths. A path becomes a target only once it has been seen on a real m
 | macOS | [macleanup](https://github.com/aoneahsan/macleanup) | `npx macleanup` |
 | Windows | [windowsweep](https://github.com/aoneahsan/windowsweep) | `npx windowsweep` |
 
-All three share the same stance: name every path before touching it and show a dry-run before removal. Windowsweep also lets you scan Downloads or folders you add for large or old files; those selected files go to the Recycle Bin. The command-line engines make no network call unless you request an update check.
+All three share the same stance: name every path before touching it and show a dry-run before removal. windowsweep also lets you scan Downloads or folders you add for large or old files; those selected files go to the Recycle Bin. linux-cleanup and macleanup make no network call unless you request an update check. windowsweep's cleanup never touches the network; only its sections 30, 31 and 32, for the rows you pick, ask Windows Update or winget to download, and windowsweep itself sends nothing.
 
 ## Supporting the work
 
 If windowsweep reclaimed space for you, the two things that help most are a star on GitHub and a note to a colleague who has the same problem. You can also support the maintenance at [aoneahsan.com/payment](https://aoneahsan.com/payment?project-id=windowsweep&project-identifier=windowsweep).
 
-Last Updated: 2026-09-25
+Last Updated: 2026-11-14

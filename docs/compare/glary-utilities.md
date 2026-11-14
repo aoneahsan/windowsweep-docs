@@ -8,7 +8,7 @@ tags: [compare, moving]
 
 **Last checked 7 November 2026.** Glary Utilities is a free toolkit of more than 20 Windows tools, with a paid Pro edition that adds a deeper scan and scheduled maintenance. windowsweep is one of those jobs, disk cleanup, and nothing else.
 
-Keep Glary for registry repair, file recovery, the duplicate finder, software updates and one-click maintenance. Move the cleanup if you would rather have thirty numbered sections that never change meaning, a dry-run before any real run, and a command line that costs nothing and is never counted.
+Keep Glary for registry repair, file recovery, the duplicate finder and one-click maintenance. Move the cleanup if you would rather have thirty-three numbered sections that never change meaning, a dry-run before any real run, and a command line that costs nothing and is never counted.
 
 ## Two Glary tools have a counterpart
 
@@ -16,7 +16,7 @@ Disk Cleanup and the uninstaller. Glary's Disk Cleanup page lists temporary file
 
 Everything else in the toolkit stays put:
 
-- Registry repair, file recovery, the duplicate finder and software updates.
+- Registry repair, file recovery and the duplicate finder.
 - Tracking cookies, if Glary or another tool clears them for you. windowsweep never does.
 
 ## Swapping out Disk Cleanup

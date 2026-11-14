@@ -6,7 +6,7 @@ tags: [privacy, terms, desktop]
 
 # Read the policy notice
 
-Open [Privacy Policy](https://windowsweep.aoneahsan.com/privacy) to read what the website and desktop window send and keep. Open [Terms of Service](https://windowsweep.aoneahsan.com/terms) for the account, software and payment rules. The policy bar links to both pages and says that usage data is collected; the command-line engine makes no network call of its own.
+Open [Privacy Policy](https://windowsweep.aoneahsan.com/privacy) to read what the website and desktop window send and keep. Open [Terms of Service](https://windowsweep.aoneahsan.com/terms) for the account, software and payment rules. The policy bar links to both pages and says that usage data is collected. The command-line engine sends nothing: its cleanup never touches the network, and only sections 30, 31 and 32, for the rows you pick, ask Windows Update or winget to download.
 
 ## Where can I read the policy rules?
 

@@ -17,7 +17,7 @@ Sections 7 to 10 cover the junk files. Section 12 takes Windows Update and syste
 No counterpart for:
 
 - The startup optimizer. Section 25 lists startup items and changes nothing.
-- Registry cleaning and the automatic online-trace sweep. windowsweep does neither, and clears no tracking cookies.
+- Registry cleaning and the automatic online-trace sweep. windowsweep does neither (it removes only the registry keys of programs it uninstalled), and clears no tracking cookies.
 
 ## Seeing the choices the AI mode made for you
 
