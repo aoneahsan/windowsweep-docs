@@ -1,6 +1,6 @@
 # WindowSweep docs — active guide
 
-**Last Updated:** 2026-11-13
+**Last Updated:** 2026-11-14
 **Context pass:** 2026-11-13; next routine optimization eligible 2026-12-13.
 
 This public Docusaurus repository is the GitHub Pages documentation site for the Windows cleanup CLI and desktop app. It is nested under the private `../windowsweep-root/` alongside public source `../windowsweep/` and private website `../windowsweep-web/`. The former detailed guide is archived in `context/docs-guide-2026-09-28.md` for a targeted lookup. Do not load it unless the task names a rule or historical incident there. Current release/version status comes from the product tracker and parent `../remaining-work-summary.md`.
@@ -13,7 +13,7 @@ Pages here mirror `../windowsweep/docs/`, plus the root AI integration guide. Fi
 
 ## Checks and deploy
 
-Use Yarn: `yarn install --immutable`, `yarn gates` (typecheck and Docusaurus build), and `yarn typecheck:clean` after dependency changes. A build needs the untracked `.env.local` holding `DOCS_SUPABASE_URL` and `DOCS_SUPABASE_PUBLISHABLE_KEY`, the release gate's two public client identifiers (the same values as the website's `.env`); `docusaurus.config.ts` loads it and refuses a production build without them, because the live docs ran with no gate from 2026-11-04 to 2026-11-05. Broken internal links/anchors fail the build. Preview the built site with `yarn serve --no-open` in a controlled browser at desktop and mobile widths before publishing. GitHub Actions are disabled: a `main` push does not publish. Publish the verified static build from a detached `gh-pages` worktree with `.nojekyll`, push that branch normally, then request a Pages build with `gh api -X POST repos/aoneahsan/windowsweep-docs/pages/builds`. Confirm the live bundle hash and HTTPS at desktop and mobile widths. Do not deploy docs from a failed local build. Never run a dev server as proof of a production build.
+Use Yarn: `yarn install --immutable`, `yarn gates` (typecheck and Docusaurus build), and `yarn typecheck:clean` after dependency changes. A build needs the untracked `.env.local` holding four public client identifiers, the same values as the website's `.env`: `DOCS_SUPABASE_URL` and `DOCS_SUPABASE_PUBLISHABLE_KEY` for the release gate, and `DOCS_NEWSLETTER_LIST_ID` and `DOCS_FILESHUB_NEWSLETTER_KEY` (the website's `VITE_NEWSLETTER_LIST_ID` and `VITE_FILESHUB_NEWSLETTER_KEY`) for the footer signup. `docusaurus.config.ts` loads it and refuses a production build without any of them: the live docs ran with no gate from 2026-11-04 to 2026-11-05, and a 2026-11-14 publish from a machine holding only the first pair shipped every page without the signup. Broken internal links/anchors fail the build. Preview the built site with `yarn serve --no-open` in a controlled browser at desktop and mobile widths before publishing. GitHub Actions are disabled: a `main` push does not publish. Publish the verified static build from a detached `gh-pages` worktree with `.nojekyll`, push that branch normally, then request a Pages build with `gh api -X POST repos/aoneahsan/windowsweep-docs/pages/builds`. Confirm the live bundle hash and HTTPS at desktop and mobile widths. Do not deploy docs from a failed local build. Never run a dev server as proof of a production build.
 
 `plugins/site-pages.ts` builds `/sitemap`, `/feed` and `/feed.xml` from the sidebar and `docs/changelog.md` (Keep a Changelog, `## [X.Y.Z] - YYYY-MM-DD`) and dates every `sitemap.xml` URL from git (an uncommitted file reads as today). The build fails on an undated release, an undated sitemap URL, or a `/search` or tag page without `noindex`. `plugins/rehype-table-scroll.ts` puts every table in a labelled, focusable scroll region.
 
@@ -32,7 +32,7 @@ Before stopping, commit every legitimate change and work-progress checkpoint in 
 |---|---|
 | Last optimized | 2026-11-13 |
 | Next routine optimization eligible | 2026-12-13 |
-| Guide bytes | 4,466 B |
+| Guide bytes | 4,739 B |
 | Covered subtree | This repository; parent windowsweep-root measured separately |
 | Method | Due review: compact project-specific guidance retained; mirrors, routing, task headings and inherited root checked; current release facts corrected where needed |
 | Fleet record | code/docs/tracking/project-context-budget-tracker.json |

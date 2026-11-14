@@ -24,7 +24,7 @@ import rehypeThirdPartyLinks from './plugins/rehype-third-party-links';
 // ---------------------------------------------------------------------------
 
 const SITE_URL = 'https://windowsweep-docs.aoneahsan.com';
-const TOOL_VERSION = '1.4.8';
+const TOOL_VERSION = '1.5.0';
 
 // 🔴 The release gate's two public client identifiers come from the environment, never a literal in
 // this public repo. Docusaurus loads no .env of its own, so the untracked `.env.local` (then `.env`) is
@@ -44,11 +44,19 @@ if (process.env.NODE_ENV === 'production' && (!supabaseUrl || !supabasePublishab
 }
 const releaseChannel = process.env.DOCS_RELEASE_CHANNEL === 'test' ? 'test' : 'production';
 /* The release-notes signup in the footer (D90): the FilesHub list, its subscribe-only browser key (FilesHub key
-   92, a public client identifier) and an optional Turnstile site key. All optional: without the first two the
-   footer has no signup row. */
+   92, a public client identifier) and an optional Turnstile site key. Without the first two the footer has no
+   signup row, so a production build needs both. */
 const newsletterListId = process.env.DOCS_NEWSLETTER_LIST_ID?.trim() ?? '';
 const newsletterKey = process.env.DOCS_FILESHUB_NEWSLETTER_KEY?.trim() ?? '';
 const turnstileSiteKey = process.env.DOCS_TURNSTILE_SITE_KEY?.trim() ?? '';
+// 🔴 A build without them drops the signup from every page and still passes: the 2026-11-14 publish from a
+// machine whose .env.local held only the release-gate pair shipped the docs without it. Refuse to build.
+if (process.env.NODE_ENV === 'production' && (!newsletterListId || !newsletterKey)) {
+  throw new Error(
+    'DOCS_NEWSLETTER_LIST_ID and DOCS_FILESHUB_NEWSLETTER_KEY are required for a build (the footer signup). ' +
+      'Put the two public client identifiers in .env.local (see CLAUDE.md "Checks and deploy").'
+  );
+}
 
 // The one agent this site's structured data names (team-voice TV-11, owner decisions D45 and
 // D46, 2026-09-25: a product speaks as its team, never as one person). Its name is the footer
