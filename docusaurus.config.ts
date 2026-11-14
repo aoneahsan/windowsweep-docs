@@ -441,6 +441,7 @@ const config: Config = {
           title: 'The windowsweep team',
           items: [
             { label: 'About the team', to: '/about' },
+            { label: 'White-label & licensing', to: '/white-label' },
             { label: 'Contact', href: 'https://windowsweep.aoneahsan.com/contact' },
           ],
         },

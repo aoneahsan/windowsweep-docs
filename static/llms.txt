@@ -26,6 +26,12 @@ windowsweep is a Windows PowerShell 5.1 engine with a zero-dependency Node launc
 - [Admin sections and elevation](https://windowsweep-docs.aoneahsan.com/admin-and-elevation): sections 12-16, 20, 27 and 29, and the elevated parts of 26, 30 and 31
 - [Reports and logs](https://windowsweep-docs.aoneahsan.com/reports-and-logs): the JSON schema and the exports
 - [AI integration guide](https://windowsweep-docs.aoneahsan.com/ai-integration-guide): the contract an agent or a script runs under: the safe sequence, then the shapes and the exit codes
+- [White-label & licensing](https://windowsweep-docs.aoneahsan.com/white-label): the managed, non-exclusive licence for the desktop app and the npm command line; the source stays MIT and there is no buyout
+- [What a white-label licence delivers](https://windowsweep-docs.aoneahsan.com/white-label/delivered): the rebranded installers with their own update key, and the engine on npm under the buyer's name
+- [White-label setup](https://windowsweep-docs.aoneahsan.com/white-label/setup): from payment to the first branded build
+- [White-label updates and renewals](https://windowsweep-docs.aoneahsan.com/white-label/updates): six months included, then three, six or twelve months
+- [Verify a white-label licence](https://windowsweep-docs.aoneahsan.com/white-label/verify): by key or by the website's licence file
+- [White-label questions](https://windowsweep-docs.aoneahsan.com/white-label/faq)
 - [Troubleshooting](https://windowsweep-docs.aoneahsan.com/troubleshooting)
 - [FAQ](https://windowsweep-docs.aoneahsan.com/faq)
 - [Changelog](https://windowsweep-docs.aoneahsan.com/changelog)
