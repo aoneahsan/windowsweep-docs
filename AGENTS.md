@@ -1,6 +1,9 @@
 # WindowSweep docs — active guide
 
 **Last Updated:** 2026-11-14
+
+<!-- fleet:node-26-13-1 v1 --> Node 26.13.1 LTS (.nvmrc), packages latest — 2026-11-16
+
 **Context pass:** 2026-11-13; next routine optimization eligible 2026-12-13.
 
 This public Docusaurus repository is the GitHub Pages documentation site for the Windows cleanup CLI and desktop app. It is nested under the private `../windowsweep-root/` alongside public source `../windowsweep/` and private website `../windowsweep-web/`. The former detailed guide is archived in `context/docs-guide-2026-09-28.md` for a targeted lookup. Do not load it unless the task names a rule or historical incident there. Current release/version status comes from the product tracker and parent `../remaining-work-summary.md`.
