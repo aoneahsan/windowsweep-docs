@@ -28,4 +28,4 @@ Yes, unless you buy a code-signing certificate. windowsweep's own installers are
 
 ## How is a licence paid for?
 
-Through the payment provider's checkout, opened from the [white-label pricing page](https://windowsweep.aoneahsan.com/white-label/pricing). The [Terms of Service](https://windowsweep.aoneahsan.com/terms) cover payment.
+By bank transfer. Pay on the [white-label pricing page](https://windowsweep.aoneahsan.com/white-label/pricing) opens the licensing service's pay page, which lists windowsweep's bank details and the reference to quote. The licence is issued once the windowsweep team confirms the transfer. The [Terms of Service](https://windowsweep.aoneahsan.com/terms) cover payment.

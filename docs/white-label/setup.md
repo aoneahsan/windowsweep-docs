@@ -6,8 +6,8 @@ tags: [white-label, licensing, setup]
 
 # Set up a white-label build
 
-1. **Pay, or ask for a quote.** Pick the groups on the [white-label pricing page](https://windowsweep.aoneahsan.com/white-label/pricing). Pay opens the payment provider's checkout in the same tab. While card payment is closed, the same page sends a quote request instead.
-2. **The licence email.** Once the payment is confirmed, the licence email arrives with your licence key and a certificate. Returning to the site from the checkout does not issue a licence; the confirmation does.
+1. **Pay, or ask for a quote.** Pick the groups on the [white-label pricing page](https://windowsweep.aoneahsan.com/white-label/pricing). Pay opens the licensing service's pay page in the same tab, with the bank details and the reference to quote on your transfer. While transfers are not open, the same page sends a quote request instead.
+2. **The licence email.** Once the windowsweep team confirms your transfer, the licence email arrives with your licence key and a certificate. Sending the transfer or returning to the site does not issue a licence; the confirmation does.
 3. **Send your branding and accounts.** Reply to the licence email with:
    - the product name and command name;
    - the logo, as SVG if you have it, and your colours;
