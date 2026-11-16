@@ -16,3 +16,5 @@ static
 # below its header the same way.
 *.md
 *.mdx
+# Owner skill copies, synced by hash from the notebook: never reformat.
+.claude/skills/
