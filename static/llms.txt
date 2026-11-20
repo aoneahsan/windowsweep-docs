@@ -8,6 +8,14 @@
 
 windowsweep is a Windows PowerShell 5.1 engine with a zero-dependency Node launcher, published on npm as `windowsweep` and licensed MIT. The current version is __TOOL_VERSION__, and its self-test proves the guards on the machine it runs on. Run `npx windowsweep --scan` first: it measures every target and deletes nothing.
 
+
+## Get windowsweep
+
+- [All apps](https://windowsweep-docs.aoneahsan.com/apps): every released surface of windowsweep.
+- [Windows desktop app](https://github.com/aoneahsan/windowsweep/releases/latest/download/windowsweep-setup.exe)
+- [npm](https://www.npmjs.com/package/windowsweep)
+- [Website](https://windowsweep.aoneahsan.com)
+
 ## Documentation
 
 - [Introduction](https://windowsweep-docs.aoneahsan.com/): what the tool is, what it refuses, and the one command to start with

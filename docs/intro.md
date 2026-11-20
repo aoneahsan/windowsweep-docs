@@ -8,6 +8,8 @@ tags: [windows, cleanup, cli, disk-space, overview]
 ---
 # windowsweep
 
+**Get windowsweep:** [Windows desktop app](https://github.com/aoneahsan/windowsweep/releases/latest/download/windowsweep-setup.exe) · `npx windowsweep` ([npm](https://www.npmjs.com/package/windowsweep)) · [website](https://windowsweep.aoneahsan.com) · [all apps](/apps)
+
 windowsweep reclaims disk space on a Windows machine from caches, temp files, superseded tool releases and
 items you choose. It names paths before it touches them. Documents, credentials and browser state are
 protected. Section 19 can offer large or old files in Downloads and folders you add; it selects nothing for you.

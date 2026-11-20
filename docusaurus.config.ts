@@ -5,6 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 import { createSitemapItems } from './plugins/site-pages';
 import rehypeTableScroll from './plugins/rehype-table-scroll';
 import rehypeThirdPartyLinks from './plugins/rehype-third-party-links';
+import { OTHER_PLATFORMS } from './src/data/platforms';
 
 // ---------------------------------------------------------------------------
 // windowsweep — Documentation site config
@@ -402,12 +403,14 @@ const config: Config = {
         { to: '/cli-reference', label: 'CLI', position: 'left' },
         { to: '/changelog', label: 'Changelog', position: 'right' },
         {
-          // The product's canonical homepage, live since 2026-09-08. It is a
-          // different site in a different repository, so this is an href and it
-          // leaves the origin.
-          href: 'https://windowsweep.aoneahsan.com',
-          label: 'Website',
+          // Every released surface, from src/data/platforms.ts (the website is one of them).
+          type: 'dropdown',
+          label: 'Get windowsweep',
           position: 'right',
+          items: [
+            ...OTHER_PLATFORMS.map((platform) => ({ label: platform.name, href: platform.href })),
+            { label: 'All apps', to: '/apps' },
+          ],
         },
         {
           href: 'https://github.com/aoneahsan/windowsweep',
@@ -419,6 +422,13 @@ const config: Config = {
     footer: {
       style: 'dark',
       links: [
+        {
+          title: 'Get windowsweep',
+          items: [
+            ...OTHER_PLATFORMS.map((platform) => ({ label: platform.name, href: platform.href })),
+            { label: 'All apps', to: '/apps' },
+          ],
+        },
         {
           title: 'Start here',
           items: [
