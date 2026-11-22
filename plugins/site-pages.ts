@@ -1,6 +1,7 @@
 import { execSync } from 'node:child_process';
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
+import type { BlogContent } from '@docusaurus/plugin-content-blog';
 import type { LoadContext, Plugin, RouteConfig } from '@docusaurus/types';
 import sidebars from '../sidebars';
 
@@ -41,6 +42,28 @@ export type SitemapCard = {
 
 /** One group of cards on the /sitemap page, in sidebar order. */
 export type SitemapGroup = { key: string; label: string; cards: SitemapCard[] };
+
+/** One blog post as /feed lists it: published on `date` (`YYYY-MM-DD`, its own front matter). */
+export type FeedPost = { title: string; description: string; permalink: string; date: string };
+
+/**
+ * The blog posts the blog plugin loaded, newest first. Drafts are already gone from a production build; an unlisted
+ * post stays out, as it does from the blog's own lists. Empty while the blog is off (no post in blog/ yet).
+ *
+ * @param blog - the blog plugin's loaded content, or undefined while the blog is off
+ * @returns the posts /feed and /sitemap list
+ */
+function blogPosts(blog: BlogContent | undefined): FeedPost[] {
+  return (blog?.blogPosts ?? [])
+    .filter((post) => !post.metadata.unlisted)
+    .map(({ metadata }) => ({
+      title: metadata.title,
+      description: metadata.description,
+      permalink: metadata.permalink,
+      date: new Date(metadata.date).toISOString().slice(0, 10),
+    }))
+    .sort((a, b) => b.date.localeCompare(a.date));
+}
 
 const SITEMAP_PAGE = 'src/components/SitemapPage/index.tsx';
 const FEED_PAGE = 'src/components/FeedPage/index.tsx';
@@ -191,6 +214,33 @@ export default function sitePages(context: LoadContext): Plugin<Release[]> {
           `[site-pages] docs missing from the sidebar and /sitemap: ${missing.join(', ')}`
         );
       }
+      // The blog, once it has posts: led by the blog's own page, its words the blog plugin's (src/data/blog.ts).
+      const blog = (
+        allContent['docusaurus-plugin-content-blog'] as { default?: BlogContent } | undefined
+      )?.default;
+      const posts = blogPosts(blog);
+      if (blog && posts.length) {
+        groups.push({
+          key: 'blog',
+          label: 'Blog',
+          cards: [
+            {
+              title: blog.blogTitle,
+              description: blog.blogDescription,
+              permalink: '/blog',
+              tags: ['blog'],
+              keywords: ['posts'],
+            },
+            ...posts.map((post) => ({
+              title: post.title,
+              description: post.description,
+              permalink: post.permalink,
+              tags: ['blog'],
+              keywords: [],
+            })),
+          ],
+        });
+      }
       groups.push({
         key: 'site',
         label: 'Site',
@@ -214,7 +264,7 @@ export default function sitePages(context: LoadContext): Plugin<Release[]> {
       const sitemapData = await actions.createData('sitemap-page.json', JSON.stringify({ groups }));
       const feedData = await actions.createData(
         'feed-page.json',
-        JSON.stringify({ releases: headlines })
+        JSON.stringify({ releases: headlines, posts })
       );
       actions.addRoute({
         path: '/sitemap',
@@ -330,6 +380,9 @@ export async function createSitemapItems<T extends SitemapItem>(params: {
   }
   const docDates = [...byPath.values()];
   byPath.set('/feed', newest([fileDate(CHANGELOG), fileDate(FEED_PAGE)]) ?? '');
+  // The blog's own page lists its posts, so it takes the newest of their dates (each post is dated by its file).
+  const postDates = [...byPath].filter(([p]) => p.startsWith('/blog/')).map(([, date]) => date);
+  if (postDates.length) byPath.set('/blog', newest(postDates) ?? '');
   byPath.set(
     '/sitemap',
     newest([...docDates, fileDate('sidebars.ts'), fileDate(SITEMAP_PAGE)]) ?? ''

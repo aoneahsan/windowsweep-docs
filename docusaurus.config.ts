@@ -1,10 +1,12 @@
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { themes as prismThemes, type PrismTheme, type PrismThemeEntry } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import { createSitemapItems } from './plugins/site-pages';
 import rehypeTableScroll from './plugins/rehype-table-scroll';
 import rehypeThirdPartyLinks from './plugins/rehype-third-party-links';
+import { BLOG_DESCRIPTION, BLOG_PATH, BLOG_TITLE } from './src/data/blog';
 import { OTHER_PLATFORMS } from './src/data/platforms';
 
 // ---------------------------------------------------------------------------
@@ -25,6 +27,16 @@ import { OTHER_PLATFORMS } from './src/data/platforms';
 // ---------------------------------------------------------------------------
 
 const SITE_URL = 'https://windowsweep-docs.aoneahsan.com';
+
+/**
+ * Whether blog/ holds a post yet. Until it does, the blog stays off: an empty blog page would sit in sitemap.xml with
+ * nothing on it, and a Blog link would point at it. The first post added to blog/ turns on the blog, its RSS and Atom
+ * feeds, its search index, its dated sitemap entries, its Blog group on /sitemap and Posts on /feed, and the Blog links.
+ */
+const BLOG_DIR = fileURLToPath(new URL('./blog', import.meta.url));
+const HAS_POSTS =
+  existsSync(BLOG_DIR) &&
+  readdirSync(BLOG_DIR).some((name) => name.endsWith('.md') || name.endsWith('.mdx'));
 const TOOL_VERSION = '1.5.0';
 
 // 🔴 The release gate's two public client identifiers come from the environment, never a literal in
@@ -273,7 +285,8 @@ const config: Config = {
       {
         hashed: true,
         indexDocs: true,
-        indexBlog: false,
+        indexBlog: HAS_POSTS,
+        blogRouteBasePath: BLOG_PATH,
         docsRouteBasePath: '/',
         highlightSearchTermsOnTargetPage: true,
         explicitSearchResultPath: true,
@@ -315,7 +328,31 @@ const config: Config = {
           // Every table sits in a labelled, keyboard-focusable scroll region (F-EXP-006).
           rehypePlugins: [rehypeTableScroll, rehypeThirdPartyLinks],
         },
-        blog: false,
+        blog: HAS_POSTS && {
+          path: 'blog',
+          routeBasePath: BLOG_PATH.slice(1),
+          blogTitle: BLOG_TITLE,
+          blogDescription: BLOG_DESCRIPTION,
+          blogSidebarTitle: 'Recent posts',
+          blogSidebarCount: 10,
+          postsPerPage: 10,
+          showReadingTime: false,
+          // A post's last update comes from git, like a doc's: shown under the post, and its sitemap lastmod.
+          showLastUpdateTime: true,
+          showLastUpdateAuthor: false,
+          // Every author and tag is defined once, in blog/authors.yml (and blog/tags.yml when a post uses one).
+          onInlineAuthors: 'throw',
+          onInlineTags: 'throw',
+          onUntruncatedBlogPosts: 'throw',
+          feedOptions: {
+            type: ['rss', 'atom'],
+            xslt: true,
+            title: BLOG_TITLE,
+            description: BLOG_DESCRIPTION,
+            copyright: 'Made by the windowsweep team.',
+            language: 'en-GB',
+          },
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -326,7 +363,17 @@ const config: Config = {
           changefreq: null,
           priority: null,
           lastmod: 'date',
-          ignorePatterns: ['/tags', '/tags/**', '/search', '/search/**'],
+          // The blog's tag, author, archive and later list pages only repeat its posts; each post is listed once.
+          ignorePatterns: [
+            '/tags',
+            '/tags/**',
+            '/search',
+            '/search/**',
+            '/blog/tags/**',
+            '/blog/authors/**',
+            '/blog/archive',
+            '/blog/page/**',
+          ],
           createSitemapItems,
         },
         ...(gaMeasurementId ? { gtag: { trackingID: gaMeasurementId, anonymizeIP: true } } : {}),
@@ -401,6 +448,7 @@ const config: Config = {
         { to: '/safety-model', label: 'Safety model', position: 'left' },
         { to: '/quick-start', label: 'Quick start', position: 'left' },
         { to: '/cli-reference', label: 'CLI', position: 'left' },
+        ...(HAS_POSTS ? [{ to: BLOG_PATH, label: 'Blog', position: 'left' as const }] : []),
         { to: '/changelog', label: 'Changelog', position: 'right' },
         {
           // Every released surface, from src/data/platforms.ts (the website is one of them).
@@ -466,6 +514,7 @@ const config: Config = {
         {
           title: 'Find everything',
           items: [
+            ...(HAS_POSTS ? [{ label: 'Blog', to: BLOG_PATH }] : []),
             { label: 'Sitemap', to: '/sitemap' },
             { label: 'Release feed', to: '/feed' },
             // feed.xml is written after the build, where the link checker cannot see it, so it and

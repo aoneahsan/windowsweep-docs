@@ -20,6 +20,8 @@ Use Yarn: `yarn install --immutable`, `yarn gates` (typecheck and Docusaurus bui
 
 `plugins/site-pages.ts` builds `/sitemap`, `/feed` and `/feed.xml` from the sidebar and `docs/changelog.md` (Keep a Changelog, `## [X.Y.Z] - YYYY-MM-DD`) and dates every `sitemap.xml` URL from git (an uncommitted file reads as today). The build fails on an undated release, an undated sitemap URL, or a `/search` or tag page without `noindex`. `plugins/rehype-table-scroll.ts` puts every table in a labelled, focusable scroll region.
 
+`blog/` holds the team's posts, one `.md` each (front matter: `slug`, `title`, `description`, `authors: [team]`, `image`, `date`; `{/* truncate */}` after the opening line), each image in `static/img/social/`. Empty, the blog stays off; the first post turns on the blog, its RSS and Atom feeds (`/blog/rss.xml`, beside the release feed `/feed.xml`), its search index, its sitemap entries (dated from git; `/blog` by its newest post), its Blog group on `/sitemap` and Posts on `/feed`, and the Blog links. The words live in `src/data/blog.ts` (2026-11-22).
+
 Markdown pages need title and description front matter, sidebar registration in the same change, relative local links, Docusaurus admonitions and language-tagged code fences. The staged-file hook excludes Markdown so mirrored content stays byte-consistent. Fetch/merge remote `main` before editing and again before direct push. Never force-push. The root branch remains unrelated and private.
 
 ## Stop-work Git gate
