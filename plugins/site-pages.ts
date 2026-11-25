@@ -6,6 +6,28 @@ import type { LoadContext, Plugin, RouteConfig } from '@docusaurus/types';
 import sidebars from '../sidebars';
 
 /**
+ * Docusaurus writes every route module's path into the client bundle, so the absolute path createData returns
+ * would publish this machine's folders and give each machine different chunk names. addRoute gets the alias.
+ */
+function generatedModule(generatedFilesDir: string, file: string): string {
+  return `@generated/${path.relative(generatedFilesDir, file).split(path.sep).join('/')}`;
+}
+
+/** Fails the build when any client bundle still carries this site's absolute path. */
+function assertNoLocalPaths(outDir: string, siteDir: string): void {
+  const jsDir = path.join(outDir, 'assets', 'js');
+  const forms = [siteDir.split(path.sep).join('/'), siteDir.split(path.sep).join('\\\\')];
+  for (const file of readdirSync(jsDir).filter((name) => name.endsWith('.js'))) {
+    const text = readFileSync(path.join(jsDir, file), 'utf8');
+    const found = forms.find((form) => text.includes(form));
+    if (found)
+      throw new Error(
+        `${file} carries the local path ${found}: pass createData paths to addRoute through generatedModule()`
+      );
+  }
+}
+
+/**
  * site-pages - the four discovery routes every docs site ships.
  *
  * - `/sitemap`    a readable page of every docs page, grouped in sidebar order.
@@ -261,10 +283,13 @@ export default function sitePages(context: LoadContext): Plugin<Release[]> {
         ...r,
         sections: r.sections.map((s) => ({ kind: s.kind, items: s.items.map(firstSentence) })),
       }));
-      const sitemapData = await actions.createData('sitemap-page.json', JSON.stringify({ groups }));
-      const feedData = await actions.createData(
-        'feed-page.json',
-        JSON.stringify({ releases: headlines, posts })
+      const sitemapData = generatedModule(
+        context.generatedFilesDir,
+        await actions.createData('sitemap-page.json', JSON.stringify({ groups }))
+      );
+      const feedData = generatedModule(
+        context.generatedFilesDir,
+        await actions.createData('feed-page.json', JSON.stringify({ releases: headlines, posts }))
       );
       actions.addRoute({
         path: '/sitemap',
@@ -293,6 +318,7 @@ export default function sitePages(context: LoadContext): Plugin<Release[]> {
       ],
     }),
     async postBuild({ outDir, content }) {
+      assertNoLocalPaths(outDir, context.siteDir);
       writeFileSync(path.join(outDir, 'feed.xml'), renderFeedXml(siteUrl, content));
       // GitHub Pages serves 404.html for every unknown path. It must not be indexable and must not
       // name itself as a canonical page.

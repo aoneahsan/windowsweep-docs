@@ -281,7 +281,9 @@ const config: Config = {
     [
       // Offline/local search — no third-party service, no API key, nothing to
       // leak from a public repo.
-      require.resolve('@easyops-cn/docusaurus-search-local'),
+      // The package name, never require.resolve(): Docusaurus ships the site config to the browser, and a resolved
+      // path would publish this machine's folders in main.js (the site-pages gate fails the build if it does).
+      '@easyops-cn/docusaurus-search-local',
       {
         hashed: true,
         indexDocs: true,
