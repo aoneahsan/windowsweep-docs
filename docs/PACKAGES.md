@@ -1,6 +1,6 @@
 # Packages — windowsweep Docs
 
-**Last updated:** 2026-11-16. This internal inventory is excluded from the published site.
+**Last updated:** 2026-11-27. This internal inventory is excluded from the published site.
 
 ## Manifest unit
 
@@ -12,6 +12,7 @@ The repository root `package.json` is the only package unit. Yarn 4.17.1 manages
 |---|---|
 | `@docusaurus/core`, `@docusaurus/preset-classic`, `@docusaurus/plugin-content-docs`, `@docusaurus/theme-common`, `@docusaurus/theme-mermaid` | Static documentation build, docs routes, classic theme and diagrams |
 | `@easyops-cn/docusaurus-search-local` | Local search index and UI |
+| `@docusaurus/plugin-client-redirects` | Redirect pages for retired addresses: the old `/tags/*` pages (added 2026-11-27, windowsweep-docs#1, SA-P31/P32); the list is `plugins/seo-redirects.mts` and the SEO contract re-checks every entry |
 | `@mdx-js/react` | MDX components |
 | `clsx` | Theme class composition |
 | `prism-react-renderer` | Code highlighting themes |
@@ -23,6 +24,10 @@ The repository root `package.json` is the only package unit. Yarn 4.17.1 manages
 | `github-slugger` | Build-time heading anchors |
 | `husky`, `lint-staged`, `prettier` | Local commit and formatting gates |
 | `typescript` | Type checks, `~7.0.2`; this site has no typescript-eslint, so the fleet's 6.0 pin does not apply |
+
+## 2026-11-27 — `@docusaurus/plugin-client-redirects` 3.10.2
+
+Added at the same minor as the rest of Docusaurus, with no peer warning. The tag pages it replaces were switched off by renaming front matter `tags:` to `topics:`; the redirects keep every address search engines had crawled answering with the page each topic is about. `yarn typecheck`, `yarn test:release` and `yarn build` (ending in `yarn seo:contract`) are green.
 
 ## Security resolutions
 

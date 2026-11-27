@@ -1,7 +1,7 @@
 ---
 title: 'Desktop app'
 description: 'The windowsweep desktop window: what it adds over the command-line tool, what it collects, and the SmartScreen note on first run.'
-tags: [desktop, tauri, privacy, install]
+topics: [desktop, tauri, privacy, install]
 ---
 
 # Desktop app

@@ -1,7 +1,7 @@
 ---
 title: 'Moving to windowsweep'
 description: 'Step-by-step guides for moving from 13 other Windows cleaners and disk tools, with dated prices and sources, and what stays with each.'
-tags: [compare, moving]
+topics: [compare, moving]
 ---
 
 # Moving to windowsweep

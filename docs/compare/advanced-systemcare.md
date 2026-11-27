@@ -1,7 +1,7 @@
 ---
 title: 'Moving from Advanced SystemCare'
 description: 'What carries across from Advanced SystemCare to windowsweep, what does not, and the commands in order.'
-tags: [compare, moving]
+topics: [compare, moving]
 ---
 
 # Moving from Advanced SystemCare

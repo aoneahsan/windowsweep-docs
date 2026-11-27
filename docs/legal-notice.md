@@ -1,7 +1,7 @@
 ---
 title: 'Read the policy notice'
 description: 'Where the windowsweep policy notice appears and what its two links explain.'
-tags: [privacy, terms, desktop]
+topics: [privacy, terms, desktop]
 ---
 
 # Read the policy notice

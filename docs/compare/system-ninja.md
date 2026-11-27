@@ -1,7 +1,7 @@
 ---
 title: 'Moving from System Ninja'
 description: 'What carries across from System Ninja to windowsweep, what does not, and the commands in order.'
-tags: [compare, moving]
+topics: [compare, moving]
 ---
 
 # Moving from System Ninja

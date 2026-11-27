@@ -1,7 +1,7 @@
 ---
 title: 'Set up a white-label build'
 description: 'The order of work for a windowsweep white-label licence: pay or ask for a quote, receive the licence email, send your branding and accounts, then the first builds are published.'
-tags: [white-label, licensing, setup]
+topics: [white-label, licensing, setup]
 ---
 
 # Set up a white-label build

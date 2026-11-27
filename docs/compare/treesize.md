@@ -1,7 +1,7 @@
 ---
 title: 'Moving from TreeSize'
 description: 'How windowsweep sits beside TreeSize: one manages files by size, the other removes known caches.'
-tags: [compare, moving]
+topics: [compare, moving]
 ---
 
 # Moving from TreeSize

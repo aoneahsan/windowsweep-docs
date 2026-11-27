@@ -1,7 +1,7 @@
 ---
 title: 'White-label & licensing'
 description: 'What a managed white-label licence for windowsweep covers: the desktop app and the npm command line, rebranded, published and updated under your name. The source stays MIT.'
-tags: [white-label, licensing]
+topics: [white-label, licensing]
 ---
 
 # White-label & licensing

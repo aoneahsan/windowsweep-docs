@@ -1,7 +1,7 @@
 ---
 title: 'White-label updates and renewals'
 description: 'Six months of updates come with every windowsweep white-label licence. What an update is for each group, and how a renewal of three, six or twelve months extends them.'
-tags: [white-label, licensing, updates]
+topics: [white-label, licensing, updates]
 ---
 
 # White-label updates and renewals

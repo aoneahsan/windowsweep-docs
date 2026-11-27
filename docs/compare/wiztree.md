@@ -1,7 +1,7 @@
 ---
 title: 'Moving from WizTree'
 description: 'How windowsweep sits beside WizTree: one shows where the space went, the other removes known caches.'
-tags: [compare, moving]
+topics: [compare, moving]
 ---
 
 # Moving from WizTree

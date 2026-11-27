@@ -14,12 +14,18 @@ type HastNode = {
   children?: HastNode[];
 };
 
-const OWNED_HOSTS = /^(?:(?:[a-z-]+\.)?aoneahsan\.com|fileshub\.zaions\.com|ztools\.zaions\.com)$/;
+/* Link law (owner, 2026-11-25): every product, docs site and service of his lives on one of these, and
+   zaions.com itself is his. Until 2026-11-27 zaions.com and the sibling tools' npm pages went out `nofollow`. */
+const OWNED_HOSTS = /^(?:(?:[a-z0-9-]+\.)*(?:aoneahsan\.com|zaions\.com|trizlink\.com))$/;
+const OWNED_NPM = /^\/(?:~aoneahsan|package\/(?:windowsweep|linux-cleanup|macleanup))(?:\/|$)/;
 
 function isOwned(url: URL): boolean {
   if (OWNED_HOSTS.test(url.hostname)) return true;
-  if (url.hostname === 'github.com') return url.pathname.startsWith('/aoneahsan/');
-  return url.hostname === 'www.npmjs.com' && url.pathname.startsWith('/package/windowsweep');
+  if (url.hostname === 'github.com') return /^\/aoneahsan(?:\/|$)/.test(url.pathname);
+  if (url.hostname === 'www.linkedin.com' || url.hostname === 'linkedin.com')
+    return url.pathname.startsWith('/in/aoneahsan');
+  if (url.hostname === 'orcid.org') return url.pathname.startsWith('/0009-0006-2311-8687');
+  return url.hostname === 'www.npmjs.com' && OWNED_NPM.test(url.pathname);
 }
 
 function walk(node: HastNode): void {

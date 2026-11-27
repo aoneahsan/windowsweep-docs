@@ -1,7 +1,7 @@
 ---
 title: 'Safety model'
 description: 'The deletion and registry chokepoints, the protected lists, the tiers, the idle gate and the dry-run guarantee.'
-tags: [safety, protected-paths, dry-run]
+topics: [safety, protected-paths, dry-run]
 ---
 # Safety model
 

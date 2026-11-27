@@ -1,7 +1,7 @@
 ---
 title: 'AI integration guide'
 description: 'How an agent or a script runs windowsweep safely - the --json contract, exit codes, what --yes never covers, and the guarantees.'
-tags: [automation, json, agents, reference]
+topics: [automation, json, agents, reference]
 ---
 # AI integration guide
 

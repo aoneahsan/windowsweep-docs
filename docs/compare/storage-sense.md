@@ -1,7 +1,7 @@
 ---
 title: 'Moving from Storage Sense'
 description: 'How windowsweep sits beside the Storage Sense built into Windows, and which sections cover other ground.'
-tags: [compare, moving]
+topics: [compare, moving]
 ---
 
 # Moving from Storage Sense

@@ -1,7 +1,7 @@
 ---
 title: 'Sections 0-32'
 description: 'Every section: what it touches, and how it behaves in dry-run and in batch mode.'
-tags: [sections, reference]
+topics: [sections, reference]
 ---
 # Sections 0-32
 

@@ -1,7 +1,7 @@
 ---
 title: 'Troubleshooting'
 description: 'Symptom, cause, fix.'
-tags: [troubleshooting]
+topics: [troubleshooting]
 ---
 # Troubleshooting
 

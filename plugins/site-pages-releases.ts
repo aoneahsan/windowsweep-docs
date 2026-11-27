@@ -172,7 +172,7 @@ export function renderFeedXml(siteUrl: string, releases: Release[]): string {
     [
       '    <item>',
       `      <title>windowsweep ${r.version}</title>`,
-      `      <link>${escapeXml(`${siteUrl}/changelog#${r.anchor}`)}</link>`,
+      `      <link>${escapeXml(`${siteUrl}/changelog/#${r.anchor}`)}</link>`,
       `      <guid isPermaLink="false">windowsweep-${r.version}</guid>`,
       `      <pubDate>${rfc822(r.date)}</pubDate>`,
       '      <category>release</category>',
@@ -185,7 +185,7 @@ export function renderFeedXml(siteUrl: string, releases: Release[]): string {
     '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">',
     '  <channel>',
     '    <title>windowsweep releases</title>',
-    `    <link>${siteUrl}/feed</link>`,
+    `    <link>${siteUrl}/feed/</link>`,
     '    <description>Every windowsweep release, newest first: the version, the date and what changed.</description>',
     '    <language>en</language>',
     `    <lastBuildDate>${rfc822(releases[0].date)}</lastBuildDate>`,

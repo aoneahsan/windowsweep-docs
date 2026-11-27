@@ -1,7 +1,7 @@
 ---
 title: 'Installation'
 description: 'npx, a global install or a clone; Windows PowerShell 5.1 or 7; and where logs and reports land.'
-tags: [installation, npx, powershell]
+topics: [installation, npx, powershell]
 ---
 # Installation
 

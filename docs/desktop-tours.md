@@ -1,7 +1,7 @@
 ---
 title: 'Walk through the desktop app'
 description: 'Where the page tours and walkthrough appear, and what they leave untouched.'
-tags: [desktop, tours, quick-start]
+topics: [desktop, tours, quick-start]
 ---
 
 # Walk through the desktop app

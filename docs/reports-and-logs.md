@@ -1,7 +1,7 @@
 ---
 title: 'Reports and logs'
 description: 'What a run writes under the data directory, the JSON report schema, the registry backups and the exports.'
-tags: [reports, logs, json]
+topics: [reports, logs, json]
 ---
 # Reports and logs
 

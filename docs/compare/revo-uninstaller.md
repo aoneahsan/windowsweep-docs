@@ -1,7 +1,7 @@
 ---
 title: 'Moving from Revo Uninstaller'
 description: 'What carries across from Revo Uninstaller to windowsweep, what does not, and the commands in order.'
-tags: [compare, moving]
+topics: [compare, moving]
 ---
 
 # Moving from Revo Uninstaller

@@ -1,7 +1,7 @@
 ---
 title: 'White-label questions'
 description: 'Answers about the windowsweep white-label licence: MIT and the name right, source code, exclusivity, what happens after six months, code signing and payment.'
-tags: [white-label, licensing, faq]
+topics: [white-label, licensing, faq]
 ---
 
 # White-label questions

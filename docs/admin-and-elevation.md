@@ -1,7 +1,7 @@
 ---
 title: 'Admin sections and elevation'
 description: 'Sections 12-16, 20, 27 and 29, the elevated parts of 26, 30 and 31, how --elevate works, and the hibernation decision.'
-tags: [admin, elevation, uac]
+topics: [admin, elevation, uac]
 ---
 # Admin sections and elevation
 

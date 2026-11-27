@@ -1,7 +1,7 @@
 ---
 title: 'Verify a white-label licence'
 description: 'Check a windowsweep white-label licence by its key or by the website that offers a branded build, and what the licence file at /.well-known contains.'
-tags: [white-label, licensing, verification]
+topics: [white-label, licensing, verification]
 ---
 
 # Verify a white-label licence

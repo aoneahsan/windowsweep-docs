@@ -1,7 +1,7 @@
 ---
 title: 'Moving from Glary Utilities'
 description: 'What carries across from Glary Utilities to windowsweep, what does not, and the commands in order.'
-tags: [compare, moving]
+topics: [compare, moving]
 ---
 
 # Moving from Glary Utilities

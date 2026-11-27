@@ -1,7 +1,7 @@
 ---
 title: 'Profiles'
 description: 'The named section bundles: dev, minimal, cache-only, system, deep and audit.'
-tags: [profiles, reference]
+topics: [profiles, reference]
 ---
 # Profiles
 

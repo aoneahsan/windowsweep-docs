@@ -1,7 +1,7 @@
 ---
 title: 'The windowsweep team'
 description: 'Who makes windowsweep, the two sibling tools for Linux and macOS, and how to support the work.'
-tags: [about, team]
+topics: [about, team]
 ---
 # The windowsweep team
 

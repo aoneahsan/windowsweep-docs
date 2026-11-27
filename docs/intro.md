@@ -4,11 +4,11 @@ slug: /
 title: 'windowsweep - a Windows cleanup CLI that names every path first'
 sidebar_label: 'windowsweep documentation'
 description: 'Windows cleanup CLI for caches, temp files and items you choose. Protected folders remain refused; scan first to measure without deleting.'
-tags: [windows, cleanup, cli, disk-space, overview]
+topics: [windows, cleanup, cli, disk-space, overview]
 ---
 # windowsweep
 
-**Get windowsweep:** [Windows desktop app](https://github.com/aoneahsan/windowsweep/releases/latest/download/windowsweep-setup.exe) · `npx windowsweep` ([npm](https://www.npmjs.com/package/windowsweep)) · [website](https://windowsweep.aoneahsan.com) · [all apps](/apps)
+**Get windowsweep:** [Windows desktop app](https://github.com/aoneahsan/windowsweep/releases/latest/download/windowsweep-setup.exe) · `npx windowsweep` ([npm](https://www.npmjs.com/package/windowsweep)) · [website](https://windowsweep.aoneahsan.com) · [installers with sizes and checksums](https://windowsweep.aoneahsan.com/download) · [all apps](/apps)
 
 windowsweep reclaims disk space on a Windows machine from caches, temp files, superseded tool releases and
 items you choose. It names paths before it touches them. Documents, credentials and browser state are

@@ -1,7 +1,7 @@
 ---
 title: 'Install a required update'
 description: 'What a windowsweep update notice means and how to install it in the desktop app, website and docs.'
-tags: [updates, desktop, troubleshooting]
+topics: [updates, desktop, troubleshooting]
 ---
 
 # Install a required update

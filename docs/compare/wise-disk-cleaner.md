@@ -1,7 +1,7 @@
 ---
 title: 'Moving from Wise Disk Cleaner'
 description: 'What carries across from Wise Disk Cleaner to windowsweep, what does not, and the commands in order.'
-tags: [compare, moving]
+topics: [compare, moving]
 ---
 
 # Moving from Wise Disk Cleaner

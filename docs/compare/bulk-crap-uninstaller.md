@@ -1,7 +1,7 @@
 ---
 title: 'Moving from Bulk Crap Uninstaller'
 description: 'What carries across from Bulk Crap Uninstaller to windowsweep, what does not, and the commands in order.'
-tags: [compare, moving]
+topics: [compare, moving]
 ---
 
 # Moving from Bulk Crap Uninstaller

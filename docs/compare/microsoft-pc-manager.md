@@ -1,7 +1,7 @@
 ---
 title: 'Moving from Microsoft PC Manager'
 description: 'How windowsweep sits beside Microsoft PC Manager, and the commands that cover what it does not name.'
-tags: [compare, moving]
+topics: [compare, moving]
 ---
 
 # Moving from Microsoft PC Manager

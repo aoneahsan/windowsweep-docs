@@ -1,7 +1,7 @@
 ---
 title: 'Changelog'
 description: 'Every published version of windowsweep.'
-tags: [changelog, releases]
+topics: [changelog, releases]
 ---
 # Changelog
 

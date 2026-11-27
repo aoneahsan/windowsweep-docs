@@ -1,7 +1,7 @@
 ---
 title: 'Quick start'
 description: 'Four commands, from proving the safety guards to reclaiming the space.'
-tags: [quick-start, dry-run, self-test]
+topics: [quick-start, dry-run, self-test]
 ---
 # Quick start
 

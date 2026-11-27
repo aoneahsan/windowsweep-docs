@@ -1,7 +1,7 @@
 ---
 title: 'Moving from CCleaner'
 description: 'What carries across from CCleaner to windowsweep, what does not, and the commands in order.'
-tags: [compare, moving]
+topics: [compare, moving]
 ---
 
 # Moving from CCleaner

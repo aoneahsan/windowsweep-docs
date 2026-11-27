@@ -161,9 +161,25 @@ type DocLike = {
   title: string;
   description: string;
   permalink: string;
-  tags: { label: string }[];
-  frontMatter: { keywords?: string[] };
+  frontMatter: { keywords?: string[]; topics?: unknown };
 };
+
+/**
+ * A page's topics, its `topics:` front matter. They were `tags:` until 2026-11-27, when the generated `/tags/*`
+ * pages were retired (SA-P32): the labels still show as chips on `/sitemap`, and the old tag addresses redirect
+ * (`plugins/seo-redirects.mts`).
+ */
+function topicsOf(frontMatter: DocLike['frontMatter']): string[] {
+  return Array.isArray(frontMatter.topics) ? frontMatter.topics.map(String) : [];
+}
+
+/**
+ * One key per route whichever slash form it is written in. With `trailingSlash: true` the routes and the sitemap
+ * URLs end in `/`; a map keyed on one form and read with the other finds nothing (SA-P26 switch trap).
+ */
+export function routeKey(pathname: string): string {
+  return pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
+}
 
 /** The cross-host card. Its description is the website's own sentence, from its llms.txt. */
 const WEBSITE_CARD: SitemapCard = {
@@ -179,26 +195,15 @@ const WEBSITE_CARD: SitemapCard = {
 const ROBOTS_META = /<meta[^>]*name=["']?robots["']?[^>]*>/g;
 
 /**
- * Fail the build when a utility page could be indexed. `/search` and the tag listings stay out of
- * sitemap.xml, so they must also say noindex (the src/theme wrappers); otherwise the sitemap would omit
- * pages a search engine may still index. Each must carry exactly one robots meta, and it must say noindex.
+ * Fail the build when the local search page could be indexed. `/search` stays out of sitemap.xml, so it must
+ * also say noindex (the src/theme/SearchPage wrapper) - the one public-looking page the owner keeps out of the
+ * index (2026-11-27). It carries exactly one robots meta, and that one says noindex.
  */
 export function assertNoIndex(outDir: string): void {
-  const tagsDir = path.join(outDir, 'tags');
-  const tagPages = existsSync(tagsDir)
-    ? readdirSync(tagsDir)
-        .filter((f) => f.endsWith('.html'))
-        .map((f) => `tags/${f}`)
-    : [];
-  const indexable = ['search.html', 'tags.html', ...tagPages].filter((page) => {
-    const file = path.join(outDir, page);
-    const metas = existsSync(file) ? (readFileSync(file, 'utf8').match(ROBOTS_META) ?? []) : [];
-    return metas.length !== 1 || !metas[0].includes('noindex');
-  });
-  if (indexable.length) {
-    throw new Error(
-      `[site-pages] pages without exactly one robots noindex: ${indexable.join(', ')}`
-    );
+  const file = path.join(outDir, 'search', 'index.html');
+  const metas = existsSync(file) ? (readFileSync(file, 'utf8').match(ROBOTS_META) ?? []) : [];
+  if (metas.length !== 1 || !metas[0].includes('noindex')) {
+    throw new Error('[site-pages] search/index.html does not carry exactly one robots noindex');
   }
 }
 
@@ -224,7 +229,7 @@ export default function sitePages(context: LoadContext): Plugin<Release[]> {
             title: doc.title,
             description: doc.description,
             permalink: doc.permalink,
-            tags: doc.tags.map((t) => t.label),
+            tags: topicsOf(doc.frontMatter),
             keywords: doc.frontMatter.keywords ?? [],
           };
         }),
@@ -402,7 +407,8 @@ export async function createSitemapItems<T extends SitemapItem>(params: {
   const byPath = new Map<string, string>();
   for (const route of flatten(rest.routes)) {
     const source = route.metadata?.sourceFilePath?.replace(/\\/g, '/').replace(/^@site\//, '');
-    if (source && !byPath.has(route.path)) byPath.set(route.path, fileDate(source));
+    if (source && !byPath.has(routeKey(route.path)))
+      byPath.set(routeKey(route.path), fileDate(source));
   }
   const docDates = [...byPath.values()];
   byPath.set('/feed', newest([fileDate(CHANGELOG), fileDate(FEED_PAGE)]) ?? '');
@@ -415,7 +421,7 @@ export async function createSitemapItems<T extends SitemapItem>(params: {
   );
   const undated: string[] = [];
   const result = items.map((item) => {
-    const p = item.url.slice(siteUrl.length) || '/';
+    const p = routeKey(item.url.slice(siteUrl.length) || '/');
     const lastmod = byPath.get(p);
     if (!lastmod) undated.push(p);
     return { ...item, lastmod, changefreq: null, priority: null };

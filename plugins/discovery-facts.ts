@@ -38,7 +38,13 @@ function writeLlmsTxt(outDir: string, version: string): void {
 /** Every JSON-LD node on the home page carries @type, and #software names this build's version. */
 function checkJsonLd(outDir: string, version: string): void {
   const html = readFileSync(join(outDir, 'index.html'), 'utf8');
-  const nodes = [...html.matchAll(LD_JSON)].map((m) => JSON.parse(m[1]) as Record<string, unknown>);
+  // A block is one node or an `@graph` of them (the publisher graph, 2026-11-27): check every node.
+  const nodes = [...html.matchAll(LD_JSON)].flatMap((m) => {
+    const block = JSON.parse(m[1]) as Record<string, unknown>;
+    return Array.isArray(block['@graph'])
+      ? (block['@graph'] as Record<string, unknown>[])
+      : [block];
+  });
   if (!nodes.length) fail('the home page carries no JSON-LD');
   const untyped = nodes.filter((node) => typeof node['@type'] !== 'string');
   if (untyped.length)

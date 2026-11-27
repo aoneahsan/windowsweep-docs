@@ -11,7 +11,7 @@ windowsweep is a Windows PowerShell 5.1 engine with a zero-dependency Node launc
 
 ## Get windowsweep
 
-- [All apps](https://windowsweep-docs.aoneahsan.com/apps): every released surface of windowsweep.
+- [All apps](https://windowsweep-docs.aoneahsan.com/apps/): every released surface of windowsweep.
 - [Windows desktop app](https://github.com/aoneahsan/windowsweep/releases/latest/download/windowsweep-setup.exe)
 - [npm](https://www.npmjs.com/package/windowsweep)
 - [Website](https://windowsweep.aoneahsan.com)
@@ -19,31 +19,31 @@ windowsweep is a Windows PowerShell 5.1 engine with a zero-dependency Node launc
 ## Documentation
 
 - [Introduction](https://windowsweep-docs.aoneahsan.com/): what the tool is, what it refuses, and the one command to start with
-- [Safety model](https://windowsweep-docs.aoneahsan.com/safety-model): the chokepoint, protected paths, tiers, the idle gate, dry-run
-- [Developer mode](https://windowsweep-docs.aoneahsan.com/developer-mode): what the first question changes
-- [Installation](https://windowsweep-docs.aoneahsan.com/installation): npx, global install, or a clone
-- [Quick start](https://windowsweep-docs.aoneahsan.com/quick-start): four commands from self-test to a real cleanup
-- [Desktop app](https://windowsweep-docs.aoneahsan.com/desktop): what the window adds over the command line and what leaves the machine
-- [Sections 0-32](https://windowsweep-docs.aoneahsan.com/sections): exactly what each of the 33 sections touches in the current source
-- [Desktop plans](https://windowsweep-docs.aoneahsan.com/plans): what counts as a real run, what each plan adds, how to buy Pro or Team, and referral time
-- [Required updates](https://windowsweep-docs.aoneahsan.com/updates): the notice, block and verified desktop installer
-- [Policy notice](https://windowsweep-docs.aoneahsan.com/legal-notice): the Terms and Privacy links and where the bar appears
-- [Desktop tours](https://windowsweep-docs.aoneahsan.com/desktop-tours): page tours and the walkthrough; no tour starts a run
-- [CLI reference](https://windowsweep-docs.aoneahsan.com/cli-reference): every mode, flag, exit code and environment variable
-- [Profiles](https://windowsweep-docs.aoneahsan.com/profiles): dev, minimal, cache-only, system, deep, audit
-- [Admin sections and elevation](https://windowsweep-docs.aoneahsan.com/admin-and-elevation): sections 12-16, 20, 27 and 29, and the elevated parts of 26, 30 and 31
-- [Reports and logs](https://windowsweep-docs.aoneahsan.com/reports-and-logs): the JSON schema and the exports
-- [AI integration guide](https://windowsweep-docs.aoneahsan.com/ai-integration-guide): the contract an agent or a script runs under: the safe sequence, then the shapes and the exit codes
-- [White-label & licensing](https://windowsweep-docs.aoneahsan.com/white-label): the managed, non-exclusive licence for the desktop app and the npm command line; the source stays MIT and there is no buyout
-- [What a white-label licence delivers](https://windowsweep-docs.aoneahsan.com/white-label/delivered): the rebranded installers with their own update key, and the engine on npm under the buyer's name
-- [White-label setup](https://windowsweep-docs.aoneahsan.com/white-label/setup): from payment to the first branded build
-- [White-label updates and renewals](https://windowsweep-docs.aoneahsan.com/white-label/updates): six months included, then three, six or twelve months
-- [Verify a white-label licence](https://windowsweep-docs.aoneahsan.com/white-label/verify): by key or by the website's licence file
-- [White-label questions](https://windowsweep-docs.aoneahsan.com/white-label/faq)
-- [Troubleshooting](https://windowsweep-docs.aoneahsan.com/troubleshooting)
-- [FAQ](https://windowsweep-docs.aoneahsan.com/faq)
-- [Changelog](https://windowsweep-docs.aoneahsan.com/changelog)
-- [The windowsweep team](https://windowsweep-docs.aoneahsan.com/about): its channels, the sibling tools, how to support the work
+- [Safety model](https://windowsweep-docs.aoneahsan.com/safety-model/): the chokepoint, protected paths, tiers, the idle gate, dry-run
+- [Developer mode](https://windowsweep-docs.aoneahsan.com/developer-mode/): what the first question changes
+- [Installation](https://windowsweep-docs.aoneahsan.com/installation/): npx, global install, or a clone
+- [Quick start](https://windowsweep-docs.aoneahsan.com/quick-start/): four commands from self-test to a real cleanup
+- [Desktop app](https://windowsweep-docs.aoneahsan.com/desktop/): what the window adds over the command line and what leaves the machine
+- [Sections 0-32](https://windowsweep-docs.aoneahsan.com/sections/): exactly what each of the 33 sections touches in the current source
+- [Desktop plans](https://windowsweep-docs.aoneahsan.com/plans/): what counts as a real run, what each plan adds, how to buy Pro or Team, and referral time
+- [Required updates](https://windowsweep-docs.aoneahsan.com/updates/): the notice, block and verified desktop installer
+- [Policy notice](https://windowsweep-docs.aoneahsan.com/legal-notice/): the Terms and Privacy links and where the bar appears
+- [Desktop tours](https://windowsweep-docs.aoneahsan.com/desktop-tours/): page tours and the walkthrough; no tour starts a run
+- [CLI reference](https://windowsweep-docs.aoneahsan.com/cli-reference/): every mode, flag, exit code and environment variable
+- [Profiles](https://windowsweep-docs.aoneahsan.com/profiles/): dev, minimal, cache-only, system, deep, audit
+- [Admin sections and elevation](https://windowsweep-docs.aoneahsan.com/admin-and-elevation/): sections 12-16, 20, 27 and 29, and the elevated parts of 26, 30 and 31
+- [Reports and logs](https://windowsweep-docs.aoneahsan.com/reports-and-logs/): the JSON schema and the exports
+- [AI integration guide](https://windowsweep-docs.aoneahsan.com/ai-integration-guide/): the contract an agent or a script runs under: the safe sequence, then the shapes and the exit codes
+- [White-label & licensing](https://windowsweep-docs.aoneahsan.com/white-label/): the managed, non-exclusive licence for the desktop app and the npm command line; the source stays MIT and there is no buyout
+- [What a white-label licence delivers](https://windowsweep-docs.aoneahsan.com/white-label/delivered/): the rebranded installers with their own update key, and the engine on npm under the buyer's name
+- [White-label setup](https://windowsweep-docs.aoneahsan.com/white-label/setup/): from payment to the first branded build
+- [White-label updates and renewals](https://windowsweep-docs.aoneahsan.com/white-label/updates/): six months included, then three, six or twelve months
+- [Verify a white-label licence](https://windowsweep-docs.aoneahsan.com/white-label/verify/): by key or by the website's licence file
+- [White-label questions](https://windowsweep-docs.aoneahsan.com/white-label/faq/)
+- [Troubleshooting](https://windowsweep-docs.aoneahsan.com/troubleshooting/)
+- [FAQ](https://windowsweep-docs.aoneahsan.com/faq/)
+- [Changelog](https://windowsweep-docs.aoneahsan.com/changelog/)
+- [The windowsweep team](https://windowsweep-docs.aoneahsan.com/about/): its channels, the sibling tools, how to support the work
 
 ## Source
 
@@ -51,7 +51,8 @@ windowsweep is a Windows PowerShell 5.1 engine with a zero-dependency Node launc
 - npm package: https://www.npmjs.com/package/windowsweep
 - Repository: https://github.com/aoneahsan/windowsweep
 - Issues: https://github.com/aoneahsan/windowsweep/issues
-- Author: The windowsweep team, https://windowsweep-docs.aoneahsan.com/about
+- Author: The windowsweep team, https://windowsweep-docs.aoneahsan.com/about/
+- Publisher: Zaions, https://zaions.com - founded by Ahsan Mahmood, https://aoneahsan.com
 
 ## Facts an answer should get right
 

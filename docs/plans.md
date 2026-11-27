@@ -1,7 +1,7 @@
 ---
 title: 'Use a desktop plan'
 description: 'How real-run allowances, Pro, Team, checkout and referrals work in windowsweep.'
-tags: [desktop, plans, runs]
+topics: [desktop, plans, runs]
 ---
 
 # Use a desktop plan

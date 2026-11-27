@@ -4,6 +4,8 @@ import { themes as prismThemes, type PrismTheme, type PrismThemeEntry } from 'pr
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import { createSitemapItems } from './plugins/site-pages';
+import { seoRedirects } from './plugins/seo-redirects.mts';
+import faqSchema from './plugins/faq-schema';
 import rehypeTableScroll from './plugins/rehype-table-scroll';
 import rehypeThirdPartyLinks from './plugins/rehype-third-party-links';
 import { BLOG_DESCRIPTION, BLOG_PATH, BLOG_TITLE } from './src/data/blog';
@@ -27,6 +29,7 @@ import { OTHER_PLATFORMS } from './src/data/platforms';
 // ---------------------------------------------------------------------------
 
 const SITE_URL = 'https://windowsweep-docs.aoneahsan.com';
+const SITE_DIR = fileURLToPath(new URL('.', import.meta.url));
 
 /**
  * Whether blog/ holds a post yet. Until it does, the blog stays off: an empty blog page would sit in sitemap.xml with
@@ -71,15 +74,105 @@ if (process.env.NODE_ENV === 'production' && (!newsletterListId || !newsletterKe
   );
 }
 
-// The one agent this site's structured data names (team-voice TV-11, owner decisions D45 and
-// D46, 2026-09-25: a product speaks as its team, never as one person). Its name is the footer
-// column's title on every page and its url the team page, the same pair both llms.txt files
-// carry, so a machine reading any of them finds one entity.
-const TEAM = {
-  '@type': 'Organization',
-  name: 'The windowsweep team',
-  url: 'https://windowsweep-docs.aoneahsan.com/about',
-} as const;
+// The publisher entity on every page (owner decision 2026-11-27; windowsweep-docs#1 AEO, SA-P20/P30): the
+// person behind the product and the Zaions organisation, the same `@id`s and values as aoneahsan.com
+// (projects-finalization-record/ecosystem/owner-profile.json), so answer engines join this site to them.
+// The windowsweep team stays the visible author: its name is a footer column on every page and its
+// url the team page, which names Zaions and Ahsan Mahmood (docs/about.md). The footer credits both on
+// every page, so no node here describes an entity the reader cannot see.
+const PERSON_ID = 'https://aoneahsan.com/#person';
+const ZAIONS_ID = 'https://zaions.com/#organization';
+const TEAM_ID = 'https://windowsweep.aoneahsan.com/#team';
+const SOFTWARE_ID = 'https://windowsweep.aoneahsan.com/#software';
+const PUBLISHER_GRAPH = [
+  {
+    '@type': 'Person',
+    '@id': PERSON_ID,
+    name: 'Ahsan Mahmood',
+    alternateName: ['Ahsan', 'aoneahsan', 'a1ahsan', 'A1 Ahsan', 'AOne Ahsan'],
+    url: 'https://aoneahsan.com',
+    jobTitle: 'Founder and developer, Zaions',
+    worksFor: { '@id': ZAIONS_ID },
+    sameAs: [
+      'https://aoneahsan.com',
+      'https://zaions.com',
+      'https://github.com/aoneahsan',
+      'https://www.linkedin.com/in/aoneahsan',
+      'https://www.npmjs.com/~aoneahsan',
+      'https://www.upwork.com/freelancers/aoneahsan',
+      'https://orcid.org/0009-0006-2311-8687',
+    ],
+  },
+  {
+    '@type': 'Organization',
+    '@id': ZAIONS_ID,
+    name: 'Zaions',
+    alternateName: ['Zaions products', 'Zaions projects'],
+    url: 'https://zaions.com',
+    logo: 'https://zaions.com/assets/logos/zaions-mark.png',
+    founder: { '@id': PERSON_ID },
+    sameAs: ['https://zaions.com', 'https://github.com/aoneahsan'],
+  },
+  {
+    '@type': 'Organization',
+    '@id': TEAM_ID,
+    name: 'The windowsweep team',
+    url: `${SITE_URL}/about/`,
+    parentOrganization: { '@id': ZAIONS_ID },
+    sameAs: [
+      'https://github.com/aoneahsan/windowsweep',
+      'https://www.npmjs.com/package/windowsweep',
+    ],
+  },
+  {
+    '@type': 'WebSite',
+    '@id': `${SITE_URL}/#website`,
+    name: 'windowsweep Documentation',
+    url: `${SITE_URL}/`,
+    description:
+      'Documentation for windowsweep, a Windows command-line utility that clears regenerable caches and offers large or old files in Downloads and folders you add for individual Recycle Bin removal. Credentials and browser state remain protected.',
+    inLanguage: 'en',
+    publisher: { '@id': ZAIONS_ID },
+    author: { '@id': PERSON_ID },
+    about: { '@id': SOFTWARE_ID },
+    license: 'https://opensource.org/licenses/MIT',
+  },
+  {
+    // One entity across the site and the docs (search audit SA-WINDOWSWEEP-005, 2026-10-31): the same
+    // `@id`, url, category and operating systems as the website's node. `offers` lives on the website's
+    // /pricing node, generated from the plan rows, and is not repeated here. 🔴 `@type` is required on
+    // every node (SA-WINDOWSWEEP-013); plugins/discovery-facts.ts fails the build without it.
+    '@type': 'SoftwareApplication',
+    '@id': SOFTWARE_ID,
+    name: 'windowsweep',
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Windows 10 (1809 and later), Windows 11',
+    url: 'https://windowsweep.aoneahsan.com/',
+    author: { '@id': TEAM_ID },
+    publisher: { '@id': ZAIONS_ID },
+    sameAs: [
+      'https://github.com/aoneahsan/windowsweep',
+      'https://www.npmjs.com/package/windowsweep',
+    ],
+    description:
+      'Command-line disk and cache cleanup for Windows developers: a guided walkthrough, a read-only scan, a real dry-run, JSON reports, and an optional large or old file scanner with individual Recycle Bin removal.',
+    softwareVersion: TOOL_VERSION,
+    license: 'https://opensource.org/licenses/MIT',
+  },
+  {
+    '@type': 'SoftwareSourceCode',
+    '@id': 'https://github.com/aoneahsan/windowsweep#code',
+    name: 'windowsweep',
+    codeRepository: 'https://github.com/aoneahsan/windowsweep',
+    programmingLanguage: 'PowerShell',
+    runtimePlatform: 'Windows PowerShell 5.1 or PowerShell 7 on Windows 10 and 11',
+    license: 'https://opensource.org/licenses/MIT',
+    author: { '@id': TEAM_ID },
+    targetProduct: { '@id': SOFTWARE_ID },
+    description:
+      'Windows PowerShell cleanup utility with a zero-dependency Node launcher. Prunes yarn/npm/pnpm/bun/deno/pip/NuGet/Cargo/Go caches, browser and editor caches, Docker layers, Android emulator images, Windows Update leftovers, stale node_modules and partial downloads — every deletion through one chokepoint with a declared root, an idle gate and a real dry-run.',
+  },
+];
 
 /** A code theme with every token style passed through `fix`. */
 function restyle(theme: PrismTheme, fix: (style: PrismThemeEntry) => PrismThemeEntry): PrismTheme {
@@ -201,66 +294,8 @@ const config: Config = {
     {
       tagName: 'script',
       attributes: { type: 'application/ld+json' },
-      innerHTML: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'WebSite',
-        name: 'windowsweep Documentation',
-        url: SITE_URL,
-        description:
-          'Documentation for windowsweep, a Windows command-line utility that clears regenerable caches and offers large or old files in Downloads and folders you add for individual Recycle Bin removal. Credentials and browser state remain protected.',
-        inLanguage: 'en',
-        publisher: TEAM,
-        license: 'https://opensource.org/licenses/MIT',
-      }),
+      innerHTML: JSON.stringify({ '@context': 'https://schema.org', '@graph': PUBLISHER_GRAPH }),
     },
-    {
-      tagName: 'script',
-      attributes: { type: 'application/ld+json' },
-      innerHTML: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'SoftwareSourceCode',
-        name: 'windowsweep',
-        codeRepository: 'https://github.com/aoneahsan/windowsweep',
-        programmingLanguage: 'PowerShell',
-        runtimePlatform: 'Windows PowerShell 5.1 or PowerShell 7 on Windows 10 and 11',
-        license: 'https://opensource.org/licenses/MIT',
-        author: TEAM,
-        description:
-          'Windows PowerShell cleanup utility with a zero-dependency Node launcher. Prunes yarn/npm/pnpm/bun/deno/pip/NuGet/Cargo/Go caches, browser and editor caches, Docker layers, Android emulator images, Windows Update leftovers, stale node_modules and partial downloads — every deletion through one chokepoint with a declared root, an idle gate and a real dry-run.',
-        keywords:
-          'windows, cleanup, disk-cleanup, cache-cleanup, disk-space, node-modules, npm-cache, yarn-cache, developer-tools, powershell, cli, dry-run',
-      }),
-    },
-    {
-      tagName: 'script',
-      attributes: { type: 'application/ld+json' },
-      innerHTML: JSON.stringify({
-        '@context': 'https://schema.org',
-        // One entity across the site and the docs (search audit SA-WINDOWSWEEP-005, 2026-10-31):
-        // the same `@id`, url, category and operating systems as the website's node, so
-        // answer engines see one product. The plan set (D56, 2026-10-30) replaced the
-        // 2026-09-05 no-pricing decision; `offers` lives on the website's /pricing node,
-        // generated from the plan rows, and is not repeated here.
-        // 🔴 `@type` is required on every node (SA-WINDOWSWEEP-013, 2026-11-05: the 005 fix left
-        // it out and every probe still matched); plugins/discovery-facts.ts fails the build without it.
-        '@type': 'SoftwareApplication',
-        '@id': 'https://windowsweep.aoneahsan.com/#software',
-        name: 'windowsweep',
-        applicationCategory: 'UtilitiesApplication',
-        operatingSystem: 'Windows 10 (1809 and later), Windows 11',
-        url: 'https://windowsweep.aoneahsan.com/',
-        author: TEAM,
-        description:
-          'Command-line disk and cache cleanup for Windows developers: a guided walkthrough, a read-only scan, a real dry-run, JSON reports, and an optional large or old file scanner with individual Recycle Bin removal.',
-        softwareVersion: TOOL_VERSION,
-        license: 'https://opensource.org/licenses/MIT',
-      }),
-    },
-    /* No separate `Organization` node: the three nodes above carry `TEAM` inline, and the footer
-       column names it on every page. Until 2026-09-25 they named a `Person`; the team-voice run
-       (content-map row 9, D45) replaced it - and an earlier node naming a person as an
-       organisation with himself as founder was removed on 2026-09-13 for describing an entity no
-       page showed. Schema that describes what no page shows is the one thing this data may not do. */
   ],
 
   i18n: {
@@ -268,7 +303,9 @@ const config: Config = {
     locales: ['en'],
   },
 
-  trailingSlash: false,
+  // GitHub Pages serves `x/index.html` at `/x/` and 301s `/x` to it; with `false` it served `x.html` at `/x` and
+  // answered `/x/` with a 404 (SA-P26, owner decision 2026-11-27). Canonicals, sitemap.xml and links follow.
+  trailingSlash: true,
 
   markdown: {
     mermaid: true,
@@ -322,6 +359,8 @@ const config: Config = {
             // docs/ like MANUAL-TASKS.md does, so without this entry it would ship as public
             // pages. See ~/.claude/rules/storytelling-content.md.
             'story/**',
+            // docs/search-consoles/ is the fleet's fixed-path record of search-console work, never a page.
+            'search-consoles/**',
           ],
           routeBasePath: '/',
           editUrl: 'https://github.com/aoneahsan/windowsweep-docs/edit/main/',
@@ -342,8 +381,10 @@ const config: Config = {
           // A post's last update comes from git, like a doc's: shown under the post, and its sitemap lastmod.
           showLastUpdateTime: true,
           showLastUpdateAuthor: false,
-          // Every author and tag is defined once, in blog/authors.yml (and blog/tags.yml when a post uses one).
-          onInlineAuthors: 'throw',
+          // 🔴 No author or tag pages (SA-P32, owner 2026-11-27): an authors.yml always generates /blog/authors,
+          // so a post names the team inline (`authors: { name: The windowsweep team, url: … }`) and there is no
+          // authors.yml; with no tags file, an inline tag fails the build, so no /blog/tags page can appear.
+          onInlineAuthors: 'ignore',
           onInlineTags: 'throw',
           onUntruncatedBlogPosts: 'throw',
           feedOptions: {
@@ -366,14 +407,18 @@ const config: Config = {
           priority: null,
           lastmod: 'date',
           // The blog's tag, author, archive and later list pages only repeat its posts; each post is listed once.
+          // Each pattern in both forms: with trailingSlash the routes end in `/` (SA-P26 switch trap).
           ignorePatterns: [
             '/tags',
+            '/tags/',
             '/tags/**',
             '/search',
+            '/search/',
             '/search/**',
             '/blog/tags/**',
             '/blog/authors/**',
             '/blog/archive',
+            '/blog/archive/',
             '/blog/page/**',
           ],
           createSitemapItems,
@@ -388,6 +433,10 @@ const config: Config = {
     './plugins/site-pages.ts',
     './plugins/worker-fingerprint.ts',
     ['./plugins/discovery-facts.ts', { version: TOOL_VERSION }],
+    // FAQPage JSON-LD read off the built pages whose questions a reader sees (SA-P30).
+    faqSchema,
+    // The retired tag pages' addresses lead to the page each topic is about (SA-P31/P32).
+    ['@docusaurus/plugin-client-redirects', { redirects: seoRedirects(SITE_DIR) }],
   ],
 
   themeConfig: {
@@ -526,7 +575,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Ahsan Mahmood. Built with Docusaurus. windowsweep is MIT-licensed and provided without warranty — it deletes files.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Ahsan Mahmood. Built with Docusaurus. windowsweep is MIT-licensed and provided without warranty — it deletes files.<br />windowsweep is developed with love by the <a href="https://zaions.com" target="_blank" rel="noopener">Zaions team</a>, founded by <a href="https://aoneahsan.com" target="_blank" rel="noopener">Ahsan Mahmood</a>.`,
     },
     prism: {
       theme: lightCodeTheme,

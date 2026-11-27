@@ -1,7 +1,7 @@
 ---
 title: 'What a white-label licence delivers'
 description: 'Per group: the rebranded desktop installers on your GitHub Releases with their own update key, and the engine published to npm under your name. The safety model is unchanged.'
-tags: [white-label, licensing, desktop, cli]
+topics: [white-label, licensing, desktop, cli]
 ---
 
 # What a white-label licence delivers
