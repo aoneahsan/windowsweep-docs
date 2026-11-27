@@ -3,7 +3,9 @@
 Newest first. One section per issue. `live-verified` is ours; `indexed` belongs to Google and is never claimed here.
 This folder sits under `docs/` and is excluded from the published site (`docusaurus.config.ts`, `exclude`).
 
-## windowsweep-docs#1 — [SEO][URGENT][PENDING] URL-level indexing + AEO fix list (audit 2026-11-27) · 2026-11-27 · commit `<pending>`
+## windowsweep-docs#1 — [SEO][URGENT][PENDING] URL-level indexing + AEO fix list (audit 2026-11-27) · 2026-11-27 · commit `6e109d9`
+
+Deployed and live-verified 2026-11-27 (gh-pages ec66f21); IndexNow 200 for every sitemap URL. Google outcome pending.
 
 Status: **built and contract-verified, not published yet** (publishing is the main session's step). Each row moves to
 `live-verified, google-pending` once the Retest commands pass on the live host. The product-site half is in
